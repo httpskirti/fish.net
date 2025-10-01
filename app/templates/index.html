@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FishNet - Marine Biodiversity Data Platform</title>
+    <link rel="icon" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAHpJREFUOE9jZKAQMFKon2FhYWBgYPB/gP7/B4YCK7AANjY2/wz4/x8Y/v//nzFwA3z69An29vawgC3g6tWr8Pl8/x8Y/v//P2NwcPCPgYHhPwwMDB8YGBg+gAz8/x8Y/v//P2BLgA2AANjY2BCQ4e/ff8PExMS/gYEB/Pz8/w8MDAz/GRgY/j9gYMiABKiYgA0AAGs0f9C3A8iHAAAAAElFTkSuQmCC">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <script src="{{ url_for('static', filename='js/main.js') }}" defer></script>
+    
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="/" class="nav-logo-link"><h2><i class="fas fa-fish"></i> FishNet</h2></a>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="/" class="nav-link active">Home</a></li>
+                <li><a href="/dashboard" class="nav-link">Dashboard</a></li>
+                <li><a href="/researcher-dashboard" class="nav-link">Researcher</a></li>
+                <li><a href="/policy-dashboard" class="nav-link">Policymaker</a></li>
+                <li><a href="/species" class="nav-link">Species</a></li>
+                <li><a href="/data" class="nav-link">Data</a></li>
+                <li><a href="/map" class="nav-link">Map</a></li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <video autoplay loop muted playsinline class="background-video">
+            <source src="{{ url_for('static', filename='videos/background_video.mp4') }}" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+        <div class="hero-overlay"></div>
+        <div class="hero-content fade-in">
+            <div class="hero-text">
+                <h1 class="hero-title">FishNet</h1>
+                <h2 class="hero-subtitle">Marine Biodiversity Data Platform</h2>
+                <p class="hero-description">
+                    Comprehensive marine species tracking, oceanographic data analysis, and real-time biodiversity monitoring for the Indian Ocean ecosystem.
+                </p>
+                <div class="hero-buttons">
+                    <a href="/dashboard" class="btn btn-primary">
+                        <i class="fas fa-chart-line"></i> Explore Dashboard
+                    </a>
+                    <a href="#about" class="btn btn-secondary">
+                        <i class="fas fa-info-circle"></i> Learn More
+                    </a>
+                </div>
+            </div>
+            <div class="hero-stats">
+                <div class="stat-card">
+                    <div class="stat-number" id="total-species">4,210</div>
+                    <div class="stat-label">Tracked Species</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number" id="total-datasets">12,847</div>
+                    <div class="stat-label">Datasets</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number" id="ocean-datapoints">1.2M+</div>
+                    <div class="stat-label">Ocean Datapoints</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <div class="section-header fade-in">
+                <h2>What is FishNet?</h2>
+                <p>Advanced marine biodiversity monitoring and analysis platform</p>
+            </div>
+            <div class="about-grid">
+                <div class="about-card slide-up">
+                    <div class="card-icon">
+                        <i class="fas fa-fish"></i>
+                    </div>
+                    <h3>Species Tracking</h3>
+                    <p>Comprehensive database of marine species with real-time population monitoring, conservation status updates, and biodiversity analysis across the Indian Ocean.</p>
+                </div>
+                <div class="about-card slide-up">
+                    <div class="card-icon">
+                        <i class="fas fa-water"></i>
+                    </div>
+                    <h3>Oceanographic Data</h3>
+                    <p>Real-time ocean chemistry monitoring including temperature, salinity, pH levels, and other critical parameters affecting marine ecosystem health.</p>
+                </div>
+                <div class="about-card slide-up">
+                    <div class="card-icon">
+                        <i class="fas fa-dna"></i>
+                    </div>
+                    <h3>eDNA Analysis</h3>
+                    <p>Environmental DNA sampling and analysis to detect species presence, biodiversity assessment, and ecosystem monitoring through cutting-edge genetic techniques.</p>
+                </div>
+                <div class="about-card slide-up">
+                    <div class="card-icon">
+                        <i class="fas fa-route"></i>
+                    </div>
+                    <h3>Maritime Routes</h3>
+                    <p>Comprehensive mapping of commercial fishing routes, shipping lanes, and their environmental impact on marine ecosystems and species migration patterns.</p>
+                </div>
+                <div class="about-card slide-up">
+                    <div class="card-icon">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <h3>AI Analysis</h3>
+                    <p>Machine learning algorithms for predictive analysis, species identification, trend detection, and automated insights from large-scale marine datasets.</p>
+                </div>
+                <div class="about-card slide-up">
+                    <div class="card-icon">
+                        <i class="fas fa-upload"></i>
+                    </div>
+                    <h3>Data Integration</h3>
+                    <p>Seamless integration with global marine databases like OBIS, support for multiple data formats, and real-time API connections for data sharing.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="features">
+        <div class="container">
+            <div class="section-header fade-in">
+                <h2>How to Use FishNet</h2>
+                <p>Simple steps to access comprehensive marine data</p>
+            </div>
+            <div class="features-timeline">
+                <div class="timeline-item slide-up">
+                    <div class="timeline-number">1</div>
+                    <div class="timeline-content">
+                        <h3>Access Dashboard</h3>
+                        <p>Visit the main dashboard to view real-time statistics, recent datasets, and system health indicators.</p>
+                    </div>
+                </div>
+                <div class="timeline-item slide-up">
+                    <div class="timeline-number">2</div>
+                    <div class="timeline-content">
+                        <h3>Explore Species Data</h3>
+                        <p>Search and browse marine species information including taxonomy, conservation status, and occurrence data.</p>
+                    </div>
+                </div>
+                <div class="timeline-item slide-up">
+                    <div class="timeline-number">3</div>
+                    <div class="timeline-content">
+                        <h3>Upload Datasets</h3>
+                        <p>Upload your own marine datasets in CSV, Excel, or JSON formats for processing and integration.</p>
+                    </div>
+                </div>
+                <div class="timeline-item slide-up">
+                    <div class="timeline-number">4</div>
+                    <div class="timeline-content">
+                        <h3>Use AI Tools</h3>
+                        <p>Leverage AI-powered analysis tools for species identification, trend analysis, and predictive modeling.</p>
+                    </div>
+                </div>
+                <div class="timeline-item slide-up">
+                    <div class="timeline-number">5</div>
+                    <div class="timeline-content">
+                        <h3>Navigate & Export</h3>
+                        <p>Use interactive maps to explore data geographically and export results for research or reporting purposes.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quick Access Section -->
+    <section id="quick-access" class="quick-access">
+        <div class="container">
+            <div class="section-header fade-in">
+                <h2>Quick Access</h2>
+                <p>Jump directly to key features and tools</p>
+            </div>
+            <div class="access-grid">
+                <a href="/dashboard" class="access-card slide-up">
+                    <div class="access-icon">
+                        <i class="fas fa-tachometer-alt"></i>
+                    </div>
+                    <h3>Dashboard</h3>
+                    <p>View system overview, statistics, and recent activity</p>
+                </a>
+                <a href="#species-search" class="access-card slide-up" onclick="openSpeciesSearch()">
+                    <div class="access-icon">
+                        <i class="fas fa-search"></i>
+                    </div>
+                    <h3>Species Search</h3>
+                    <p>Find and explore marine species data</p>
+                </a>
+                <a href="#data-upload" class="access-card slide-up" onclick="openDataUpload()">
+                    <div class="access-icon">
+                        <i class="fas fa-cloud-upload-alt"></i>
+                    </div>
+                    <h3>Upload Data</h3>
+                    <p>Upload and process new datasets</p>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Species Identification Modal -->
+    <div id="species-identification-modal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeSpeciesIdentification()">&times;</span>
+            <h2><i class="fas fa-camera"></i> Species Identification</h2>
+            <p>Upload an image to identify a marine species.</p>
+            <form id="species-identification-form" enctype="multipart/form-data">
+                <div class="form-group">
+                    <label for="species-image">Select Image:</label>
+                    <input type="file" id="species-image" name="file" accept="image/*" required>
+                </div>
+                <button type="submit" class="btn btn-primary">
+                    <i class="fas fa-upload"></i> Identify
+                </button>
+            </form>
+            <div id="identification-results" class="search-results">
+                <!-- Identification results will be populated here -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Species Search Modal -->
+    <div id="species-search-modal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeSpeciesSearch()">&times;</span>
+            <h2><i class="fas fa-fish"></i> Species Search</h2>
+            <div class="search-container">
+                <input type="text" id="species-search-input" placeholder="Search by scientific name, common name, or family...">
+                <button onclick="searchSpecies()" class="btn btn-primary">
+                    <i class="fas fa-search"></i> Search
+                </button>
+            </div>
+            <div id="species-results" class="search-results">
+                <!-- Search results will be populated here -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Data Upload Modal -->
+    <div id="data-upload-modal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeDataUpload()">&times;</span>
+            <h2><i class="fas fa-cloud-upload-alt"></i> Upload Dataset</h2>
+            <form id="upload-form" enctype="multipart/form-data">
+                <div class="form-group">
+                    <label for="dataset-file">Select Dataset File:</label>
+                    <input type="file" id="dataset-file" name="file" accept=".csv,.xlsx,.xls,.json" required>
+                    <small>Supported formats: CSV, Excel, JSON</small>
+                </div>
+                <div class="form-group">
+                    <label for="dataset-name">Dataset Name:</label>
+                    <input type="text" id="dataset-name" name="name" placeholder="Enter dataset name">
+                </div>
+                <div class="form-group">
+                    <label for="dataset-type">Dataset Type:</label>
+                    <select id="dataset-type" name="type">
+                        <option value="Species">Species Data</option>
+                        <option value="Ocean">Oceanographic Data</option>
+                        <option value="eDNA">eDNA Samples</option>
+                        <option value="Other">Other</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="dataset-region">Region:</label>
+                    <input type="text" id="dataset-region" name="region" placeholder="e.g., Arabian Sea, Bay of Bengal">
+                </div>
+                <div class="form-group">
+                    <label for="dataset-description">Description:</label>
+                    <textarea id="dataset-description" name="description" rows="3" placeholder="Brief description of the dataset"></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary">
+                    <i class="fas fa-upload"></i> Upload Dataset
+                </button>
+            </form>
+            <div id="upload-progress" class="progress-container" style="display: none;">
+                <div class="progress-bar">
+                    <div class="progress-fill"></div>
+                </div>
+                <div class="progress-text">Uploading and processing...</div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3><i class="fas fa-fish"></i> FishNet</h3>
+                    <p>Marine Biodiversity Data Platform for comprehensive ocean ecosystem monitoring and research.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="/dashboard">Dashboard</a></li>
+                        <li><a href="/species">Species Database</a></li>
+                                                <li><a href="#data">Ocean Data</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Data Sources</h4>
+                    <ul>
+                        <li><a href="https://obis.org" target="_blank">OBIS Database</a></li>
+                        <li><a href="#cmlre">CMLRE Research</a></li>
+                        <li><a href="#edna">eDNA Analysis</a></li>
+                        <li><a href="#routes">Maritime Routes</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Contact</h4>
+                    <p><i class="fas fa-envelope"></i> info@fishnet-platform.org</p>
+                    <p><i class="fas fa-globe"></i> www.fishnet-platform.org</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 FishNet Platform. All rights reserved. | Marine Biodiversity Research Initiative</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html>

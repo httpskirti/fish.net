@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FishNet - Select User Mode</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+        }
+
+        .mode-selector-container {
+            text-align: center;
+            max-width: 1200px;
+            padding: 2rem;
+        }
+
+        .header {
+            margin-bottom: 3rem;
+        }
+
+        .header h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .mode-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 3rem;
+            margin-top: 3rem;
+        }
+
+        .mode-card {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            padding: 3rem 2rem;
+            color: #2c3e50;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .mode-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 6px;
+            background: linear-gradient(90deg, #3498db, #9b59b6);
+        }
+
+        .mode-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .mode-icon {
+            width: 100px;
+            height: 100px;
+            margin: 0 auto 2rem;
+            background: linear-gradient(135deg, #3498db, #9b59b6);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: white;
+        }
+
+        .mode-card h2 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: #2c3e50;
+        }
+
+        .mode-card p {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            margin-bottom: 2rem;
+            color: #7f8c8d;
+        }
+
+        .features-list {
+            text-align: left;
+            margin-bottom: 2rem;
+        }
+
+        .features-list h4 {
+            color: #2c3e50;
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+        }
+
+        .features-list ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .features-list li {
+            padding: 0.5rem 0;
+            color: #7f8c8d;
+            display: flex;
+            align-items: center;
+        }
+
+        .features-list li i {
+            color: #3498db;
+            margin-right: 0.5rem;
+            width: 20px;
+        }
+
+        .select-btn {
+            background: linear-gradient(135deg, #3498db, #2980b9);
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            width: 100%;
+        }
+
+        .select-btn:hover {
+            background: linear-gradient(135deg, #2980b9, #1f5f8b);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(52, 152, 219, 0.4);
+        }
+
+        .researcher-card .mode-icon {
+            background: linear-gradient(135deg, #e74c3c, #c0392b);
+        }
+
+        .researcher-card .select-btn {
+            background: linear-gradient(135deg, #e74c3c, #c0392b);
+        }
+
+        .researcher-card .select-btn:hover {
+            background: linear-gradient(135deg, #c0392b, #a93226);
+        }
+
+        .policy-card .mode-icon {
+            background: linear-gradient(135deg, #27ae60, #229954);
+        }
+
+        .policy-card .select-btn {
+            background: linear-gradient(135deg, #27ae60, #229954);
+        }
+
+        .policy-card .select-btn:hover {
+            background: linear-gradient(135deg, #229954, #1e8449);
+        }
+
+        .demo-note {
+            margin-top: 3rem;
+            padding: 1.5rem;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            backdrop-filter: blur(10px);
+        }
+
+        .demo-note h3 {
+            margin-bottom: 1rem;
+            color: #fff;
+        }
+
+        .demo-note p {
+            opacity: 0.9;
+            line-height: 1.6;
+        }
+
+        @media (max-width: 768px) {
+            .mode-cards {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            
+            .header h1 {
+                font-size: 2rem;
+            }
+            
+            .mode-card {
+                padding: 2rem 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="mode-selector-container">
+        <div class="header">
+            <a href="/" class="nav-logo-link"><h1><i class="fas fa-fish"></i> FishNet Platform</h1></a>
+            <p>Choose your user mode to access tailored marine biodiversity data and analysis tools</p>
+        </div>
+
+        <div class="mode-cards">
+            <!-- Researcher Mode -->
+            <div class="mode-card researcher-card" onclick="selectMode('researcher')">
+                <div class="mode-icon">
+                    <i class="fas fa-microscope"></i>
+                </div>
+                <h2>Researcher Mode</h2>
+                <p>Access detailed scientific data, advanced analytics, and research tools for comprehensive marine biodiversity analysis.</p>
+                
+                <div class="features-list">
+                    <h4>Features Include:</h4>
+                    <ul>
+                        <li><i class="fas fa-chart-line"></i> Raw datasets and detailed analytics</li>
+                        <li><i class="fas fa-dna"></i> eDNA sequence analysis tools</li>
+                        <li><i class="fas fa-camera"></i> AI-powered species identification</li>
+                        <li><i class="fas fa-map-marked-alt"></i> Detailed distribution maps</li>
+                        <li><i class="fas fa-download"></i> Data export and API access</li>
+                        <li><i class="fas fa-cogs"></i> Advanced correlation analysis</li>
+                    </ul>
+                </div>
+                
+                <button class="select-btn">
+                    <i class="fas fa-arrow-right"></i> Enter Researcher Mode
+                </button>
+            </div>
+
+            <!-- Policy Maker Mode -->
+            <div class="mode-card policy-card" onclick="selectMode('policy')">
+                <div class="mode-icon">
+                    <i class="fas fa-balance-scale"></i>
+                </div>
+                <h2>Policy Maker Mode</h2>
+                <p>Access summarized insights, decision support tools, and policy-relevant marine conservation data.</p>
+                
+                <div class="features-list">
+                    <h4>Features Include:</h4>
+                    <ul>
+                        <li><i class="fas fa-chart-pie"></i> Executive summary dashboards</li>
+                        <li><i class="fas fa-exclamation-triangle"></i> Risk assessment reports</li>
+                        <li><i class="fas fa-lightbulb"></i> Decision support recommendations</li>
+                        <li><i class="fas fa-map"></i> Color-coded conservation maps</li>
+                        <li><i class="fas fa-trending-down"></i> Population trend alerts</li>
+                        <li><i class="fas fa-shield-alt"></i> Conservation priority zones</li>
+                    </ul>
+                </div>
+                
+                <button class="select-btn">
+                    <i class="fas fa-arrow-right"></i> Enter Policy Mode
+                </button>
+            </div>
+        </div>
+
+        <div class="demo-note">
+            <h3><i class="fas fa-info-circle"></i> Demo Platform</h3>
+            <p>This is a prototype demonstration of the FishNet Marine Biodiversity Platform. Sample data from the Indian Ocean region is used to showcase the platform's capabilities for marine research and conservation policy making.</p>
+        </div>
+    </div>
+
+    <script>
+        function selectMode(mode) {
+            // Store the selected mode in localStorage
+            localStorage.setItem('userMode', mode);
+            
+            // Add visual feedback
+            const card = event.currentTarget;
+            card.style.transform = 'scale(0.95)';
+            
+            setTimeout(() => {
+                // Redirect to the appropriate dashboard
+                if (mode === 'researcher') {
+                    window.location.href = '/researcher-dashboard';
+                } else {
+                    window.location.href = '/policy-dashboard';
+                }
+            }, 200);
+        }
+
+        // Add hover effects
+        document.querySelectorAll('.mode-card').forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-10px) scale(1.02)';
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0) scale(1)';
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - FishNet Platform</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/dashboard.css') }}">
+    <script src="{{ url_for('static', filename='js/main.js') }}" defer></script>
+    <script src="{{ url_for('static', filename='js/dashboard.js') }}" defer></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="/" class="nav-logo-link"><h2><i class="fas fa-fish"></i> FishNet</h2></a>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="/" class="nav-link">Home</a></li>
+                <li><a href="/dashboard" class="nav-link active">Dashboard</a></li>
+                <li><a href="/researcher-dashboard" class="nav-link">Researcher</a></li>
+                <li><a href="/policy-dashboard" class="nav-link">Policymaker</a></li>
+                <li><a href="/ai-tools" class="nav-link">AI Tools</a></li>
+                <li><a href="/species" class="nav-link">Species</a></li>
+                <li><a href="/data" class="nav-link">Data</a></li>
+                <li><a href="/map" class="nav-link">Map</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="dashboard-container">
+        <header class="dashboard-header">
+            <div class="header-content">
+                <h1><i class="fas fa-chart-line"></i> Dashboard</h1>
+                <p>Welcome back. Here's a summary of the marine data ecosystem.</p>
+            </div>
+            <div class="header-actions">
+                <button class="btn btn-secondary" onclick="refreshDashboard()">
+                    <i class="fas fa-sync-alt"></i> Refresh
+                </button>
+                <button class="btn btn-primary" onclick="openDataUpload()">
+                    <i class="fas fa-plus"></i> Add Dataset
+                </button>
+            </div>
+        </header>
+
+        <!-- Main Stats Cards -->
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-icon">
+                    <i class="fas fa-database"></i>
+                </div>
+                <div class="stat-content">
+                    <h3>Total Datasets</h3>
+                    <div class="stat-number" id="total-datasets"></div>
+                </div>
+            </div>
+            
+            <div class="stat-card">
+                <div class="stat-icon">
+                    <i class="fas fa-fish"></i>
+                </div>
+                <div class="stat-content">
+                    <h3>Tracked Species</h3>
+                    <div class="stat-number" id="tracked-species"></div>
+                </div>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-icon">
+                    <i class="fas fa-flask"></i>
+                </div>
+                <div class="stat-content">
+                    <h3>Active Research</h3>
+                    <div class="stat-number" id="active-research"></div>
+                </div>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-icon">
+                    <i class="fas fa-heart"></i>
+                </div>
+                <div class="stat-content">
+                    <h3>System Health</h3>
+                    <div class="stat-number" id="system-health"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Additional Stats -->
+        <div class="secondary-stats">
+            <div class="secondary-stat">
+                <h4>Raw Oceanographic Datapoints</h4>
+                <div class="big-number" id="ocean-datapoints"></div>
+            </div>
+            <div class="secondary-stat">
+                <h4>API Requests (24h)</h4>
+                <div class="big-number" id="api-requests"></div>
+            </div>
+        </div>
+
+        <!-- Fisheries Health Overview -->
+        <div class="section">
+            <div class="section-header">
+                <h2><i class="fas fa-anchor"></i> Fisheries Health Overview</h2>
+                <button class="btn btn-outline" onclick="refreshFisheriesData()">
+                    <i class="fas fa-sync-alt"></i>
+                </button>
+            </div>
+            <div class="fisheries-grid">
+                <div class="fisheries-chart">
+                    <canvas id="fisheries-chart"></canvas>
+                </div>
+                <div class="fisheries-summary">
+                    <div class="summary-item">
+                        <div class="summary-label">Species Population Trend</div>
+                        <div class="summary-value positive"></div>
+                    </div>
+                    <div class="summary-item">
+                        <div class="summary-label">Water Quality Index</div>
+                        <div class="summary-value good"></div>
+                    </div>
+                    <div class="summary-item">
+                        <div class="summary-label">Biodiversity Score</div>
+                        <div class="summary-value positive"></div>
+                    </div>
+                    <div class="summary-item">
+                        <div class="summary-label">Threat Level</div>
+                        <div class="summary-value moderate"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Decision Support Cards -->
+        <div class="section">
+            <div class="section-header">
+                <h2><i class="fas fa-lightbulb"></i> Decision Support Cards</h2>
+            </div>
+            <div class="decision-cards" id="decision-cards">
+                <div class="decision-card recommendation">
+                    <div class="card-header">
+                        <i class="fas fa-exclamation-triangle"></i>
+                        <span>Recommendation</span>
+                    </div>
+                    <div class="card-content">
+                        <p>Consider fishing quota reduction in Zone C for Tuna stocks.</p>
+                    </div>
+                    <div class="card-action">
+                        <button class="btn btn-sm btn-primary">Review Details</button>
+                    </div>
+                </div>
+
+                <div class="decision-card alert">
+                    <div class="card-header">
+                        <i class="fas fa-exclamation-circle"></i>
+                        <span>Alert</span>
+                    </div>
+                    <div class="card-content">
+                        <p>High risk of coral bleaching detected in the Andaman Sea.</p>
+                    </div>
+                    <div class="card-action">
+                        <button class="btn btn-sm btn-danger">Take Action</button>
+                    </div>
+                </div>
+
+                <div class="decision-card positive">
+                    <div class="card-header">
+                        <i class="fas fa-chart-line"></i>
+                        <span>Positive Trend</span>
+                    </div>
+                    <div class="card-content">
+                        <p>Mackerel population showing strong recovery in the Bay of Bengal.</p>
+                    </div>
+                    <div class="card-action">
+                        <button class="btn btn-sm btn-success">View Report</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Recent Datasets Table -->
+        <div class="section">
+            <div class="section-header">
+                <h2><i class="fas fa-table"></i> Recent Datasets</h2>
+                <div class="table-actions">
+                    <button class="btn btn-outline" onclick="exportDatasets()">
+                        <i class="fas fa-download"></i> Export
+                    </button>
+                    <button class="btn btn-primary" onclick="openDataUpload()">
+                        <i class="fas fa-plus"></i> Add Dataset
+                    </button>
+                </div>
+            </div>
+            <div class="table-container">
+                <table class="data-table" id="recent-datasets-table">
+                    <thead>
+                        <tr>
+                            <th>Dataset ID</th>
+                            <th>Type</th>
+                            <th>Region</th>
+                            <th>Date Added</th>
+                            <th>Records</th>
+                            <th>Status</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="datasets-tbody">
+                        <!-- Dynamic content will be loaded here -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- Data Upload Modal -->
+    <div id="data-upload-modal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeDataUpload()">&times;</span>
+            <h2><i class="fas fa-cloud-upload-alt"></i> Upload New Dataset</h2>
+            <form id="dashboard-upload-form" enctype="multipart/form-data">
+                <div class="form-group">
+                    <label for="dashboard-dataset-file">Select Dataset File:</label>
+                    <input type="file" id="dashboard-dataset-file" name="file" accept=".csv,.xlsx,.xls,.json" required>
+                    <small>Supported formats: CSV, Excel, JSON (Max: 100MB)</small>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="dashboard-dataset-name">Dataset Name:</label>
+                        <input type="text" id="dashboard-dataset-name" name="name" placeholder="Enter dataset name">
+                    </div>
+                    <div class="form-group">
+                        <label for="dashboard-dataset-type">Dataset Type:</label>
+                        <select id="dashboard-dataset-type" name="type">
+                            <option value="Species">Species Data</option>
+                            <option value="Ocean">Oceanographic Data</option>
+                            <option value="eDNA">eDNA Samples</option>
+                            <option value="Routes">Maritime Routes</option>
+                            <option value="Other">Other</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="dashboard-dataset-region">Region:</label>
+                        <input type="text" id="dashboard-dataset-region" name="region" placeholder="e.g., Arabian Sea, Bay of Bengal">
+                    </div>
+                    <div class="form-group">
+                        <label for="dashboard-dataset-organization">Organization:</label>
+                        <input type="text" id="dashboard-dataset-organization" name="organization" placeholder="Data source organization">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="dashboard-dataset-description">Description:</label>
+                    <textarea id="dashboard-dataset-description" name="description" rows="3" placeholder="Brief description of the dataset and its contents"></textarea>
+                </div>
+                <div class="form-actions">
+                    <button type="button" class="btn btn-secondary" onclick="closeDataUpload()">Cancel</button>
+                    <button type="submit" class="btn btn-primary">
+                        <i class="fas fa-upload"></i> Upload & Process
+                    </button>
+                </div>
+            </form>
+            <div id="dashboard-upload-progress" class="progress-container" style="display: none;">
+                <div class="progress-bar">
+                    <div class="progress-fill"></div>
+                </div>
+                <div class="progress-text">Uploading and processing dataset...</div>
+            </div>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/dashboard.js') }}"></script>
+</body>
+</html>

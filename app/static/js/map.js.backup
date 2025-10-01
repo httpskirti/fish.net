@@ -1,0 +1,1003 @@
+// Map Page JavaScript
+
+let map;
+let globe;
+let currentView = 'researcher';
+let currentMapView = '2d'; // '2d' or '3d'
+let layers = {
+    species: null,
+    ocean: null,
+    edna: null,
+    routes: null,
+    heatmap: null
+};
+let markers = {
+    species: [],
+    ocean: [],
+    edna: [],
+    routes: []
+};
+let globeData = {
+    species: [],
+    ocean: [],
+    edna: [],
+    routes: []
+};
+
+// Aesthetic map transitions: inject styles and helper animators
+const mapEnhanceCSS = `
+  .leaflet-tile { opacity: 0; transition: opacity 600ms ease; }
+  .leaflet-tile-loaded { opacity: 1 !important; }
+  .leaflet-popup { transition: opacity 200ms ease, transform 200ms ease; }
+  .leaflet-interactive { transition: filter 200ms ease; }
+  .leaflet-interactive:hover { filter: drop-shadow(0 0 8px rgba(0,229,255,0.35)); }
+`;
+function injectMapEnhanceStyles() {
+  if (document.getElementById('map-enhance-styles')) return;
+  const s = document.createElement('style');
+  s.id = 'map-enhance-styles';
+  s.textContent = mapEnhanceCSS;
+  document.head.appendChild(s);
+}
+
+function createAnimatedCircleMarker(latLng, options, layerGroup, targetRadius, duration = 600) {
+  const marker = L.circleMarker(latLng, { ...options, radius: 0 });
+  marker.addTo(layerGroup);
+  const start = performance.now();
+  function step(t) {
+    const p = Math.min(1, (t - start) / duration);
+    const eased = 1 - Math.pow(1 - p, 3); // easeOutCubic
+    marker.setRadius(targetRadius * eased);
+    if (p < 1) requestAnimationFrame(step);
+  }
+  requestAnimationFrame(step);
+  // Hover enlarge/shrink
+  marker.on('mouseover', () => marker.setRadius(targetRadius * 1.25));
+  marker.on('mouseout', () => marker.setRadius(targetRadius));
+  return marker;
+}
+
+function animateGeoJSONLine(geoLayer, duration = 1200) {
+  geoLayer.eachLayer((l) => {
+    if (l._path) {
+      const path = l._path;
+      const len = path.getTotalLength ? path.getTotalLength() : 1000;
+      path.style.strokeDasharray = `${len}`;
+      path.style.strokeDashoffset = `${len}`;
+      const start = performance.now();
+      function draw(t) {
+        const p = Math.min(1, (t - start) / duration);
+        const eased = 1 - Math.pow(1 - p, 3);
+        path.style.strokeDashoffset = `${len * (1 - eased)}`;
+        if (p < 1) requestAnimationFrame(draw); else path.style.strokeDasharray = 'none';
+      }
+      requestAnimationFrame(draw);
+    }
+  });
+}
+
+// Simple measurement state (plugin-free two-click measurement)
+let measureState = { active: false, firstLatLng: null, line: null, markers: [] };
+
+// Initialize map page
+document.addEventListener('DOMContentLoaded', function() {
+    injectMapEnhanceStyles();
+    initializeMap();
+    loadMapData();
+    setupEventListeners();
+});
+
+function initializeMap() {
+    // Initialize Leaflet map centered on Indian Ocean
+    map = L.map('marine-map').setView([15.0, 73.0], 6);
+
+    // Define tile layers
+    const openStreetMap = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '© OpenStreetMap contributors'
+    });
+
+    const satellite = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
+        attribution: 'Tiles © Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community'
+    });
+
+    // Set default layer
+    openStreetMap.addTo(map);
+
+    // Add layer control
+    const baseMaps = {
+        "Default": openStreetMap,
+        "Satellite": satellite
+    };
+
+    // Initialize layer groups
+    layers.species = L.layerGroup().addTo(map);
+    layers.ocean = L.layerGroup().addTo(map);
+    layers.edna = L.layerGroup();
+    layers.routes = L.layerGroup();
+    layers.heatmap = L.heatLayer([], { radius: 25 });
+
+    const overlayMaps = {
+        "Species": layers.species,
+        "Ocean Data": layers.ocean,
+        "eDNA": layers.edna,
+        "Routes": layers.routes,
+        "Heatmap": layers.heatmap
+    };
+
+    L.control.layers(baseMaps, overlayMaps).addTo(map);
+
+    // Initialize Leaflet.draw
+    const drawnItems = new L.FeatureGroup();
+    map.addLayer(drawnItems);
+
+    const drawControl = new L.Control.Draw({
+        edit: {
+            featureGroup: drawnItems
+        },
+        draw: {
+            polygon: true,
+            polyline: true,
+            rectangle: true,
+            circle: true,
+            marker: true
+        }
+    });
+    map.addControl(drawControl);
+
+    map.on(L.Draw.Event.CREATED, function (event) {
+        const layer = event.layer;
+        drawnItems.addLayer(layer);
+    });
+    
+    console.log('Map initialized with drawing tools');
+}
+
+function setupEventListeners() {
+    // View toggle buttons
+    document.querySelectorAll('.toggle-btn').forEach(btn => {
+        btn.addEventListener('click', function() {
+            const view = this.dataset.view;
+            switchView(view);
+        });
+    });
+    
+    // Export form
+    const exportForm = document.getElementById('export-form');
+    if (exportForm) {
+        exportForm.addEventListener('submit', handleExport);
+    }
+    
+    // Depth range sliders
+    const depthMin = document.getElementById('depth-min');
+    const depthMax = document.getElementById('depth-max');
+    
+    if (depthMin && depthMax) {
+        depthMin.addEventListener('input', updateDepthValues);
+        depthMax.addEventListener('input', updateDepthValues);
+    }
+}
+
+function switchView(view) {
+    currentView = view;
+    
+    // Update toggle buttons
+    document.querySelectorAll('.toggle-btn').forEach(btn => {
+        btn.classList.remove('active');
+    });
+    document.querySelector(`[data-view="${view}"]`).classList.add('active');
+    
+    // Show/hide appropriate controls
+    const researcherControls = document.getElementById('researcher-controls');
+    const policymakerControls = document.getElementById('policymaker-controls');
+    
+    if (view === 'researcher') {
+        researcherControls.style.display = 'block';
+        policymakerControls.style.display = 'none';
+    } else {
+        researcherControls.style.display = 'none';
+        policymakerControls.style.display = 'block';
+    }
+    
+    // Update map data display based on view
+    updateMapForView(view);
+}
+
+function updateMapForView(view) {
+    if (view === 'policymaker') {
+        // Show policy-relevant data
+        showProtectedAreas();
+        showThreats();
+    } else {
+        // Show research-relevant data
+        hideProtectedAreas();
+        hideThreats();
+    }
+}
+
+async function loadMapData() {
+    try {
+        const [speciesData, oceanData, ednaData, routesData] = await Promise.all([
+            fetch('/api/species/occurrences').then(r => r.json()),
+            fetch('/api/ocean/measurements').then(r => r.json()),
+            fetch('/api/edna/samples').then(r => r.json()),
+            fetch('/api/sea-routes').then(r => r.json())
+        ]);
+
+        // Add species markers and heatmap data
+        const heatPoints = [];
+        speciesData.occurrences.forEach(point => {
+            const latLng = [point.latitude, point.longitude];
+            heatPoints.push(latLng);
+
+            const targetRadius = Math.max(3, Math.sqrt(point.abundance) * 2);
+            const marker = createAnimatedCircleMarker(latLng, {
+                fillColor: '#ff6b6b',
+                color: '#fff',
+                weight: 2,
+                opacity: 1,
+                fillOpacity: 0.8
+            }, layers.species, targetRadius);
+
+            marker.bindPopup(`
+                <div class="popup-content">
+                    <h4>${point.species_name}</h4>
+                    <p><strong>Abundance:</strong> ${point.abundance}</p>
+                    <p><strong>Date:</strong> ${new Date(point.observed_at).toLocaleDateString()}</p>
+                </div>
+            `);
+
+            marker.on('click', () => showPointInfo('species', point));
+            markers.species.push(marker);
+        });
+
+        // Set heatmap data
+        layers.heatmap.setLatLngs(heatPoints);
+
+        // Add ocean markers
+        oceanData.measurements.forEach(point => {
+            const marker = createAnimatedCircleMarker([point.latitude, point.longitude], {
+                fillColor: '#4ecdc4',
+                color: '#fff',
+                weight: 2,
+                opacity: 1,
+                fillOpacity: 0.8
+            }, layers.ocean, 8);
+
+            marker.bindPopup(`
+                <div class="popup-content">
+                    <h4>Ocean Measurement</h4>
+                    <p><strong>Temperature:</strong> ${point.temperature}°C</p>
+                    <p><strong>Salinity:</strong> ${point.salinity} PSU</p>
+                    <p><strong>pH:</strong> ${point.ph}</p>
+                </div>
+            `);
+
+            marker.on('click', () => showPointInfo('ocean', point));
+            markers.ocean.push(marker);
+        });
+
+        // Add eDNA markers
+        ednaData.samples.forEach(point => {
+            const marker = createAnimatedCircleMarker([point.latitude, point.longitude], {
+                fillColor: '#45b7d1',
+                color: '#fff',
+                weight: 2,
+                opacity: 1,
+                fillOpacity: 0.8
+            }, layers.edna, 6);
+
+            marker.bindPopup(`
+                <div class="popup-content">
+                    <h4>eDNA Sample</h4>
+                    <p><strong>Species:</strong> ${point.species_name}</p>
+                    <p><strong>Confidence:</strong> ${point.confidence}%</p>
+                </div>
+            `);
+
+            marker.on('click', () => showPointInfo('edna', point));
+            markers.edna.push(marker);
+        });
+
+        // Add sea routes
+        routesData.routes.forEach(route => {
+            const routeLayer = L.geoJSON(route.coordinates, {
+                style: {
+                    color: '#ff7800',
+                    weight: 3,
+                    opacity: 0.65
+                }
+            }).addTo(layers.routes);
+
+            routeLayer.bindPopup(`
+                <div class="popup-content">
+                    <h4>${route.route_name}</h4>
+                    <p><strong>Type:</strong> ${route.route_type}</p>
+                </div>
+            `);
+
+            // Animate route drawing
+            animateGeoJSONLine(routeLayer, 1200);
+
+            markers.routes.push(routeLayer);
+        });
+
+        updateVisiblePoints();
+    } catch (error) {
+        console.error('Failed to load map data:', error);
+        showNotification('Failed to load map data. Please try again.', 'error');
+    }
+}
+
+function toggleLayer(layerName) {
+    const checkbox = document.getElementById(`${layerName}-layer`);
+    const layer = layers[layerName];
+    
+    if (checkbox.checked) {
+        map.addLayer(layer);
+    } else {
+        map.removeLayer(layer);
+    }
+    
+    updateVisiblePoints();
+}
+
+function applyFilters() {
+    const speciesFilter = document.getElementById('species-filter').value;
+    const timeFilter = document.getElementById('time-filter').value;
+    const depthMin = parseInt(document.getElementById('depth-min').value);
+    const depthMax = parseInt(document.getElementById('depth-max').value);
+    
+    // Apply filters to markers (simplified implementation)
+    console.log('Applying filters:', { speciesFilter, timeFilter, depthMin, depthMax });
+    
+    // In a real implementation, you would filter the actual data
+    updateVisiblePoints();
+}
+
+function updateDepthValues() {
+    const depthMin = document.getElementById('depth-min').value;
+    const depthMax = document.getElementById('depth-max').value;
+    
+    document.getElementById('depth-min-val').textContent = depthMin + 'm';
+    document.getElementById('depth-max-val').textContent = depthMax + 'm';
+}
+
+function updateVisiblePoints() {
+    let totalPoints = 0;
+    
+    Object.keys(layers).forEach(layerName => {
+        if (map.hasLayer(layers[layerName])) {
+            totalPoints += markers[layerName].length;
+        }
+    });
+    
+    document.getElementById('visible-points').textContent = totalPoints;
+}
+
+function showPointInfo(type, data) {
+    const panel = document.getElementById('data-panel');
+    const content = document.getElementById('panel-content');
+    
+    let html = '';
+    
+    switch (type) {
+        case 'species':
+            const sName = data.species_name || data.scientific || data.name || 'Species';
+            const sLat = (data.latitude !== undefined ? data.latitude : data.lat);
+            const sLng = (data.longitude !== undefined ? data.longitude : data.lng);
+            const abundance = (data.abundance !== undefined ? data.abundance : (data.count !== undefined ? data.count : 'N/A'));
+            html = `
+                <div class="point-info">
+                    <h4><i class="fas fa-fish"></i> ${sName}</h4>
+                    <div class="info-grid">
+                        <div class="info-item">
+                            <span class="info-label">Abundance:</span>
+                            <span class="info-value">${abundance}</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">Observed:</span>
+                            <span class="info-value">${data.observed_at || 'N/A'}</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">Coordinates:</span>
+                            <span class="info-value">${sLat?.toFixed ? sLat.toFixed(3) : sLat}°N, ${sLng?.toFixed ? sLng.toFixed(3) : sLng}°E</span>
+                        </div>
+                    </div>
+                    <div class="point-actions">
+                        <button class="btn btn-sm btn-secondary" onclick="exportPointData('species', '${sName}')">
+                            <i class="fas fa-download"></i> Export
+                        </button>
+                    </div>
+                </div>
+            `;
+            break;
+        case 'ocean':
+            const oLat = (data.latitude !== undefined ? data.latitude : data.lat);
+            const oLng = (data.longitude !== undefined ? data.longitude : data.lng);
+            const temp = (data.temperature !== undefined ? data.temperature : data.temp);
+            html = `
+                <div class="point-info">
+                    <h4><i class="fas fa-water"></i> Ocean Measurement</h4>
+                    <div class="info-grid">
+                        <div class="info-item">
+                            <span class="info-label">Temperature:</span>
+                            <span class="info-value">${temp}°C</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">Salinity:</span>
+                            <span class="info-value">${data.salinity} PSU</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">pH Level:</span>
+                            <span class="info-value">${data.ph}</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">Coordinates:</span>
+                            <span class="info-value">${oLat?.toFixed ? oLat.toFixed(3) : oLat}°N, ${oLng?.toFixed ? oLng.toFixed(3) : oLng}°E</span>
+                        </div>
+                    </div>
+                    <div class="point-actions">
+                        <button class="btn btn-sm btn-primary" onclick="viewOceanTrends()">
+                            <i class="fas fa-chart-line"></i> View Trends
+                        </button>
+                        <button class="btn btn-sm btn-secondary" onclick="exportPointData('ocean', '${oLat}_${oLng}')">
+                            <i class="fas fa-download"></i> Export
+                        </button>
+                    </div>
+                </div>
+            `;
+            break;
+        case 'edna':
+            const eLat = (data.latitude !== undefined ? data.latitude : data.lat);
+            const eLng = (data.longitude !== undefined ? data.longitude : data.lng);
+            const eSpecies = data.species_name || data.species || 'Species';
+            html = `
+                <div class="point-info">
+                    <h4><i class="fas fa-dna"></i> eDNA Sample</h4>
+                    <div class="info-grid">
+                        <div class="info-item">
+                            <span class="info-label">Species:</span>
+                            <span class="info-value">${eSpecies}</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">Confidence:</span>
+                            <span class="info-value">${data.confidence || 'N/A'}%</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">Depth:</span>
+                            <span class="info-value">${data.depth || 'N/A'}m</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">Coordinates:</span>
+                            <span class="info-value">${eLat?.toFixed ? eLat.toFixed(3) : eLat}°N, ${eLng?.toFixed ? eLng.toFixed(3) : eLng}°E</span>
+                        </div>
+                    </div>
+                    <div class="point-actions">
+                        <button class="btn btn-sm btn-primary" onclick="viewGeneticAnalysis('${eSpecies}')">
+                            <i class="fas fa-microscope"></i> Genetic Analysis
+                        </button>
+                        <button class="btn btn-sm btn-secondary" onclick="exportPointData('edna', '${eSpecies}')">
+                            <i class="fas fa-download"></i> Export
+                        </button>
+                    </div>
+                </div>
+            `;
+            break;
+    }
+    
+    content.innerHTML = html;
+    panel.style.display = 'block';
+}
+
+function closeDataPanel() {
+    const panel = document.getElementById('data-panel');
+    panel.style.display = 'none';
+}
+
+// Research tools
+function measureDistance() {
+    showNotification('Distance tool is now part of the drawing toolbar.', 'info');
+}
+
+function drawPolygon() {
+    showNotification('Polygon tool is now part of the drawing toolbar.', 'info');
+}
+
+function exportMapData() {
+    const modal = document.getElementById('export-modal');
+    modal.style.display = 'block';
+    document.body.style.overflow = 'hidden';
+}
+
+function closeExportModal() {
+    const modal = document.getElementById('export-modal');
+    modal.style.display = 'none';
+    document.body.style.overflow = 'auto';
+}
+
+function handleExport(event) {
+    event.preventDefault();
+    
+    const format = document.getElementById('export-format').value;
+    const region = document.getElementById('export-region').value;
+    const selectedData = Array.from(document.querySelectorAll('input[name="export-data"]:checked'))
+        .map(cb => cb.value);
+    
+    showNotification(`Exporting ${selectedData.join(', ')} data as ${format.toUpperCase()}...`, 'info');
+    
+    // Simulate export
+    setTimeout(() => {
+        closeExportModal();
+        showNotification('Data exported successfully!', 'success');
+    }, 2000);
+}
+
+// Policy tools
+function showProtectedAreas() {
+    showNotification('Displaying protected marine areas', 'info');
+    // In a real implementation, you would add protected area overlays
+}
+
+function hideProtectedAreas() {
+    // Remove protected area overlays
+}
+
+function showThreats() {
+    showNotification('Displaying threat assessment data', 'warning');
+    // In a real implementation, you would add threat indicators
+}
+
+function hideThreats() {
+    // Remove threat indicators
+}
+
+function generateReport() {
+    showNotification('Generating policy report...', 'info');
+    
+    // Simulate report generation
+    setTimeout(() => {
+        showNotification('Policy report generated successfully!', 'success');
+    }, 3000);
+}
+
+// Point action functions
+function viewSpeciesDetails(scientificName) {
+    showNotification(`Loading details for ${scientificName}...`, 'info');
+    // In a real implementation, you would navigate to species details
+}
+
+function viewOceanTrends() {
+    showNotification('Loading ocean parameter trends...', 'info');
+    // In a real implementation, you would show trend analysis
+}
+
+function viewGeneticAnalysis(species) {
+    showNotification(`Loading genetic analysis for ${species}...`, 'info');
+    // In a real implementation, you would show genetic data
+}
+
+function exportPointData(type, identifier) {
+    showNotification(`Exporting ${type} data...`, 'info');
+    
+    setTimeout(() => {
+        showNotification('Point data exported successfully!', 'success');
+    }, 1000);
+}
+
+// Utility functions
+function showNotification(message, type = 'info') {
+    // Create notification element
+    const notification = document.createElement('div');
+    notification.className = `notification notification-${type}`;
+    notification.innerHTML = `
+        <div class="notification-content">
+            <i class="fas fa-${getNotificationIcon(type)}"></i>
+            <span>${message}</span>
+        </div>
+    `;
+    
+    // Add styles
+    notification.style.cssText = `
+        position: fixed;
+        top: 100px;
+        right: 20px;
+        background: ${getNotificationColor(type)};
+        color: white;
+        padding: 1rem 1.5rem;
+        border-radius: 8px;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        z-index: 10000;
+        transform: translateX(100%);
+        transition: transform 0.3s ease;
+        max-width: 300px;
+    `;
+    
+    document.body.appendChild(notification);
+    
+    // Animate in
+    setTimeout(() => {
+        notification.style.transform = 'translateX(0)';
+    }, 100);
+    
+    // Remove after 4 seconds
+    setTimeout(() => {
+        notification.style.transform = 'translateX(100%)';
+        setTimeout(() => {
+            if (notification.parentNode) {
+                notification.parentNode.removeChild(notification);
+            }
+        }, 300);
+    }, 4000);
+}
+
+function getNotificationIcon(type) {
+    const icons = {
+        'success': 'check-circle',
+        'error': 'exclamation-circle',
+        'warning': 'exclamation-triangle',
+        'info': 'info-circle'
+    };
+    return icons[type] || 'info-circle';
+}
+
+function getNotificationColor(type) {
+    const colors = {
+        'success': '#4caf50',
+        'error': '#f44336',
+        'warning': '#ff9800',
+        'info': '#2196f3'
+    };
+    return colors[type] || '#2196f3';
+}
+
+// Close modals when clicking outside
+window.addEventListener('click', function(event) {
+    const modals = document.querySelectorAll('.modal');
+    modals.forEach(modal => {
+        if (event.target === modal) {
+            modal.style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+    });
+});
+
+// Handle escape key to close modals
+document.addEventListener('keydown', function(event) {
+    if (event.key === 'Escape') {
+        const openModals = document.querySelectorAll('.modal[style*="block"]');
+        openModals.forEach(modal => {
+            modal.style.display = 'none';
+            document.body.style.overflow = 'auto';
+        });
+        
+        // Also close data panel
+        closeDataPanel();
+    }
+});
+
+// Add CSS for point info styling
+const pointInfoStyles = `
+    .point-info {
+        font-family: var(--font-primary);
+    }
+    
+    .point-info h4 {
+        color: var(--ocean-blue);
+        margin-bottom: 1rem;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+    }
+    
+    .info-grid {
+        display: flex;
+        flex-direction: column;
+        gap: 0.75rem;
+        margin-bottom: 1.5rem;
+    }
+    
+    .info-item {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0.5rem;
+        background: rgba(0, 188, 212, 0.05);
+        border-radius: 4px;
+    }
+    
+    .info-label {
+        font-weight: 600;
+        color: var(--light-text);
+        font-size: 0.9rem;
+    }
+    
+    .info-value {
+        font-weight: 500;
+        color: var(--dark-text);
+    }
+    
+    .point-actions {
+        display: flex;
+        gap: 0.5rem;
+        flex-wrap: wrap;
+    }
+`;
+
+// Inject styles
+const styleSheet = document.createElement('style');
+styleSheet.textContent = pointInfoStyles;
+document.head.appendChild(styleSheet);
+
+//
+ 
+ / /   = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = 
+ / /   3 D   G L O B E   F U N C T I O N A L I T Y 
+ / /   = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = 
+ 
+ f u n c t i o n   s w i t c h M a p V i e w ( v i e w T y p e )   { 
+         c u r r e n t M a p V i e w   =   v i e w T y p e ; 
+         
+         / /   U p d a t e   t o g g l e   b u t t o n s 
+         d o c u m e n t . q u e r y S e l e c t o r A l l ( ' . m a p - t o g g l e - b t n ' ) . f o r E a c h ( b t n   = >   { 
+                 b t n . c l a s s L i s t . r e m o v e ( ' a c t i v e ' ) ; 
+         } ) ; 
+         d o c u m e n t . g e t E l e m e n t B y I d ( \ m a p - \ - b t n \ ) . c l a s s L i s t . a d d ( ' a c t i v e ' ) ; 
+         
+         c o n s t   m a p C o n t a i n e r   =   d o c u m e n t . g e t E l e m e n t B y I d ( ' m a r i n e - m a p ' ) ; 
+         
+         i f   ( v i e w T y p e   = = =   ' 3 d ' )   { 
+                 / /   C h e c k   i f   T h r e e . j s   i s   a v a i l a b l e 
+                 i f   ( t y p e o f   T H R E E   = = =   ' u n d e f i n e d ' )   { 
+                         s h o w N o t i f i c a t i o n ( ' 3 D   G l o b e   r e q u i r e s   T h r e e . j s   l i b r a r y .   P l e a s e   c h e c k   y o u r   i n t e r n e t   c o n n e c t i o n . ' ,   ' e r r o r ' ) ; 
+                         / /   R e v e r t   b u t t o n   s t a t e 
+                         d o c u m e n t . g e t E l e m e n t B y I d ( ' m a p - 2 d - b t n ' ) . c l a s s L i s t . a d d ( ' a c t i v e ' ) ; 
+                         d o c u m e n t . g e t E l e m e n t B y I d ( ' m a p - 3 d - b t n ' ) . c l a s s L i s t . r e m o v e ( ' a c t i v e ' ) ; 
+                         r e t u r n ; 
+                 } 
+                 
+                 / /   H i d e   2 D   m a p 
+                 m a p C o n t a i n e r . s t y l e . d i s p l a y   =   ' n o n e ' ; 
+                 
+                 / /   I n i t i a l i z e   3 D   g l o b e 
+                 t r y   { 
+                         i n i t i a l i z e 3 D G l o b e ( ) ; 
+                         s h o w N o t i f i c a t i o n ( ' S w i t c h e d   t o   3 D   G l o b e   v i e w ' ,   ' i n f o ' ) ; 
+                 }   c a t c h   ( e r r o r )   { 
+                         c o n s o l e . e r r o r ( ' F a i l e d   t o   i n i t i a l i z e   3 D   g l o b e : ' ,   e r r o r ) ; 
+                         s h o w N o t i f i c a t i o n ( ' F a i l e d   t o   l o a d   3 D   G l o b e .   S w i t c h i n g   b a c k   t o   2 D   v i e w . ' ,   ' e r r o r ' ) ; 
+                         / /   R e v e r t   t o   2 D 
+                         m a p C o n t a i n e r . s t y l e . d i s p l a y   =   ' b l o c k ' ; 
+                         d o c u m e n t . g e t E l e m e n t B y I d ( ' m a p - 2 d - b t n ' ) . c l a s s L i s t . a d d ( ' a c t i v e ' ) ; 
+                         d o c u m e n t . g e t E l e m e n t B y I d ( ' m a p - 3 d - b t n ' ) . c l a s s L i s t . r e m o v e ( ' a c t i v e ' ) ; 
+                 } 
+         }   e l s e   { 
+                 / /   S h o w   2 D   m a p 
+                 m a p C o n t a i n e r . s t y l e . d i s p l a y   =   ' b l o c k ' ; 
+                 
+                 / /   H i d e   3 D   g l o b e 
+                 i f   ( g l o b e   & &   g l o b e . d o m E l e m e n t )   { 
+                         g l o b e . d o m E l e m e n t . s t y l e . d i s p l a y   =   ' n o n e ' ; 
+                 } 
+                 
+                 / /   R e f r e s h   m a p 
+                 s e t T i m e o u t ( ( )   = >   { 
+                         m a p . i n v a l i d a t e S i z e ( ) ; 
+                 } ,   1 0 0 ) ; 
+                 
+                 s h o w N o t i f i c a t i o n ( ' S w i t c h e d   t o   2 D   M a p   v i e w ' ,   ' i n f o ' ) ; 
+         } 
+ } 
+ 
+ f u n c t i o n   i n i t i a l i z e 3 D G l o b e ( )   { 
+         c o n s t   c o n t a i n e r   =   d o c u m e n t . q u e r y S e l e c t o r ( ' . m a p - w r a p p e r ' ) ; 
+         
+         / /   R e m o v e   e x i s t i n g   g l o b e   i f   a n y 
+         c o n s t   e x i s t i n g G l o b e   =   c o n t a i n e r . q u e r y S e l e c t o r ( ' # g l o b e - c o n t a i n e r ' ) ; 
+         i f   ( e x i s t i n g G l o b e )   { 
+                 e x i s t i n g G l o b e . r e m o v e ( ) ; 
+         } 
+         
+         / /   C r e a t e   g l o b e   c o n t a i n e r 
+         c o n s t   g l o b e C o n t a i n e r   =   d o c u m e n t . c r e a t e E l e m e n t ( ' d i v ' ) ; 
+         g l o b e C o n t a i n e r . i d   =   ' g l o b e - c o n t a i n e r ' ; 
+         g l o b e C o n t a i n e r . s t y l e . c s s T e x t   =   \ 
+                 p o s i t i o n :   a b s o l u t e ; 
+                 t o p :   0 ; 
+                 l e f t :   0 ; 
+                 w i d t h :   1 0 0 % ; 
+                 h e i g h t :   1 0 0 % ; 
+                 b a c k g r o u n d :   l i n e a r - g r a d i e n t ( 1 3 5 d e g ,   # 0 0 1 1 2 2 ,   # 0 0 3 3 6 6 ) ; 
+                 z - i n d e x :   1 ; 
+         \ ; 
+         c o n t a i n e r . a p p e n d C h i l d ( g l o b e C o n t a i n e r ) ; 
+         
+         / /   I n i t i a l i z e   T h r e e . j s   s c e n e 
+         c o n s t   s c e n e   =   n e w   T H R E E . S c e n e ( ) ; 
+         c o n s t   c a m e r a   =   n e w   T H R E E . P e r s p e c t i v e C a m e r a ( 7 5 ,   c o n t a i n e r . c l i e n t W i d t h   /   c o n t a i n e r . c l i e n t H e i g h t ,   0 . 1 ,   1 0 0 0 ) ; 
+         c o n s t   r e n d e r e r   =   n e w   T H R E E . W e b G L R e n d e r e r ( {   a n t i a l i a s :   t r u e ,   a l p h a :   t r u e   } ) ; 
+         
+         r e n d e r e r . s e t S i z e ( c o n t a i n e r . c l i e n t W i d t h ,   c o n t a i n e r . c l i e n t H e i g h t ) ; 
+         r e n d e r e r . s e t C l e a r C o l o r ( 0 x 0 0 1 1 2 2 ,   1 ) ; 
+         g l o b e C o n t a i n e r . a p p e n d C h i l d ( r e n d e r e r . d o m E l e m e n t ) ; 
+         
+         / /   C r e a t e   E a r t h   s p h e r e 
+         c o n s t   e a r t h G e o m e t r y   =   n e w   T H R E E . S p h e r e G e o m e t r y ( 5 ,   6 4 ,   6 4 ) ; 
+         
+         / /   L o a d   E a r t h   t e x t u r e   ( u s i n g   a   s i m p l e   b l u e   o c e a n   t e x t u r e ) 
+         c o n s t   e a r t h T e x t u r e   =   c r e a t e E a r t h T e x t u r e ( ) ; 
+         c o n s t   e a r t h M a t e r i a l   =   n e w   T H R E E . M e s h P h o n g M a t e r i a l ( {   
+                 m a p :   e a r t h T e x t u r e , 
+                 t r a n s p a r e n t :   t r u e , 
+                 o p a c i t y :   0 . 9 
+         } ) ; 
+         
+         c o n s t   e a r t h M e s h   =   n e w   T H R E E . M e s h ( e a r t h G e o m e t r y ,   e a r t h M a t e r i a l ) ; 
+         s c e n e . a d d ( e a r t h M e s h ) ; 
+         
+         / /   A d d   a t m o s p h e r e   g l o w 
+         c o n s t   a t m o s p h e r e G e o m e t r y   =   n e w   T H R E E . S p h e r e G e o m e t r y ( 5 . 2 ,   6 4 ,   6 4 ) ; 
+         c o n s t   a t m o s p h e r e M a t e r i a l   =   n e w   T H R E E . M e s h B a s i c M a t e r i a l ( { 
+                 c o l o r :   0 x 4 4 8 8 f f , 
+                 t r a n s p a r e n t :   t r u e , 
+                 o p a c i t y :   0 . 1 , 
+                 s i d e :   T H R E E . B a c k S i d e 
+         } ) ; 
+         c o n s t   a t m o s p h e r e M e s h   =   n e w   T H R E E . M e s h ( a t m o s p h e r e G e o m e t r y ,   a t m o s p h e r e M a t e r i a l ) ; 
+         s c e n e . a d d ( a t m o s p h e r e M e s h ) ; 
+         
+         / /   A d d   l i g h t i n g 
+         c o n s t   a m b i e n t L i g h t   =   n e w   T H R E E . A m b i e n t L i g h t ( 0 x 4 0 4 0 4 0 ,   0 . 6 ) ; 
+         s c e n e . a d d ( a m b i e n t L i g h t ) ; 
+         
+         c o n s t   d i r e c t i o n a l L i g h t   =   n e w   T H R E E . D i r e c t i o n a l L i g h t ( 0 x f f f f f f ,   0 . 8 ) ; 
+         d i r e c t i o n a l L i g h t . p o s i t i o n . s e t ( 1 0 ,   1 0 ,   5 ) ; 
+         s c e n e . a d d ( d i r e c t i o n a l L i g h t ) ; 
+         
+         / /   P o s i t i o n   c a m e r a 
+         c a m e r a . p o s i t i o n . z   =   1 5 ; 
+         
+         / /   A d d   o r b i t   c o n t r o l s   ( c h e c k   i f   a v a i l a b l e ) 
+         l e t   c o n t r o l s   =   n u l l ; 
+         i f   ( t y p e o f   T H R E E . O r b i t C o n t r o l s   ! = =   ' u n d e f i n e d ' )   { 
+                 c o n t r o l s   =   n e w   T H R E E . O r b i t C o n t r o l s ( c a m e r a ,   r e n d e r e r . d o m E l e m e n t ) ; 
+                 c o n t r o l s . e n a b l e D a m p i n g   =   t r u e ; 
+                 c o n t r o l s . d a m p i n g F a c t o r   =   0 . 0 5 ; 
+                 c o n t r o l s . m i n D i s t a n c e   =   8 ; 
+                 c o n t r o l s . m a x D i s t a n c e   =   3 0 ; 
+         }   e l s e   { 
+                 c o n s o l e . w a r n ( ' O r b i t C o n t r o l s   n o t   a v a i l a b l e ,   u s i n g   b a s i c   c a m e r a   c o n t r o l s ' ) ; 
+         } 
+         
+         / /   A d d   d a t a   p o i n t s   t o   g l o b e 
+         a d d D a t a P o i n t s T o G l o b e ( s c e n e ) ; 
+         
+         / /   A n i m a t i o n   l o o p 
+         f u n c t i o n   a n i m a t e ( )   { 
+                 r e q u e s t A n i m a t i o n F r a m e ( a n i m a t e ) ; 
+                 
+                 / /   R o t a t e   E a r t h   s l o w l y 
+                 e a r t h M e s h . r o t a t i o n . y   + =   0 . 0 0 2 ; 
+                 a t m o s p h e r e M e s h . r o t a t i o n . y   + =   0 . 0 0 1 ; 
+                 
+                 i f   ( c o n t r o l s )   { 
+                         c o n t r o l s . u p d a t e ( ) ; 
+                 } 
+                 r e n d e r e r . r e n d e r ( s c e n e ,   c a m e r a ) ; 
+         } 
+         a n i m a t e ( ) ; 
+         
+         / /   H a n d l e   w i n d o w   r e s i z e 
+         f u n c t i o n   o n W i n d o w R e s i z e ( )   { 
+                 c a m e r a . a s p e c t   =   c o n t a i n e r . c l i e n t W i d t h   /   c o n t a i n e r . c l i e n t H e i g h t ; 
+                 c a m e r a . u p d a t e P r o j e c t i o n M a t r i x ( ) ; 
+                 r e n d e r e r . s e t S i z e ( c o n t a i n e r . c l i e n t W i d t h ,   c o n t a i n e r . c l i e n t H e i g h t ) ; 
+         } 
+         w i n d o w . a d d E v e n t L i s t e n e r ( ' r e s i z e ' ,   o n W i n d o w R e s i z e ) ; 
+         
+         / /   S t o r e   g l o b e   r e f e r e n c e 
+         g l o b e   =   { 
+                 s c e n e :   s c e n e , 
+                 c a m e r a :   c a m e r a , 
+                 r e n d e r e r :   r e n d e r e r , 
+                 c o n t r o l s :   c o n t r o l s , 
+                 d o m E l e m e n t :   g l o b e C o n t a i n e r 
+         } ; 
+ } 
+ 
+ f u n c t i o n   c r e a t e E a r t h T e x t u r e ( )   { 
+         / /   C r e a t e   a   s i m p l e   p r o c e d u r a l   E a r t h   t e x t u r e 
+         c o n s t   c a n v a s   =   d o c u m e n t . c r e a t e E l e m e n t ( ' c a n v a s ' ) ; 
+         c a n v a s . w i d t h   =   1 0 2 4 ; 
+         c a n v a s . h e i g h t   =   5 1 2 ; 
+         c o n s t   c t x   =   c a n v a s . g e t C o n t e x t ( ' 2 d ' ) ; 
+         
+         / /   O c e a n   b a c k g r o u n d 
+         c o n s t   g r a d i e n t   =   c t x . c r e a t e L i n e a r G r a d i e n t ( 0 ,   0 ,   0 ,   c a n v a s . h e i g h t ) ; 
+         g r a d i e n t . a d d C o l o r S t o p ( 0 ,   ' # 1 e 3 a 8 a ' ) ; 
+         g r a d i e n t . a d d C o l o r S t o p ( 0 . 5 ,   ' # 1 e 4 0 a f ' ) ; 
+         g r a d i e n t . a d d C o l o r S t o p ( 1 ,   ' # 1 e 3 a 8 a ' ) ; 
+         c t x . f i l l S t y l e   =   g r a d i e n t ; 
+         c t x . f i l l R e c t ( 0 ,   0 ,   c a n v a s . w i d t h ,   c a n v a s . h e i g h t ) ; 
+         
+         / /   A d d   s o m e   l a n d m a s s   s h a p e s   ( s i m p l i f i e d ) 
+         c t x . f i l l S t y l e   =   ' # 2 2 c 5 5 e ' ; 
+         
+         / /   A f r i c a / E u r o p e   a p p r o x i m a t i o n 
+         c t x . b e g i n P a t h ( ) ; 
+         c t x . e l l i p s e ( 5 1 2 ,   2 0 0 ,   8 0 ,   1 2 0 ,   0 ,   0 ,   2   *   M a t h . P I ) ; 
+         c t x . f i l l ( ) ; 
+         
+         / /   A s i a   a p p r o x i m a t i o n 
+         c t x . b e g i n P a t h ( ) ; 
+         c t x . e l l i p s e ( 7 0 0 ,   1 8 0 ,   1 0 0 ,   8 0 ,   0 ,   0 ,   2   *   M a t h . P I ) ; 
+         c t x . f i l l ( ) ; 
+         
+         / /   A m e r i c a s   a p p r o x i m a t i o n 
+         c t x . b e g i n P a t h ( ) ; 
+         c t x . e l l i p s e ( 2 0 0 ,   2 2 0 ,   6 0 ,   1 4 0 ,   0 ,   0 ,   2   *   M a t h . P I ) ; 
+         c t x . f i l l ( ) ; 
+         
+         r e t u r n   n e w   T H R E E . C a n v a s T e x t u r e ( c a n v a s ) ; 
+ } 
+ 
+ f u n c t i o n   a d d D a t a P o i n t s T o G l o b e ( s c e n e )   { 
+         / /   C o n v e r t   l a t / l n g   t o   3 D   c o o r d i n a t e s   a n d   a d d   m a r k e r s 
+         c o n s t   r a d i u s   =   5 . 1 ; 
+         
+         / /   A d d   s p e c i e s   d a t a   p o i n t s 
+         m a r k e r s . s p e c i e s . f o r E a c h ( m a r k e r   = >   { 
+                 i f   ( m a r k e r   & &   m a r k e r . g e t L a t L n g )   { 
+                         c o n s t   l a t L n g   =   m a r k e r . g e t L a t L n g ( ) ; 
+                         c o n s t   p o s i t i o n   =   l a t L n g T o 3 D ( l a t L n g . l a t ,   l a t L n g . l n g ,   r a d i u s ) ; 
+                         
+                         c o n s t   p o i n t G e o m e t r y   =   n e w   T H R E E . S p h e r e G e o m e t r y ( 0 . 0 5 ,   8 ,   8 ) ; 
+                         c o n s t   p o i n t M a t e r i a l   =   n e w   T H R E E . M e s h B a s i c M a t e r i a l ( {   c o l o r :   0 x f f 6 b 6 b   } ) ; 
+                         c o n s t   p o i n t M e s h   =   n e w   T H R E E . M e s h ( p o i n t G e o m e t r y ,   p o i n t M a t e r i a l ) ; 
+                         
+                         p o i n t M e s h . p o s i t i o n . c o p y ( p o s i t i o n ) ; 
+                         s c e n e . a d d ( p o i n t M e s h ) ; 
+                 } 
+         } ) ; 
+         
+         / /   A d d   o c e a n   d a t a   p o i n t s 
+         m a r k e r s . o c e a n . f o r E a c h ( m a r k e r   = >   { 
+                 i f   ( m a r k e r   & &   m a r k e r . g e t L a t L n g )   { 
+                         c o n s t   l a t L n g   =   m a r k e r . g e t L a t L n g ( ) ; 
+                         c o n s t   p o s i t i o n   =   l a t L n g T o 3 D ( l a t L n g . l a t ,   l a t L n g . l n g ,   r a d i u s ) ; 
+                         
+                         c o n s t   p o i n t G e o m e t r y   =   n e w   T H R E E . S p h e r e G e o m e t r y ( 0 . 0 4 ,   8 ,   8 ) ; 
+                         c o n s t   p o i n t M a t e r i a l   =   n e w   T H R E E . M e s h B a s i c M a t e r i a l ( {   c o l o r :   0 x 4 e c d c 4   } ) ; 
+                         c o n s t   p o i n t M e s h   =   n e w   T H R E E . M e s h ( p o i n t G e o m e t r y ,   p o i n t M a t e r i a l ) ; 
+                         
+                         p o i n t M e s h . p o s i t i o n . c o p y ( p o s i t i o n ) ; 
+                         s c e n e . a d d ( p o i n t M e s h ) ; 
+                 } 
+         } ) ; 
+         
+         / /   A d d   e D N A   d a t a   p o i n t s 
+         m a r k e r s . e d n a . f o r E a c h ( m a r k e r   = >   { 
+                 i f   ( m a r k e r   & &   m a r k e r . g e t L a t L n g )   { 
+                         c o n s t   l a t L n g   =   m a r k e r . g e t L a t L n g ( ) ; 
+                         c o n s t   p o s i t i o n   =   l a t L n g T o 3 D ( l a t L n g . l a t ,   l a t L n g . l n g ,   r a d i u s ) ; 
+                         
+                         c o n s t   p o i n t G e o m e t r y   =   n e w   T H R E E . S p h e r e G e o m e t r y ( 0 . 0 3 ,   8 ,   8 ) ; 
+                         c o n s t   p o i n t M a t e r i a l   =   n e w   T H R E E . M e s h B a s i c M a t e r i a l ( {   c o l o r :   0 x 4 5 b 7 d 1   } ) ; 
+                         c o n s t   p o i n t M e s h   =   n e w   T H R E E . M e s h ( p o i n t G e o m e t r y ,   p o i n t M a t e r i a l ) ; 
+                         
+                         p o i n t M e s h . p o s i t i o n . c o p y ( p o s i t i o n ) ; 
+                         s c e n e . a d d ( p o i n t M e s h ) ; 
+                 } 
+         } ) ; 
+ } 
+ 
+ f u n c t i o n   l a t L n g T o 3 D ( l a t ,   l n g ,   r a d i u s )   { 
+         c o n s t   p h i   =   ( 9 0   -   l a t )   *   ( M a t h . P I   /   1 8 0 ) ; 
+         c o n s t   t h e t a   =   ( l n g   +   1 8 0 )   *   ( M a t h . P I   /   1 8 0 ) ; 
+         
+         c o n s t   x   =   - ( r a d i u s   *   M a t h . s i n ( p h i )   *   M a t h . c o s ( t h e t a ) ) ; 
+         c o n s t   z   =   ( r a d i u s   *   M a t h . s i n ( p h i )   *   M a t h . s i n ( t h e t a ) ) ; 
+         c o n s t   y   =   ( r a d i u s   *   M a t h . c o s ( p h i ) ) ; 
+         
+         r e t u r n   n e w   T H R E E . V e c t o r 3 ( x ,   y ,   z ) ; 
+ }  
+ 

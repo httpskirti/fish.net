@@ -1,0 +1,369 @@
+survey_id,site_name,region,latitude,longitude,survey_date,transect_number,depth_m,transect_length_m,coral_cover_percent,algae_cover_percent,sand_cover_percent,rubble_cover_percent,coral_species_count,fish_species_count,total_fish_count,bleaching_severity,bleached_colonies_percent,water_temperature_c,visibility_m,current_strength,weather_conditions,surveyor,data_source
+REEF0001,Lakshadweep - Bangaram,Lakshadweep,10.893449,72.302026,2025-05-31,1,18.7,30,54.3,18.5,13.4,13.8,14,22,190,None,0.0,31.1,25.0,Weak,Calm,Research Diver,Coral Reef Survey
+REEF0002,Lakshadweep - Bangaram,Lakshadweep,10.891293,72.302423,2025-05-31,2,8.2,10,65.1,28.9,0.0,6.0,14,17,201,None,0.0,27.7,13.2,Moderate,Calm,Coral Specialist,Coral Reef Survey
+REEF0003,Lakshadweep - Bangaram,Lakshadweep,10.90065,72.292285,2025-05-31,3,15.1,20,40.1,13.1,42.4,4.4,10,31,191,None,0.0,30.4,15.7,Moderate,Rough,Reef Survey Team,Coral Reef Survey
+REEF0004,Lakshadweep - Bangaram,Lakshadweep,10.891857,72.300336,2025-05-14,1,7.7,20,64.1,25.9,0.0,10.0,11,35,226,None,0.0,29.2,28.4,Weak,Calm,Research Diver,Coral Reef Survey
+REEF0005,Lakshadweep - Bangaram,Lakshadweep,10.908638,72.300254,2025-05-14,2,9.7,10,60.7,9.7,16.9,12.7,9,28,162,None,0.0,26.6,12.3,Strong,Choppy,Coral Specialist,Coral Reef Survey
+REEF0006,Lakshadweep - Bangaram,Lakshadweep,10.899593,72.307752,2025-05-14,3,15.5,20,70.7,13.5,4.4,11.4,13,26,169,None,0.0,30.0,9.1,Moderate,Rough,Marine Biologist A,Coral Reef Survey
+REEF0007,Lakshadweep - Bangaram,Lakshadweep,10.899866,72.29592,2025-05-14,4,10.2,30,83.2,9.6,1.0,6.2,15,24,123,None,0.0,31.2,17.2,Strong,Calm,Coral Specialist,Coral Reef Survey
+REEF0008,Lakshadweep - Bangaram,Lakshadweep,10.904877,72.307127,2025-05-14,5,9.8,20,57.7,13.9,11.8,16.7,13,16,289,Mild,15.8,30.1,20.4,Weak,Rough,Marine Biologist A,Coral Reef Survey
+REEF0009,Lakshadweep - Bangaram,Lakshadweep,10.898726,72.300799,2025-05-14,6,7.3,20,59.4,17.5,5.1,18.0,10,18,269,Mild,35.4,29.9,8.4,Moderate,Calm,Research Diver,Coral Reef Survey
+REEF0010,Lakshadweep - Bangaram,Lakshadweep,10.904493,72.290711,2024-04-23,1,24.9,10,79.3,12.4,3.1,5.1,13,29,200,None,0.0,28.1,16.2,Weak,Rough,Reef Survey Team,Coral Reef Survey
+REEF0011,Lakshadweep - Bangaram,Lakshadweep,10.896366,72.302423,2024-04-23,2,6.6,30,78.1,25.3,0.0,0.0,15,21,219,None,0.0,27.5,8.4,Strong,Rough,Reef Survey Team,Coral Reef Survey
+REEF0012,Lakshadweep - Bangaram,Lakshadweep,10.902384,72.299158,2024-04-23,3,15.5,10,80.5,29.2,0.0,0.0,12,15,176,None,0.0,26.5,11.5,Weak,Calm,Research Diver,Coral Reef Survey
+REEF0013,Lakshadweep - Bangaram,Lakshadweep,10.904664,72.298627,2024-04-23,4,12.8,30,53.9,20.2,22.2,3.7,8,21,282,None,0.0,27.0,9.4,Moderate,Rough,Marine Biologist A,Coral Reef Survey
+REEF0014,Lakshadweep - Bangaram,Lakshadweep,10.896607,72.294623,2024-04-23,5,22.6,30,42.5,9.4,37.1,11.0,13,17,179,None,0.0,26.3,8.2,Weak,Calm,Research Diver,Coral Reef Survey
+REEF0015,Lakshadweep - Bangaram,Lakshadweep,10.909761,72.303177,2025-01-30,1,11.0,10,61.2,11.7,20.3,6.9,13,27,210,None,0.0,31.3,12.1,Moderate,Rough,Marine Biologist A,Coral Reef Survey
+REEF0016,Lakshadweep - Bangaram,Lakshadweep,10.906807,72.292431,2025-01-30,2,7.7,50,41.7,8.5,31.5,18.3,8,20,130,None,0.0,26.5,29.1,Weak,Calm,Research Diver,Coral Reef Survey
+REEF0017,Lakshadweep - Bangaram,Lakshadweep,10.90758,72.305094,2025-01-30,3,23.5,50,49.9,25.9,10.4,13.8,10,25,205,None,0.0,30.8,15.6,Weak,Choppy,Research Diver,Coral Reef Survey
+REEF0018,Lakshadweep - Bangaram,Lakshadweep,10.905488,72.295249,2025-01-30,4,10.2,30,44.9,28.4,20.9,5.8,11,26,240,None,0.0,28.3,29.1,Strong,Choppy,Marine Biologist A,Coral Reef Survey
+REEF0019,Lakshadweep - Bangaram,Lakshadweep,10.896701,72.305571,2024-09-20,1,21.8,30,59.6,14.5,11.0,15.0,11,15,222,None,0.0,30.5,13.0,Weak,Choppy,Coral Specialist,Coral Reef Survey
+REEF0020,Lakshadweep - Bangaram,Lakshadweep,10.907766,72.297752,2024-09-20,2,15.7,50,77.4,9.7,0.0,12.9,11,19,102,None,0.0,31.4,11.8,Moderate,Calm,Reef Survey Team,Coral Reef Survey
+REEF0021,Lakshadweep - Bangaram,Lakshadweep,10.898414,72.306657,2024-09-20,3,3.4,30,45.0,29.8,19.6,5.6,15,28,159,None,0.0,27.1,15.9,Strong,Calm,Reef Survey Team,Coral Reef Survey
+REEF0022,Lakshadweep - Bangaram,Lakshadweep,10.905057,72.303156,2024-09-20,4,15.8,20,63.8,26.1,5.4,4.7,10,35,115,None,0.0,26.9,21.1,Moderate,Rough,Reef Survey Team,Coral Reef Survey
+REEF0023,Lakshadweep - Bangaram,Lakshadweep,10.895011,72.296677,2024-09-20,5,13.4,20,41.2,7.3,37.8,13.7,10,28,277,None,0.0,31.2,23.3,Moderate,Calm,Marine Biologist A,Coral Reef Survey
+REEF0024,Lakshadweep - Bangaram,Lakshadweep,10.890162,72.302334,2024-09-20,6,5.1,20,75.1,29.8,0.0,0.0,8,20,161,None,0.0,27.4,17.6,Moderate,Choppy,Coral Specialist,Coral Reef Survey
+REEF0025,Lakshadweep - Bangaram,Lakshadweep,10.907122,72.293348,2024-11-06,1,8.8,30,60.0,22.8,9.6,7.5,10,35,269,None,0.0,26.6,16.2,Weak,Calm,Reef Survey Team,Coral Reef Survey
+REEF0026,Lakshadweep - Bangaram,Lakshadweep,10.904179,72.29452,2024-11-06,2,17.4,30,47.4,6.4,43.8,2.4,11,20,86,None,0.0,29.3,25.5,Strong,Calm,Reef Survey Team,Coral Reef Survey
+REEF0027,Lakshadweep - Bangaram,Lakshadweep,10.896653,72.301853,2024-11-06,3,13.9,50,82.6,23.7,0.0,0.0,10,15,171,Mild,24.2,28.8,28.4,Strong,Rough,Coral Specialist,Coral Reef Survey
+REEF0028,Lakshadweep - Bangaram,Lakshadweep,10.895147,72.295397,2024-11-06,4,12.0,20,51.0,8.2,23.7,17.1,14,35,175,None,0.0,31.2,26.3,Moderate,Choppy,Reef Survey Team,Coral Reef Survey
+REEF0029,Lakshadweep - Bangaram,Lakshadweep,10.895641,72.300955,2024-11-06,5,4.8,20,81.2,15.1,0.0,3.7,8,20,129,None,0.0,28.8,13.5,Moderate,Calm,Research Diver,Coral Reef Survey
+REEF0030,Lakshadweep - Bangaram,Lakshadweep,10.897497,72.305999,2024-11-06,6,21.4,20,53.7,16.7,12.1,17.5,11,28,136,Severe,36.1,27.3,22.9,Weak,Calm,Coral Specialist,Coral Reef Survey
+REEF0031,Lakshadweep - Bangaram,Lakshadweep,10.901651,72.301059,2025-05-16,1,21.9,50,44.6,13.7,31.0,10.8,14,29,143,None,0.0,27.3,25.7,Weak,Rough,Coral Specialist,Coral Reef Survey
+REEF0032,Lakshadweep - Bangaram,Lakshadweep,10.897993,72.293778,2025-05-16,2,19.7,10,44.1,17.9,36.8,1.3,9,25,180,None,0.0,29.6,20.2,Moderate,Choppy,Marine Biologist A,Coral Reef Survey
+REEF0033,Lakshadweep - Bangaram,Lakshadweep,10.898093,72.298581,2025-05-16,3,8.0,50,60.5,28.8,0.0,10.7,8,22,212,Severe,6.0,31.6,19.6,Strong,Choppy,Marine Biologist A,Coral Reef Survey
+REEF0034,Lakshadweep - Bangaram,Lakshadweep,10.900757,72.305614,2025-05-16,4,9.9,50,61.7,29.2,0.0,9.1,12,21,154,Moderate,9.7,27.2,24.9,Moderate,Choppy,Reef Survey Team,Coral Reef Survey
+REEF0035,Lakshadweep - Bangaram,Lakshadweep,10.895908,72.290428,2025-05-16,5,23.8,10,47.6,5.2,42.4,4.7,10,28,155,Severe,19.8,31.5,27.3,Moderate,Rough,Coral Specialist,Coral Reef Survey
+REEF0036,Lakshadweep - Bangaram,Lakshadweep,10.899138,72.298218,2024-04-02,1,15.2,20,51.0,6.3,24.0,18.8,14,20,279,Severe,11.9,28.8,18.8,Moderate,Choppy,Coral Specialist,Coral Reef Survey
+REEF0037,Lakshadweep - Bangaram,Lakshadweep,10.890369,72.292959,2024-04-02,2,11.3,50,70.8,10.7,10.1,8.5,11,15,125,None,0.0,31.3,15.2,Moderate,Calm,Research Diver,Coral Reef Survey
+REEF0038,Lakshadweep - Bangaram,Lakshadweep,10.892671,72.299785,2024-04-02,3,19.4,20,44.9,15.6,39.1,0.4,9,25,257,Severe,21.9,27.8,26.6,Weak,Calm,Coral Specialist,Coral Reef Survey
+REEF0039,Lakshadweep - Bangaram,Lakshadweep,10.902043,72.299079,2025-01-06,1,12.0,50,62.4,6.0,13.8,17.9,10,31,261,None,0.0,27.1,10.6,Moderate,Rough,Coral Specialist,Coral Reef Survey
+REEF0040,Lakshadweep - Bangaram,Lakshadweep,10.892872,72.303221,2025-01-06,2,17.6,20,78.2,23.8,0.0,0.0,13,16,276,None,0.0,30.1,19.3,Strong,Rough,Reef Survey Team,Coral Reef Survey
+REEF0041,Lakshadweep - Bangaram,Lakshadweep,10.899513,72.302902,2025-01-06,3,15.3,20,69.0,20.3,0.0,10.7,8,20,117,None,0.0,29.1,23.0,Moderate,Choppy,Research Diver,Coral Reef Survey
+REEF0042,Lakshadweep - Bangaram,Lakshadweep,10.89899,72.294833,2025-04-01,1,3.0,10,65.2,19.8,0.0,15.0,10,35,126,None,0.0,28.4,12.4,Weak,Calm,Research Diver,Coral Reef Survey
+REEF0043,Lakshadweep - Bangaram,Lakshadweep,10.891411,72.305456,2025-04-01,2,8.5,50,67.4,22.2,1.0,9.4,15,15,197,None,0.0,28.7,14.3,Strong,Calm,Coral Specialist,Coral Reef Survey
+REEF0044,Lakshadweep - Bangaram,Lakshadweep,10.90792,72.307231,2025-04-01,3,6.6,50,41.2,7.2,45.9,5.7,15,22,135,None,0.0,29.4,16.2,Moderate,Choppy,Marine Biologist A,Coral Reef Survey
+REEF0045,Lakshadweep - Bangaram,Lakshadweep,10.907774,72.299063,2025-04-01,4,9.9,10,82.4,26.2,0.0,0.0,11,34,233,None,0.0,30.7,11.9,Strong,Choppy,Reef Survey Team,Coral Reef Survey
+REEF0046,Lakshadweep - Bangaram,Lakshadweep,10.901464,72.309677,2025-04-01,5,9.4,20,75.7,17.3,6.2,0.8,8,16,127,None,0.0,27.0,21.9,Strong,Choppy,Marine Biologist A,Coral Reef Survey
+REEF0047,Lakshadweep - Bangaram,Lakshadweep,10.891713,72.308937,2024-05-28,1,9.4,30,50.2,8.2,22.7,18.9,13,33,294,None,0.0,30.4,19.0,Weak,Calm,Marine Biologist A,Coral Reef Survey
+REEF0048,Lakshadweep - Bangaram,Lakshadweep,10.899495,72.2922,2024-05-28,2,15.3,20,51.1,29.4,3.5,15.9,12,28,125,None,0.0,26.9,25.3,Strong,Rough,Reef Survey Team,Coral Reef Survey
+REEF0049,Lakshadweep - Bangaram,Lakshadweep,10.892441,72.293787,2024-05-28,3,7.7,30,65.1,24.7,4.0,6.3,8,29,271,Severe,21.3,30.5,12.9,Weak,Choppy,Research Diver,Coral Reef Survey
+REEF0050,Lakshadweep - Bangaram,Lakshadweep,10.894398,72.308945,2025-01-12,1,24.0,10,84.6,25.2,0.0,0.0,12,17,274,Moderate,16.9,27.9,29.0,Moderate,Calm,Marine Biologist A,Coral Reef Survey
+REEF0051,Lakshadweep - Bangaram,Lakshadweep,10.905781,72.30448,2025-01-12,2,7.1,50,80.9,25.7,0.0,0.0,11,23,164,None,0.0,27.6,9.8,Strong,Calm,Marine Biologist A,Coral Reef Survey
+REEF0052,Lakshadweep - Bangaram,Lakshadweep,10.903136,72.303076,2025-01-12,3,5.1,10,54.3,29.8,2.3,13.6,15,18,226,None,0.0,27.3,9.7,Strong,Rough,Research Diver,Coral Reef Survey
+REEF0053,Lakshadweep - Bangaram,Lakshadweep,10.895538,72.294978,2025-01-12,4,8.2,30,48.7,19.4,25.4,6.6,12,28,235,None,0.0,27.1,18.2,Strong,Rough,Research Diver,Coral Reef Survey
+REEF0054,Lakshadweep - Bangaram,Lakshadweep,10.890273,72.299634,2025-01-12,5,4.2,50,84.0,24.8,0.0,0.0,15,19,237,Severe,25.7,30.6,12.2,Moderate,Calm,Reef Survey Team,Coral Reef Survey
+REEF0055,Lakshadweep - Bangaram,Lakshadweep,10.901364,72.306284,2025-01-12,6,19.9,10,76.1,27.0,0.0,0.0,9,24,129,None,0.0,29.4,25.4,Weak,Choppy,Marine Biologist A,Coral Reef Survey
+REEF0056,Lakshadweep - Kavaratti,Lakshadweep,10.603943,72.60991,2025-02-28,1,3.3,20,56.0,12.0,26.7,5.2,8,16,165,Moderate,29.8,26.5,24.3,Strong,Calm,Research Diver,Coral Reef Survey
+REEF0057,Lakshadweep - Kavaratti,Lakshadweep,10.603869,72.595016,2025-02-28,2,8.6,10,68.3,24.1,0.0,7.6,12,23,282,None,0.0,31.8,20.8,Moderate,Rough,Research Diver,Coral Reef Survey
+REEF0058,Lakshadweep - Kavaratti,Lakshadweep,10.608173,72.60617,2025-02-28,3,22.7,30,40.5,29.1,20.9,9.5,13,15,109,None,0.0,26.8,16.7,Moderate,Rough,Marine Biologist A,Coral Reef Survey
+REEF0059,Lakshadweep - Kavaratti,Lakshadweep,10.595429,72.595833,2025-02-28,4,5.7,30,76.3,5.2,12.3,6.3,15,20,129,Moderate,25.6,27.5,13.7,Moderate,Calm,Reef Survey Team,Coral Reef Survey
+REEF0060,Lakshadweep - Kavaratti,Lakshadweep,10.599767,72.603054,2025-02-28,5,5.7,50,47.9,11.2,21.4,19.5,13,30,119,None,0.0,29.6,13.3,Moderate,Choppy,Marine Biologist A,Coral Reef Survey
+REEF0061,Lakshadweep - Kavaratti,Lakshadweep,10.599809,72.591482,2025-02-28,6,3.8,30,61.1,15.0,21.2,2.7,8,31,156,None,0.0,32.0,16.7,Weak,Rough,Research Diver,Coral Reef Survey
+REEF0062,Lakshadweep - Kavaratti,Lakshadweep,10.602491,72.60926,2024-12-28,1,21.3,10,60.9,23.4,13.1,2.6,13,19,151,None,0.0,27.7,11.5,Moderate,Rough,Reef Survey Team,Coral Reef Survey
+REEF0063,Lakshadweep - Kavaratti,Lakshadweep,10.598526,72.59262,2024-12-28,2,18.4,20,60.5,18.3,18.3,2.9,9,33,235,Moderate,25.4,31.9,10.1,Moderate,Rough,Research Diver,Coral Reef Survey
+REEF0064,Lakshadweep - Kavaratti,Lakshadweep,10.595715,72.607389,2024-12-28,3,4.6,50,79.4,18.1,0.0,2.5,9,16,149,None,0.0,27.8,14.7,Moderate,Calm,Research Diver,Coral Reef Survey
+REEF0065,Lakshadweep - Kavaratti,Lakshadweep,10.607696,72.604476,2025-04-07,1,17.7,30,75.9,11.4,0.3,12.4,10,21,214,None,0.0,30.7,14.8,Weak,Choppy,Marine Biologist A,Coral Reef Survey
+REEF0066,Lakshadweep - Kavaratti,Lakshadweep,10.602864,72.607644,2025-04-07,2,11.8,50,43.0,17.9,32.2,6.9,8,21,103,None,0.0,31.7,18.7,Moderate,Rough,Reef Survey Team,Coral Reef Survey
+REEF0067,Lakshadweep - Kavaratti,Lakshadweep,10.599324,72.603092,2025-04-07,3,5.3,30,51.4,28.0,7.2,13.4,13,21,167,Moderate,12.2,30.1,24.8,Weak,Calm,Reef Survey Team,Coral Reef Survey
+REEF0068,Lakshadweep - Kavaratti,Lakshadweep,10.606797,72.595844,2025-04-07,4,23.5,50,64.9,22.4,0.8,11.9,14,21,265,Mild,38.7,26.7,13.6,Strong,Rough,Marine Biologist A,Coral Reef Survey
+REEF0069,Lakshadweep - Kavaratti,Lakshadweep,10.606273,72.602372,2025-04-07,5,21.4,10,63.2,14.4,3.9,18.4,13,15,159,Mild,35.0,27.4,26.7,Moderate,Calm,Marine Biologist A,Coral Reef Survey
+REEF0070,Lakshadweep - Kavaratti,Lakshadweep,10.592784,72.601604,2025-06-17,1,22.5,30,61.3,23.7,0.0,15.0,11,15,227,None,0.0,31.6,17.8,Moderate,Calm,Reef Survey Team,Coral Reef Survey
+REEF0071,Lakshadweep - Kavaratti,Lakshadweep,10.593463,72.590956,2025-06-17,2,8.4,30,46.4,18.9,30.9,3.7,15,24,150,Severe,6.3,31.0,21.0,Strong,Calm,Research Diver,Coral Reef Survey
+REEF0072,Lakshadweep - Kavaratti,Lakshadweep,10.597162,72.607885,2025-06-17,3,4.5,30,84.1,20.4,0.0,0.0,9,19,120,None,0.0,30.6,17.4,Weak,Rough,Marine Biologist A,Coral Reef Survey
+REEF0073,Lakshadweep - Kavaratti,Lakshadweep,10.607233,72.593015,2025-06-17,4,9.1,30,44.2,10.3,40.7,4.8,13,21,218,None,0.0,26.5,17.4,Moderate,Calm,Research Diver,Coral Reef Survey
+REEF0074,Lakshadweep - Kavaratti,Lakshadweep,10.600648,72.607974,2025-06-17,5,24.9,20,73.9,29.3,0.0,0.0,9,33,142,None,0.0,30.2,9.8,Moderate,Rough,Research Diver,Coral Reef Survey
+REEF0075,Lakshadweep - Kavaratti,Lakshadweep,10.598038,72.602932,2025-07-07,1,10.7,50,52.3,19.4,9.6,18.7,8,16,113,Mild,31.9,30.3,29.2,Weak,Choppy,Marine Biologist A,Coral Reef Survey
+REEF0076,Lakshadweep - Kavaratti,Lakshadweep,10.608614,72.605245,2025-07-07,2,14.4,50,49.2,18.6,16.9,15.3,10,17,189,None,0.0,30.7,12.3,Strong,Rough,Coral Specialist,Coral Reef Survey
+REEF0077,Lakshadweep - Kavaratti,Lakshadweep,10.601994,72.596643,2025-07-07,3,3.2,30,49.0,7.8,26.3,16.9,11,34,171,Moderate,15.0,31.8,16.3,Strong,Rough,Marine Biologist A,Coral Reef Survey
+REEF0078,Lakshadweep - Kavaratti,Lakshadweep,10.590192,72.595677,2025-07-07,4,5.6,10,44.6,6.9,36.6,11.9,15,29,225,Mild,17.6,31.2,17.3,Weak,Choppy,Research Diver,Coral Reef Survey
+REEF0079,Lakshadweep - Kavaratti,Lakshadweep,10.608314,72.599959,2025-07-07,5,11.8,50,73.8,6.8,17.6,1.8,15,35,261,None,0.0,28.9,25.4,Weak,Calm,Reef Survey Team,Coral Reef Survey
+REEF0080,Lakshadweep - Kavaratti,Lakshadweep,10.608325,72.597767,2025-07-07,6,16.1,30,62.5,29.5,0.0,7.9,14,34,146,None,0.0,27.5,25.0,Weak,Rough,Research Diver,Coral Reef Survey
+REEF0081,Lakshadweep - Kavaratti,Lakshadweep,10.595309,72.594175,2024-11-28,1,23.8,10,40.9,29.1,27.0,3.0,15,30,87,None,0.0,27.7,15.7,Weak,Choppy,Coral Specialist,Coral Reef Survey
+REEF0082,Lakshadweep - Kavaratti,Lakshadweep,10.594335,72.60171,2024-11-28,2,10.7,30,69.6,5.4,23.7,1.3,13,29,296,Mild,19.7,30.9,27.5,Strong,Rough,Reef Survey Team,Coral Reef Survey
+REEF0083,Lakshadweep - Kavaratti,Lakshadweep,10.594896,72.601487,2024-11-28,3,19.9,10,53.0,15.2,21.3,10.5,13,31,106,Moderate,5.9,26.9,21.8,Strong,Rough,Marine Biologist A,Coral Reef Survey
+REEF0084,Lakshadweep - Kavaratti,Lakshadweep,10.591472,72.593794,2024-11-28,4,10.4,50,43.5,9.8,28.5,18.2,14,24,216,Moderate,27.9,28.3,22.8,Weak,Rough,Reef Survey Team,Coral Reef Survey
+REEF0085,Lakshadweep - Kavaratti,Lakshadweep,10.601774,72.59447,2024-11-28,5,21.6,50,62.1,25.6,4.2,8.1,14,32,120,None,0.0,30.6,29.3,Weak,Choppy,Reef Survey Team,Coral Reef Survey
+REEF0086,Lakshadweep - Kavaratti,Lakshadweep,10.600287,72.599474,2024-11-28,6,19.6,50,79.6,29.1,0.0,0.0,13,33,190,None,0.0,27.3,20.0,Strong,Rough,Reef Survey Team,Coral Reef Survey
+REEF0087,Lakshadweep - Kavaratti,Lakshadweep,10.593597,72.596948,2024-06-26,1,23.5,10,46.6,20.8,20.8,11.9,15,33,294,Moderate,16.4,29.4,12.1,Moderate,Rough,Marine Biologist A,Coral Reef Survey
+REEF0088,Lakshadweep - Kavaratti,Lakshadweep,10.606012,72.609443,2024-06-26,2,7.7,50,48.4,16.4,20.3,15.0,9,29,125,Moderate,5.7,29.2,29.0,Strong,Calm,Coral Specialist,Coral Reef Survey
+REEF0089,Lakshadweep - Kavaratti,Lakshadweep,10.597826,72.598403,2024-06-26,3,24.3,10,71.3,23.0,0.0,5.8,9,25,206,None,0.0,30.1,27.7,Weak,Calm,Marine Biologist A,Coral Reef Survey
+REEF0090,Lakshadweep - Kavaratti,Lakshadweep,10.603988,72.604702,2024-05-30,1,9.4,30,53.7,24.6,15.8,5.9,14,29,216,None,0.0,27.5,26.0,Strong,Rough,Coral Specialist,Coral Reef Survey
+REEF0091,Lakshadweep - Kavaratti,Lakshadweep,10.59221,72.606589,2024-05-30,2,16.3,30,48.4,18.6,27.4,5.6,12,21,132,None,0.0,28.1,9.4,Strong,Rough,Research Diver,Coral Reef Survey
+REEF0092,Lakshadweep - Kavaratti,Lakshadweep,10.609719,72.590631,2024-05-30,3,17.6,30,56.7,21.2,15.0,7.1,9,28,263,None,0.0,30.4,23.2,Strong,Calm,Coral Specialist,Coral Reef Survey
+REEF0093,Lakshadweep - Kavaratti,Lakshadweep,10.592279,72.603138,2024-05-30,4,9.2,30,41.3,15.4,34.7,8.7,8,19,298,None,0.0,30.2,14.8,Moderate,Rough,Marine Biologist A,Coral Reef Survey
+REEF0094,Lakshadweep - Kavaratti,Lakshadweep,10.596306,72.591211,2024-01-01,1,18.1,30,65.6,13.7,6.6,14.1,8,18,300,None,0.0,28.8,19.2,Weak,Choppy,Coral Specialist,Coral Reef Survey
+REEF0095,Lakshadweep - Kavaratti,Lakshadweep,10.602727,72.6032,2024-01-01,2,9.4,50,46.3,8.9,32.0,12.8,14,35,161,None,0.0,28.5,11.7,Moderate,Choppy,Reef Survey Team,Coral Reef Survey
+REEF0096,Lakshadweep - Kavaratti,Lakshadweep,10.605132,72.60665,2024-01-01,3,22.4,20,67.3,26.5,5.9,0.3,14,20,201,Mild,8.2,30.3,9.5,Moderate,Choppy,Reef Survey Team,Coral Reef Survey
+REEF0097,Lakshadweep - Kavaratti,Lakshadweep,10.599927,72.599454,2024-01-01,4,9.8,20,79.2,9.3,4.5,7.0,10,24,251,None,0.0,26.2,22.8,Weak,Calm,Marine Biologist A,Coral Reef Survey
+REEF0098,Lakshadweep - Kavaratti,Lakshadweep,10.606328,72.608645,2024-01-01,5,22.3,50,54.4,19.7,24.4,1.5,10,19,264,Moderate,8.3,27.9,27.3,Weak,Calm,Coral Specialist,Coral Reef Survey
+REEF0099,Andaman - Havelock,Andaman,11.996943,93.001238,2025-09-10,1,12.5,50,60.7,29.2,4.2,5.9,14,34,126,None,0.0,28.5,9.3,Strong,Choppy,Coral Specialist,Coral Reef Survey
+REEF0100,Andaman - Havelock,Andaman,11.999787,93.006267,2025-09-10,2,5.2,20,43.1,8.8,32.7,15.3,14,26,137,None,0.0,29.4,18.3,Strong,Calm,Coral Specialist,Coral Reef Survey
+REEF0101,Andaman - Havelock,Andaman,12.007767,93.005334,2025-09-10,3,20.9,30,76.6,21.1,0.0,2.3,14,22,262,None,0.0,31.6,8.5,Strong,Rough,Research Diver,Coral Reef Survey
+REEF0102,Andaman - Havelock,Andaman,11.991031,93.009175,2025-09-10,4,9.1,50,79.3,14.7,3.6,2.4,13,16,89,Severe,10.5,27.5,18.7,Weak,Rough,Coral Specialist,Coral Reef Survey
+REEF0103,Andaman - Havelock,Andaman,12.00403,93.009728,2025-09-10,5,12.7,30,63.3,18.0,7.8,10.8,15,17,116,None,0.0,26.1,8.0,Strong,Calm,Marine Biologist A,Coral Reef Survey
+REEF0104,Andaman - Havelock,Andaman,11.991953,92.992031,2025-09-10,6,18.5,10,49.2,27.4,4.8,18.6,12,22,200,None,0.0,31.6,14.0,Strong,Calm,Research Diver,Coral Reef Survey
+REEF0105,Andaman - Havelock,Andaman,12.000196,92.993509,2025-07-01,1,20.7,50,80.0,26.3,0.0,0.0,13,30,196,None,0.0,26.6,8.9,Moderate,Choppy,Research Diver,Coral Reef Survey
+REEF0106,Andaman - Havelock,Andaman,12.005065,92.998507,2025-07-01,2,24.9,10,44.4,26.4,19.6,9.6,12,24,122,None,0.0,30.9,28.2,Strong,Rough,Research Diver,Coral Reef Survey
+REEF0107,Andaman - Havelock,Andaman,11.995957,93.008996,2025-07-01,3,6.3,50,43.7,15.8,24.0,16.6,10,16,241,None,0.0,31.0,24.1,Strong,Calm,Research Diver,Coral Reef Survey
+REEF0108,Andaman - Havelock,Andaman,11.994189,93.008978,2024-01-28,1,4.3,20,80.4,12.6,0.0,7.0,9,30,101,None,0.0,27.0,15.9,Moderate,Choppy,Reef Survey Team,Coral Reef Survey
+REEF0109,Andaman - Havelock,Andaman,11.993859,92.994078,2024-01-28,2,7.1,30,62.0,24.9,1.7,11.4,12,34,151,None,0.0,29.8,23.2,Weak,Rough,Marine Biologist A,Coral Reef Survey
+REEF0110,Andaman - Havelock,Andaman,12.003352,92.998989,2024-01-28,3,18.2,20,43.1,26.5,14.8,15.6,15,34,124,Severe,31.9,26.1,12.8,Moderate,Calm,Research Diver,Coral Reef Survey
+REEF0111,Andaman - Havelock,Andaman,11.991303,93.005605,2024-01-28,4,19.6,20,76.6,5.1,8.2,10.0,8,22,204,None,0.0,26.9,22.3,Moderate,Calm,Reef Survey Team,Coral Reef Survey
+REEF0112,Andaman - Havelock,Andaman,11.991682,92.993627,2024-01-28,5,13.5,50,69.4,8.6,18.2,3.7,14,34,290,Mild,13.4,27.4,16.7,Moderate,Calm,Coral Specialist,Coral Reef Survey
+REEF0113,Andaman - Havelock,Andaman,12.003076,92.998761,2024-06-20,1,20.1,30,72.4,8.2,18.5,1.0,8,33,267,None,0.0,26.5,11.3,Strong,Choppy,Marine Biologist A,Coral Reef Survey
+REEF0114,Andaman - Havelock,Andaman,11.990443,93.002567,2024-06-20,2,15.8,50,84.4,27.2,0.0,0.0,14,16,122,None,0.0,27.8,11.4,Moderate,Choppy,Coral Specialist,Coral Reef Survey
+REEF0115,Andaman - Havelock,Andaman,11.992762,92.992646,2024-06-20,3,5.5,50,50.8,12.7,17.3,19.2,14,32,139,None,0.0,31.9,16.2,Moderate,Choppy,Reef Survey Team,Coral Reef Survey
+REEF0116,Andaman - Havelock,Andaman,11.999153,92.996492,2024-06-20,4,7.0,30,46.4,28.6,5.2,19.7,15,31,191,Mild,10.3,28.5,12.1,Moderate,Rough,Research Diver,Coral Reef Survey
+REEF0117,Andaman - Havelock,Andaman,11.997278,92.992582,2025-06-26,1,13.0,30,52.2,13.8,32.1,1.9,14,18,216,None,0.0,31.9,15.2,Strong,Rough,Research Diver,Coral Reef Survey
+REEF0118,Andaman - Havelock,Andaman,12.007529,93.006864,2025-06-26,2,23.9,10,75.6,21.5,0.0,3.0,12,25,149,Moderate,21.2,31.9,24.9,Strong,Rough,Coral Specialist,Coral Reef Survey
+REEF0119,Andaman - Havelock,Andaman,12.009242,93.005593,2025-06-26,3,22.2,20,71.8,24.0,0.0,4.2,11,29,277,None,0.0,31.0,26.6,Strong,Choppy,Reef Survey Team,Coral Reef Survey
+REEF0120,Andaman - Havelock,Andaman,12.00346,92.996092,2024-11-16,1,3.8,10,82.1,19.7,0.0,0.0,14,15,292,Mild,34.0,31.0,25.9,Weak,Rough,Marine Biologist A,Coral Reef Survey
+REEF0121,Andaman - Havelock,Andaman,12.002902,92.99732,2024-11-16,2,9.7,20,40.4,25.8,32.0,1.7,12,29,169,None,0.0,29.0,19.6,Moderate,Calm,Marine Biologist A,Coral Reef Survey
+REEF0122,Andaman - Havelock,Andaman,12.008534,92.990632,2024-11-16,3,20.0,10,42.3,6.0,43.1,8.6,11,15,238,Mild,32.6,29.2,8.6,Strong,Rough,Marine Biologist A,Coral Reef Survey
+REEF0123,Andaman - Havelock,Andaman,11.99081,93.002253,2024-05-02,1,20.7,50,59.7,18.9,5.4,16.0,10,34,113,None,0.0,27.3,21.5,Weak,Rough,Reef Survey Team,Coral Reef Survey
+REEF0124,Andaman - Havelock,Andaman,12.002566,93.004682,2024-05-02,2,16.7,50,83.6,9.9,0.0,6.5,9,23,155,None,0.0,30.0,10.2,Strong,Choppy,Research Diver,Coral Reef Survey
+REEF0125,Andaman - Havelock,Andaman,11.997612,93.005388,2024-05-02,3,18.6,30,41.8,18.7,37.8,1.8,12,28,257,None,0.0,31.4,8.5,Weak,Calm,Research Diver,Coral Reef Survey
+REEF0126,Andaman - Havelock,Andaman,12.007173,93.008389,2024-03-04,1,10.8,10,72.4,16.1,0.0,11.6,12,27,165,None,0.0,27.9,17.3,Moderate,Calm,Coral Specialist,Coral Reef Survey
+REEF0127,Andaman - Havelock,Andaman,11.992911,93.006623,2024-03-04,2,10.7,20,58.0,27.4,4.7,9.9,14,17,205,None,0.0,31.7,27.5,Weak,Rough,Coral Specialist,Coral Reef Survey
+REEF0128,Andaman - Havelock,Andaman,11.993389,92.999464,2024-03-04,3,24.4,50,56.8,14.3,25.1,3.9,11,18,116,Severe,30.9,30.6,29.3,Strong,Rough,Marine Biologist A,Coral Reef Survey
+REEF0129,Andaman - Havelock,Andaman,12.005468,92.994867,2024-03-04,4,3.9,30,84.3,13.5,0.0,2.1,9,29,263,None,0.0,29.5,12.7,Weak,Calm,Marine Biologist A,Coral Reef Survey
+REEF0130,Andaman - Havelock,Andaman,12.007782,93.009867,2024-03-04,5,4.9,30,78.8,14.8,0.0,6.4,15,33,266,None,0.0,31.8,13.8,Weak,Choppy,Reef Survey Team,Coral Reef Survey
+REEF0131,Andaman - Havelock,Andaman,11.994257,92.99161,2024-03-04,6,15.4,10,40.6,15.3,42.6,1.5,8,35,243,None,0.0,26.2,26.4,Strong,Choppy,Research Diver,Coral Reef Survey
+REEF0132,Andaman - Havelock,Andaman,11.994195,92.996566,2024-06-04,1,22.1,10,73.6,10.5,14.5,1.4,15,27,227,None,0.0,28.3,24.9,Moderate,Choppy,Coral Specialist,Coral Reef Survey
+REEF0133,Andaman - Havelock,Andaman,11.998906,92.99692,2024-06-04,2,12.9,20,73.7,27.6,0.0,0.0,8,17,218,None,0.0,26.2,18.3,Moderate,Rough,Coral Specialist,Coral Reef Survey
+REEF0134,Andaman - Havelock,Andaman,12.007706,92.997232,2024-06-04,3,23.5,30,68.4,28.4,0.0,3.3,13,18,225,Severe,13.1,28.4,11.7,Strong,Choppy,Coral Specialist,Coral Reef Survey
+REEF0135,Andaman - Havelock,Andaman,11.999898,92.999427,2024-06-04,4,24.0,10,59.5,24.6,0.0,15.8,13,16,241,None,0.0,27.3,18.9,Strong,Choppy,Marine Biologist A,Coral Reef Survey
+REEF0136,Andaman - Havelock,Andaman,11.996955,92.997997,2024-06-04,5,10.9,30,77.2,16.3,0.0,6.5,11,29,274,None,0.0,26.4,18.7,Weak,Rough,Marine Biologist A,Coral Reef Survey
+REEF0137,Andaman - Havelock,Andaman,12.005481,92.993023,2025-01-28,1,16.5,50,50.8,26.7,16.0,6.5,9,24,258,None,0.0,29.6,12.0,Strong,Rough,Research Diver,Coral Reef Survey
+REEF0138,Andaman - Havelock,Andaman,11.995698,92.998333,2025-01-28,2,10.8,50,63.6,20.0,5.1,11.3,11,30,101,None,0.0,27.8,10.8,Weak,Calm,Reef Survey Team,Coral Reef Survey
+REEF0139,Andaman - Havelock,Andaman,12.005216,93.007016,2025-01-28,3,8.7,20,58.3,17.5,13.6,10.7,15,15,264,None,0.0,26.2,23.9,Moderate,Calm,Research Diver,Coral Reef Survey
+REEF0140,Andaman - Havelock,Andaman,11.991239,92.999366,2025-01-28,4,21.2,50,60.3,8.7,11.3,19.7,8,30,216,None,0.0,30.6,17.1,Weak,Choppy,Marine Biologist A,Coral Reef Survey
+REEF0141,Andaman - Havelock,Andaman,11.993677,93.008828,2024-12-11,1,14.7,20,78.4,13.6,1.4,6.7,15,27,110,None,0.0,29.1,11.1,Strong,Rough,Reef Survey Team,Coral Reef Survey
+REEF0142,Andaman - Havelock,Andaman,11.994393,92.999639,2024-12-11,2,3.9,10,60.8,15.5,8.1,15.6,8,33,139,None,0.0,31.9,12.0,Strong,Calm,Coral Specialist,Coral Reef Survey
+REEF0143,Andaman - Havelock,Andaman,12.00182,92.991794,2024-12-11,3,19.1,50,84.8,25.5,0.0,0.0,8,35,84,None,0.0,31.0,28.6,Weak,Rough,Reef Survey Team,Coral Reef Survey
+REEF0144,Andaman - Neil Island,Andaman,11.809784,92.997931,2024-06-25,1,24.8,50,47.0,11.3,39.9,1.8,10,24,290,Mild,31.9,31.1,25.1,Strong,Calm,Marine Biologist A,Coral Reef Survey
+REEF0145,Andaman - Neil Island,Andaman,11.802621,93.000279,2024-06-25,2,18.6,20,57.6,26.0,2.8,13.5,9,18,207,None,0.0,29.2,27.5,Weak,Choppy,Research Diver,Coral Reef Survey
+REEF0146,Andaman - Neil Island,Andaman,11.79504,92.997623,2024-06-25,3,20.1,10,62.2,27.2,3.7,6.9,10,27,163,None,0.0,31.3,18.2,Moderate,Calm,Marine Biologist A,Coral Reef Survey
+REEF0147,Andaman - Neil Island,Andaman,11.800322,92.996655,2025-08-30,1,9.1,10,69.5,8.0,4.9,17.6,12,25,96,None,0.0,27.1,23.3,Weak,Choppy,Reef Survey Team,Coral Reef Survey
+REEF0148,Andaman - Neil Island,Andaman,11.802053,92.993691,2025-08-30,2,9.0,20,58.4,22.5,6.3,12.8,15,26,221,None,0.0,30.6,24.7,Weak,Rough,Marine Biologist A,Coral Reef Survey
+REEF0149,Andaman - Neil Island,Andaman,11.802357,93.00574,2025-08-30,3,10.4,50,79.7,20.4,0.0,0.0,10,19,105,None,0.0,27.3,19.9,Weak,Choppy,Marine Biologist A,Coral Reef Survey
+REEF0150,Andaman - Neil Island,Andaman,11.797422,93.00395,2025-08-30,4,13.5,10,77.6,22.0,0.0,0.4,12,15,81,Mild,39.4,31.1,25.4,Moderate,Rough,Coral Specialist,Coral Reef Survey
+REEF0151,Andaman - Neil Island,Andaman,11.796604,93.000713,2024-05-09,1,6.0,30,64.2,8.6,16.1,11.1,15,19,243,None,0.0,28.3,19.0,Moderate,Calm,Reef Survey Team,Coral Reef Survey
+REEF0152,Andaman - Neil Island,Andaman,11.807513,92.992171,2024-05-09,2,20.4,10,47.7,5.9,42.7,3.7,10,34,257,None,0.0,28.4,27.2,Strong,Choppy,Marine Biologist A,Coral Reef Survey
+REEF0153,Andaman - Neil Island,Andaman,11.800494,92.990445,2024-05-09,3,18.8,30,45.0,24.7,26.9,3.4,13,35,291,None,0.0,30.6,29.0,Moderate,Calm,Reef Survey Team,Coral Reef Survey
+REEF0154,Andaman - Neil Island,Andaman,11.797429,93.006588,2024-05-09,4,7.2,10,76.3,21.4,0.0,2.2,13,21,110,None,0.0,26.8,16.4,Strong,Rough,Reef Survey Team,Coral Reef Survey
+REEF0155,Andaman - Neil Island,Andaman,11.794073,93.00288,2025-04-20,1,24.9,20,40.5,18.5,29.5,11.5,9,23,93,None,0.0,29.0,20.0,Weak,Rough,Coral Specialist,Coral Reef Survey
+REEF0156,Andaman - Neil Island,Andaman,11.799433,92.995378,2025-04-20,2,4.2,20,58.4,6.3,24.3,11.0,8,30,125,None,0.0,29.2,11.0,Weak,Rough,Research Diver,Coral Reef Survey
+REEF0157,Andaman - Neil Island,Andaman,11.808653,93.00789,2025-04-20,3,7.2,50,55.5,20.3,22.3,1.9,12,24,133,None,0.0,27.5,28.1,Moderate,Rough,Coral Specialist,Coral Reef Survey
+REEF0158,Andaman - Neil Island,Andaman,11.80705,93.001597,2025-04-20,4,14.4,10,81.9,28.3,0.0,0.0,10,16,106,Severe,10.6,30.1,19.9,Weak,Calm,Coral Specialist,Coral Reef Survey
+REEF0159,Andaman - Neil Island,Andaman,11.790369,92.99124,2025-06-11,1,22.5,50,79.1,13.9,0.0,7.0,13,17,140,None,0.0,30.8,17.4,Moderate,Calm,Research Diver,Coral Reef Survey
+REEF0160,Andaman - Neil Island,Andaman,11.792268,92.998675,2025-06-11,2,13.1,30,64.8,7.6,7.7,19.8,11,22,279,Mild,11.9,29.2,19.8,Weak,Calm,Coral Specialist,Coral Reef Survey
+REEF0161,Andaman - Neil Island,Andaman,11.798796,93.005438,2025-06-11,3,14.4,20,67.4,23.1,9.0,0.5,9,21,176,None,0.0,31.3,8.4,Moderate,Rough,Coral Specialist,Coral Reef Survey
+REEF0162,Andaman - Neil Island,Andaman,11.798104,93.008525,2024-02-25,1,10.8,50,60.6,29.5,5.8,4.0,10,19,135,Severe,35.1,31.2,18.4,Moderate,Choppy,Reef Survey Team,Coral Reef Survey
+REEF0163,Andaman - Neil Island,Andaman,11.800284,93.006716,2024-02-25,2,19.2,20,51.9,5.4,33.1,9.6,13,29,264,None,0.0,31.4,29.0,Moderate,Calm,Research Diver,Coral Reef Survey
+REEF0164,Andaman - Neil Island,Andaman,11.807591,93.001601,2024-02-25,3,12.8,10,74.9,23.5,0.0,1.6,12,19,88,Severe,37.4,28.7,16.0,Weak,Calm,Coral Specialist,Coral Reef Survey
+REEF0165,Andaman - Neil Island,Andaman,11.802591,93.003477,2024-02-25,4,7.6,20,77.7,12.2,6.4,3.7,13,29,187,None,0.0,30.4,29.2,Weak,Choppy,Reef Survey Team,Coral Reef Survey
+REEF0166,Andaman - Neil Island,Andaman,11.806186,93.008807,2024-02-25,5,6.1,20,43.2,18.9,32.0,5.8,11,35,236,None,0.0,30.0,29.4,Weak,Choppy,Coral Specialist,Coral Reef Survey
+REEF0167,Andaman - Neil Island,Andaman,11.795096,92.999716,2024-02-25,6,14.0,50,50.8,19.8,20.6,8.9,15,21,231,None,0.0,28.2,8.4,Moderate,Calm,Coral Specialist,Coral Reef Survey
+REEF0168,Andaman - Neil Island,Andaman,11.800442,92.996705,2024-09-09,1,3.0,20,53.9,12.0,26.3,7.9,10,25,191,Severe,22.8,30.2,21.9,Strong,Calm,Coral Specialist,Coral Reef Survey
+REEF0169,Andaman - Neil Island,Andaman,11.806075,92.99904,2024-09-09,2,14.4,50,76.5,15.7,0.0,7.8,8,16,90,None,0.0,28.5,24.7,Moderate,Rough,Coral Specialist,Coral Reef Survey
+REEF0170,Andaman - Neil Island,Andaman,11.793497,92.996772,2024-09-09,3,7.9,10,56.2,10.8,21.5,11.6,15,30,287,None,0.0,30.7,16.0,Moderate,Calm,Marine Biologist A,Coral Reef Survey
+REEF0171,Andaman - Neil Island,Andaman,11.809775,93.001877,2024-09-09,4,11.8,50,77.6,23.2,0.0,0.0,11,32,272,Mild,21.4,31.2,19.1,Weak,Choppy,Research Diver,Coral Reef Survey
+REEF0172,Andaman - Neil Island,Andaman,11.803669,93.001759,2024-09-01,1,21.5,30,52.8,19.4,25.3,2.5,10,15,202,None,0.0,30.4,8.9,Strong,Choppy,Marine Biologist A,Coral Reef Survey
+REEF0173,Andaman - Neil Island,Andaman,11.803516,92.998294,2024-09-01,2,5.7,20,58.9,9.9,22.9,8.3,14,29,198,None,0.0,30.4,25.0,Weak,Choppy,Coral Specialist,Coral Reef Survey
+REEF0174,Andaman - Neil Island,Andaman,11.802141,92.990454,2024-09-01,3,23.5,10,70.9,5.9,6.9,16.4,14,35,80,Severe,25.3,28.8,17.2,Strong,Choppy,Marine Biologist A,Coral Reef Survey
+REEF0175,Gulf of Mannar - Pamban,Gulf of Mannar,9.307794,79.198747,2025-03-12,1,4.7,20,57.9,28.0,0.4,13.7,9,34,218,None,0.0,26.6,25.4,Strong,Choppy,Marine Biologist A,Coral Reef Survey
+REEF0176,Gulf of Mannar - Pamban,Gulf of Mannar,9.29151,79.191372,2025-03-12,2,14.8,10,26.4,5.2,59.9,8.5,9,31,252,Moderate,10.6,26.5,12.5,Moderate,Choppy,Coral Specialist,Coral Reef Survey
+REEF0177,Gulf of Mannar - Pamban,Gulf of Mannar,9.30431,79.206179,2025-03-12,3,13.0,30,40.3,5.8,52.5,1.4,10,34,90,Moderate,24.0,30.4,21.3,Strong,Rough,Marine Biologist A,Coral Reef Survey
+REEF0178,Gulf of Mannar - Pamban,Gulf of Mannar,9.297843,79.192366,2025-03-12,4,20.2,20,34.6,23.4,31.8,10.3,10,32,261,None,0.0,31.4,28.3,Moderate,Calm,Marine Biologist A,Coral Reef Survey
+REEF0179,Gulf of Mannar - Pamban,Gulf of Mannar,9.300702,79.20023,2025-03-12,5,8.8,20,57.4,16.4,23.6,2.6,11,35,202,None,0.0,26.8,19.1,Moderate,Choppy,Research Diver,Coral Reef Survey
+REEF0180,Gulf of Mannar - Pamban,Gulf of Mannar,9.301226,79.196755,2025-05-30,1,4.6,10,57.7,24.3,1.1,16.8,13,23,93,None,0.0,30.6,18.7,Moderate,Choppy,Coral Specialist,Coral Reef Survey
+REEF0181,Gulf of Mannar - Pamban,Gulf of Mannar,9.294022,79.192488,2025-05-30,2,10.6,10,25.5,30.0,43.6,1.0,15,31,214,None,0.0,28.7,14.6,Strong,Rough,Research Diver,Coral Reef Survey
+REEF0182,Gulf of Mannar - Pamban,Gulf of Mannar,9.301427,79.193,2025-05-30,3,20.2,30,33.3,19.8,32.6,14.3,9,29,238,None,0.0,31.0,21.4,Weak,Choppy,Marine Biologist A,Coral Reef Survey
+REEF0183,Gulf of Mannar - Pamban,Gulf of Mannar,9.297768,79.200064,2025-05-30,4,19.9,20,55.1,7.6,29.6,7.7,12,17,180,None,0.0,28.6,15.3,Weak,Calm,Reef Survey Team,Coral Reef Survey
+REEF0184,Gulf of Mannar - Pamban,Gulf of Mannar,9.298226,79.202057,2025-05-30,5,25.0,20,39.7,10.2,46.8,3.3,15,23,108,Severe,24.6,29.3,12.5,Weak,Calm,Marine Biologist A,Coral Reef Survey
+REEF0185,Gulf of Mannar - Pamban,Gulf of Mannar,9.303907,79.204822,2025-05-30,6,8.7,20,33.8,29.8,29.0,7.5,15,24,186,None,0.0,28.7,25.5,Moderate,Choppy,Coral Specialist,Coral Reef Survey
+REEF0186,Gulf of Mannar - Pamban,Gulf of Mannar,9.30538,79.203355,2024-01-22,1,21.8,10,57.6,19.5,18.2,4.7,11,21,96,None,0.0,30.5,22.3,Strong,Rough,Research Diver,Coral Reef Survey
+REEF0187,Gulf of Mannar - Pamban,Gulf of Mannar,9.293556,79.191025,2024-01-22,2,18.0,30,30.0,17.5,37.5,14.9,13,28,228,None,0.0,26.5,12.1,Moderate,Rough,Coral Specialist,Coral Reef Survey
+REEF0188,Gulf of Mannar - Pamban,Gulf of Mannar,9.294387,79.195157,2024-01-22,3,15.4,20,40.2,10.1,48.4,1.4,12,29,157,Severe,39.5,28.8,27.1,Weak,Choppy,Reef Survey Team,Coral Reef Survey
+REEF0189,Gulf of Mannar - Pamban,Gulf of Mannar,9.306975,79.20023,2024-01-22,4,18.5,30,27.7,22.2,44.6,5.4,8,30,175,None,0.0,26.5,25.0,Weak,Choppy,Research Diver,Coral Reef Survey
+REEF0190,Gulf of Mannar - Pamban,Gulf of Mannar,9.291999,79.207624,2024-01-22,5,9.7,20,46.2,17.2,29.3,7.3,12,29,122,None,0.0,31.7,8.9,Weak,Calm,Reef Survey Team,Coral Reef Survey
+REEF0191,Gulf of Mannar - Pamban,Gulf of Mannar,9.308377,79.202182,2024-06-14,1,20.8,30,35.4,16.8,30.5,17.4,10,18,90,None,0.0,29.2,8.4,Moderate,Choppy,Research Diver,Coral Reef Survey
+REEF0192,Gulf of Mannar - Pamban,Gulf of Mannar,9.293172,79.202834,2024-06-14,2,18.8,10,43.3,8.6,39.2,8.9,13,20,132,None,0.0,29.0,27.1,Moderate,Calm,Research Diver,Coral Reef Survey
+REEF0193,Gulf of Mannar - Pamban,Gulf of Mannar,9.305517,79.19168,2024-06-14,3,22.6,20,38.9,23.6,34.7,2.8,12,29,218,None,0.0,27.4,17.6,Weak,Calm,Coral Specialist,Coral Reef Survey
+REEF0194,Gulf of Mannar - Pamban,Gulf of Mannar,9.290337,79.193032,2024-06-14,4,5.0,50,29.6,7.5,49.1,13.8,13,30,276,Mild,26.6,26.8,28.8,Weak,Calm,Research Diver,Coral Reef Survey
+REEF0195,Gulf of Mannar - Pamban,Gulf of Mannar,9.308662,79.19451,2024-10-29,1,16.5,20,21.1,28.3,40.1,10.5,15,24,273,Severe,17.0,26.5,16.6,Moderate,Rough,Marine Biologist A,Coral Reef Survey
+REEF0196,Gulf of Mannar - Pamban,Gulf of Mannar,9.303399,79.199398,2024-10-29,2,11.4,20,24.8,11.1,62.1,2.0,9,30,90,None,0.0,26.8,21.1,Moderate,Calm,Coral Specialist,Coral Reef Survey
+REEF0197,Gulf of Mannar - Pamban,Gulf of Mannar,9.296855,79.19452,2024-10-29,3,17.1,20,38.3,15.0,34.9,11.9,15,34,295,None,0.0,27.8,20.3,Moderate,Calm,Research Diver,Coral Reef Survey
+REEF0198,Gulf of Mannar - Pamban,Gulf of Mannar,9.30339,79.190534,2024-10-29,4,13.2,20,22.3,9.7,56.8,11.2,11,16,235,None,0.0,31.3,9.5,Moderate,Calm,Marine Biologist A,Coral Reef Survey
+REEF0199,Gulf of Mannar - Pamban,Gulf of Mannar,9.298382,79.20166,2024-10-29,5,6.2,10,50.6,23.6,7.7,18.1,14,17,217,Moderate,12.6,31.0,22.8,Weak,Choppy,Research Diver,Coral Reef Survey
+REEF0200,Gulf of Mannar - Pamban,Gulf of Mannar,9.307888,79.191144,2024-10-29,6,16.1,10,42.8,5.9,41.1,10.3,13,34,234,None,0.0,27.1,14.0,Moderate,Calm,Coral Specialist,Coral Reef Survey
+REEF0201,Gulf of Mannar - Pamban,Gulf of Mannar,9.302807,79.199366,2025-01-13,1,21.9,30,33.7,11.7,34.9,19.7,13,26,83,None,0.0,26.2,25.0,Moderate,Choppy,Coral Specialist,Coral Reef Survey
+REEF0202,Gulf of Mannar - Pamban,Gulf of Mannar,9.292207,79.19055,2025-01-13,2,9.0,20,30.8,25.5,29.5,14.2,15,32,102,None,0.0,30.3,17.2,Strong,Choppy,Coral Specialist,Coral Reef Survey
+REEF0203,Gulf of Mannar - Pamban,Gulf of Mannar,9.303979,79.209989,2025-01-13,3,18.6,50,50.5,28.5,18.8,2.3,14,24,121,None,0.0,31.1,29.0,Weak,Rough,Marine Biologist A,Coral Reef Survey
+REEF0204,Gulf of Mannar - Pamban,Gulf of Mannar,9.294219,79.200079,2025-01-13,4,18.0,30,29.9,20.0,44.9,5.2,15,19,133,None,0.0,28.6,19.6,Strong,Choppy,Marine Biologist A,Coral Reef Survey
+REEF0205,Gulf of Mannar - Pamban,Gulf of Mannar,9.298987,79.199864,2025-01-13,5,9.6,50,26.4,6.2,63.5,3.9,9,33,273,None,0.0,30.7,11.7,Weak,Choppy,Research Diver,Coral Reef Survey
+REEF0206,Gulf of Mannar - Pamban,Gulf of Mannar,9.292171,79.204986,2025-01-13,6,9.7,50,58.1,22.9,12.5,6.5,10,28,124,Severe,23.3,26.5,10.6,Weak,Calm,Coral Specialist,Coral Reef Survey
+REEF0207,Gulf of Mannar - Pamban,Gulf of Mannar,9.293517,79.205494,2024-10-23,1,14.3,30,20.4,21.8,49.3,8.5,12,16,290,None,0.0,27.3,20.1,Moderate,Rough,Coral Specialist,Coral Reef Survey
+REEF0208,Gulf of Mannar - Pamban,Gulf of Mannar,9.309583,79.191469,2024-10-23,2,9.2,10,29.7,11.2,51.5,7.6,10,22,86,None,0.0,31.5,12.4,Moderate,Choppy,Coral Specialist,Coral Reef Survey
+REEF0209,Gulf of Mannar - Pamban,Gulf of Mannar,9.300859,79.202738,2024-10-23,3,14.5,30,37.4,9.8,43.1,9.8,14,18,247,None,0.0,30.8,24.8,Weak,Choppy,Reef Survey Team,Coral Reef Survey
+REEF0210,Gulf of Mannar - Pamban,Gulf of Mannar,9.29268,79.19177,2024-10-23,4,23.0,30,41.4,26.4,31.0,1.2,15,15,110,None,0.0,29.2,26.9,Weak,Rough,Research Diver,Coral Reef Survey
+REEF0211,Gulf of Mannar - Pamban,Gulf of Mannar,9.291952,79.194809,2024-10-23,5,11.9,50,54.6,28.5,0.0,16.9,12,33,203,None,0.0,26.0,9.0,Strong,Rough,Coral Specialist,Coral Reef Survey
+REEF0212,Gulf of Mannar - Pamban,Gulf of Mannar,9.292952,79.196977,2024-10-23,6,21.3,10,55.7,9.7,22.2,12.4,12,18,175,None,0.0,28.8,10.3,Weak,Rough,Marine Biologist A,Coral Reef Survey
+REEF0213,Gulf of Mannar - Pamban,Gulf of Mannar,9.299156,79.197516,2024-05-29,1,15.7,20,37.5,5.4,37.1,19.9,13,29,257,None,0.0,28.8,29.0,Weak,Calm,Research Diver,Coral Reef Survey
+REEF0214,Gulf of Mannar - Pamban,Gulf of Mannar,9.293117,79.193785,2024-05-29,2,20.8,30,30.4,25.0,39.2,5.4,8,26,187,Severe,23.1,27.2,24.7,Moderate,Choppy,Marine Biologist A,Coral Reef Survey
+REEF0215,Gulf of Mannar - Pamban,Gulf of Mannar,9.302824,79.208472,2024-05-29,3,20.2,20,27.2,25.0,34.9,12.8,9,31,129,None,0.0,31.0,20.6,Strong,Calm,Research Diver,Coral Reef Survey
+REEF0216,Gulf of Mannar - Pamban,Gulf of Mannar,9.29932,79.202733,2024-05-29,4,9.6,30,27.3,20.4,47.6,4.7,12,25,291,Severe,5.0,29.6,16.0,Strong,Rough,Research Diver,Coral Reef Survey
+REEF0217,Gulf of Mannar - Pamban,Gulf of Mannar,9.305046,79.197504,2024-05-29,5,13.7,30,36.3,21.3,35.3,7.1,10,18,216,None,0.0,31.6,26.7,Weak,Calm,Research Diver,Coral Reef Survey
+REEF0218,Gulf of Mannar - Pamban,Gulf of Mannar,9.308406,79.198983,2025-01-16,1,14.8,20,49.7,22.4,10.1,17.8,9,28,167,None,0.0,32.0,15.7,Weak,Calm,Reef Survey Team,Coral Reef Survey
+REEF0219,Gulf of Mannar - Pamban,Gulf of Mannar,9.30666,79.203953,2025-01-16,2,18.2,10,33.0,24.6,24.3,18.0,14,21,283,Severe,26.9,28.4,29.8,Moderate,Calm,Marine Biologist A,Coral Reef Survey
+REEF0220,Gulf of Mannar - Pamban,Gulf of Mannar,9.299577,79.194566,2025-01-16,3,11.4,50,46.2,6.9,34.9,12.1,13,19,84,None,0.0,31.1,9.5,Moderate,Rough,Research Diver,Coral Reef Survey
+REEF0221,Gulf of Mannar - Pamban,Gulf of Mannar,9.309868,79.203975,2025-01-16,4,6.6,30,20.5,9.3,53.5,16.8,10,19,289,Moderate,13.2,30.5,20.9,Strong,Choppy,Marine Biologist A,Coral Reef Survey
+REEF0222,Gulf of Mannar - Pamban,Gulf of Mannar,9.305655,79.204923,2025-01-16,5,4.1,20,55.7,10.7,22.6,11.1,10,18,136,None,0.0,27.0,29.5,Strong,Calm,Research Diver,Coral Reef Survey
+REEF0223,Gulf of Mannar - Pamban,Gulf of Mannar,9.299763,79.191153,2025-01-16,6,23.6,20,43.5,22.5,23.6,10.5,9,19,133,None,0.0,26.2,13.9,Moderate,Rough,Marine Biologist A,Coral Reef Survey
+REEF0224,Gulf of Mannar - Pamban,Gulf of Mannar,9.299393,79.191532,2024-03-20,1,18.5,50,35.7,11.8,52.4,0.1,8,30,273,None,0.0,31.0,16.7,Weak,Calm,Marine Biologist A,Coral Reef Survey
+REEF0225,Gulf of Mannar - Pamban,Gulf of Mannar,9.301284,79.194554,2024-03-20,2,16.7,10,20.5,17.2,49.4,12.9,15,31,231,None,0.0,28.3,24.8,Weak,Choppy,Marine Biologist A,Coral Reef Survey
+REEF0226,Gulf of Mannar - Pamban,Gulf of Mannar,9.301954,79.20854,2024-03-20,3,11.8,10,32.8,27.2,39.1,1.0,9,17,157,Severe,7.9,31.1,8.2,Weak,Rough,Reef Survey Team,Coral Reef Survey
+REEF0227,Gulf of Mannar - Keezhakkarai,Gulf of Mannar,9.207233,79.199025,2024-07-23,1,3.1,10,36.1,9.7,41.8,12.5,10,26,87,None,0.0,28.9,8.9,Strong,Choppy,Research Diver,Coral Reef Survey
+REEF0228,Gulf of Mannar - Keezhakkarai,Gulf of Mannar,9.203123,79.206841,2024-07-23,2,18.8,20,53.2,10.0,19.0,17.8,9,26,121,None,0.0,26.1,26.6,Weak,Rough,Marine Biologist A,Coral Reef Survey
+REEF0229,Gulf of Mannar - Keezhakkarai,Gulf of Mannar,9.208836,79.203111,2024-07-23,3,8.1,20,30.1,16.7,35.3,18.0,12,31,135,Severe,33.9,27.7,25.8,Weak,Rough,Marine Biologist A,Coral Reef Survey
+REEF0230,Gulf of Mannar - Keezhakkarai,Gulf of Mannar,9.208405,79.19855,2024-07-23,4,11.0,50,52.1,18.2,16.0,13.7,13,18,134,None,0.0,26.9,26.6,Strong,Rough,Reef Survey Team,Coral Reef Survey
+REEF0231,Gulf of Mannar - Keezhakkarai,Gulf of Mannar,9.193916,79.208646,2025-03-26,1,8.5,30,49.4,12.1,32.2,6.4,14,20,293,None,0.0,30.5,20.2,Moderate,Calm,Reef Survey Team,Coral Reef Survey
+REEF0232,Gulf of Mannar - Keezhakkarai,Gulf of Mannar,9.207659,79.196147,2025-03-26,2,18.2,30,50.1,8.8,33.1,8.0,9,28,108,None,0.0,28.1,15.1,Moderate,Calm,Reef Survey Team,Coral Reef Survey
+REEF0233,Gulf of Mannar - Keezhakkarai,Gulf of Mannar,9.203728,79.194317,2025-03-26,3,18.6,30,57.4,19.1,11.2,12.2,8,30,275,Moderate,35.3,27.7,21.5,Weak,Choppy,Coral Specialist,Coral Reef Survey
+REEF0234,Gulf of Mannar - Keezhakkarai,Gulf of Mannar,9.209582,79.20191,2024-04-28,1,18.9,30,37.8,6.5,39.7,16.0,15,24,196,Severe,29.5,26.1,27.0,Weak,Rough,Coral Specialist,Coral Reef Survey
+REEF0235,Gulf of Mannar - Keezhakkarai,Gulf of Mannar,9.193153,79.200285,2024-04-28,2,16.1,50,38.3,13.5,38.8,9.4,11,24,298,None,0.0,28.6,15.9,Weak,Choppy,Research Diver,Coral Reef Survey
+REEF0236,Gulf of Mannar - Keezhakkarai,Gulf of Mannar,9.201324,79.194758,2024-04-28,3,24.8,50,40.0,9.9,40.6,9.5,9,20,83,None,0.0,26.1,23.0,Moderate,Choppy,Marine Biologist A,Coral Reef Survey
+REEF0237,Gulf of Mannar - Keezhakkarai,Gulf of Mannar,9.200959,79.193391,2024-04-28,4,21.0,50,34.8,12.3,36.3,16.6,14,18,116,None,0.0,31.4,21.9,Strong,Rough,Marine Biologist A,Coral Reef Survey
+REEF0238,Gulf of Mannar - Keezhakkarai,Gulf of Mannar,9.204816,79.206729,2024-04-28,5,4.2,30,51.0,20.3,27.2,1.4,11,20,96,None,0.0,26.5,24.2,Moderate,Calm,Coral Specialist,Coral Reef Survey
+REEF0239,Gulf of Mannar - Keezhakkarai,Gulf of Mannar,9.20093,79.209071,2024-04-28,6,7.0,50,44.2,10.3,33.2,12.3,15,18,139,None,0.0,30.3,25.9,Moderate,Rough,Research Diver,Coral Reef Survey
+REEF0240,Gulf of Mannar - Keezhakkarai,Gulf of Mannar,9.207071,79.191545,2025-02-13,1,10.6,50,47.5,17.5,31.2,3.8,15,30,250,None,0.0,28.4,16.6,Strong,Choppy,Reef Survey Team,Coral Reef Survey
+REEF0241,Gulf of Mannar - Keezhakkarai,Gulf of Mannar,9.206195,79.198152,2025-02-13,2,3.6,10,22.3,26.4,32.1,19.2,12,29,107,None,0.0,28.2,28.6,Moderate,Choppy,Reef Survey Team,Coral Reef Survey
+REEF0242,Gulf of Mannar - Keezhakkarai,Gulf of Mannar,9.203256,79.206887,2025-02-13,3,19.8,10,35.2,17.0,44.1,3.7,8,35,114,Mild,32.2,31.4,23.9,Weak,Choppy,Marine Biologist A,Coral Reef Survey
+REEF0243,Gulf of Mannar - Keezhakkarai,Gulf of Mannar,9.199303,79.19173,2025-02-13,4,4.3,30,35.0,16.6,36.2,12.2,10,20,177,Severe,39.6,28.2,26.7,Moderate,Rough,Marine Biologist A,Coral Reef Survey
+REEF0244,Gulf of Mannar - Keezhakkarai,Gulf of Mannar,9.200699,79.192609,2025-02-13,5,20.5,50,48.4,18.2,23.1,10.3,15,17,249,Severe,28.0,31.5,10.1,Weak,Choppy,Coral Specialist,Coral Reef Survey
+REEF0245,Gulf of Mannar - Keezhakkarai,Gulf of Mannar,9.19527,79.208046,2025-05-17,1,9.3,10,46.2,18.4,23.5,11.9,8,32,167,None,0.0,27.8,9.1,Moderate,Calm,Coral Specialist,Coral Reef Survey
+REEF0246,Gulf of Mannar - Keezhakkarai,Gulf of Mannar,9.204886,79.204922,2025-05-17,2,17.8,50,45.7,11.1,42.7,0.4,15,29,160,None,0.0,28.9,14.8,Moderate,Calm,Marine Biologist A,Coral Reef Survey
+REEF0247,Gulf of Mannar - Keezhakkarai,Gulf of Mannar,9.192039,79.191254,2025-05-17,3,10.7,30,52.2,28.0,1.9,17.9,10,20,222,None,0.0,31.4,19.6,Moderate,Choppy,Reef Survey Team,Coral Reef Survey
+REEF0248,Gulf of Mannar - Keezhakkarai,Gulf of Mannar,9.194388,79.205961,2025-05-17,4,7.7,50,30.7,10.8,48.2,10.3,15,24,263,None,0.0,26.9,18.0,Weak,Rough,Coral Specialist,Coral Reef Survey
+REEF0249,Gulf of Mannar - Keezhakkarai,Gulf of Mannar,9.207478,79.201411,2025-05-17,5,22.3,50,27.8,9.2,51.5,11.5,15,32,255,None,0.0,30.0,25.5,Strong,Calm,Marine Biologist A,Coral Reef Survey
+REEF0250,Gulf of Mannar - Keezhakkarai,Gulf of Mannar,9.205026,79.208845,2025-02-04,1,11.8,30,28.3,18.8,50.8,2.2,12,30,231,Moderate,12.3,28.4,10.4,Moderate,Calm,Marine Biologist A,Coral Reef Survey
+REEF0251,Gulf of Mannar - Keezhakkarai,Gulf of Mannar,9.190637,79.203136,2025-02-04,2,16.4,30,48.3,21.5,27.9,2.3,13,33,91,Mild,9.5,31.1,24.4,Strong,Rough,Marine Biologist A,Coral Reef Survey
+REEF0252,Gulf of Mannar - Keezhakkarai,Gulf of Mannar,9.194031,79.196826,2025-02-04,3,24.3,10,43.8,25.0,25.9,5.3,14,35,167,Moderate,32.4,30.1,23.0,Moderate,Choppy,Coral Specialist,Coral Reef Survey
+REEF0253,Gulf of Mannar - Keezhakkarai,Gulf of Mannar,9.201053,79.201272,2025-02-04,4,19.2,20,30.8,13.8,37.9,17.4,11,26,94,None,0.0,29.3,23.5,Weak,Rough,Research Diver,Coral Reef Survey
+REEF0254,Gulf of Mannar - Keezhakkarai,Gulf of Mannar,9.209998,79.198706,2025-02-04,5,12.4,10,53.7,25.1,6.5,14.6,12,33,101,None,0.0,27.9,21.4,Weak,Choppy,Reef Survey Team,Coral Reef Survey
+REEF0255,Gulf of Mannar - Keezhakkarai,Gulf of Mannar,9.207524,79.207676,2024-01-21,1,5.4,50,37.1,16.6,26.7,19.6,14,16,197,None,0.0,28.4,8.6,Moderate,Calm,Coral Specialist,Coral Reef Survey
+REEF0256,Gulf of Mannar - Keezhakkarai,Gulf of Mannar,9.201308,79.191922,2024-01-21,2,21.4,30,50.1,16.5,24.8,8.6,14,33,85,None,0.0,27.7,13.5,Strong,Choppy,Research Diver,Coral Reef Survey
+REEF0257,Gulf of Mannar - Keezhakkarai,Gulf of Mannar,9.208784,79.206185,2024-01-21,3,21.1,10,27.8,8.6,63.1,0.5,11,33,105,Moderate,32.1,27.4,24.0,Moderate,Choppy,Research Diver,Coral Reef Survey
+REEF0258,Gulf of Mannar - Keezhakkarai,Gulf of Mannar,9.195038,79.197906,2024-01-21,4,24.6,30,29.8,14.4,49.8,6.0,14,20,237,Moderate,22.1,28.3,23.3,Weak,Choppy,Marine Biologist A,Coral Reef Survey
+REEF0259,Gulf of Mannar - Keezhakkarai,Gulf of Mannar,9.206352,79.200885,2024-01-21,5,3.7,30,44.8,6.4,36.5,12.3,12,32,134,None,0.0,27.2,26.0,Weak,Choppy,Coral Specialist,Coral Reef Survey
+REEF0260,Gulf of Mannar - Keezhakkarai,Gulf of Mannar,9.208222,79.206262,2024-08-19,1,9.7,30,43.5,27.9,22.3,6.4,12,33,104,None,0.0,26.1,8.1,Weak,Rough,Coral Specialist,Coral Reef Survey
+REEF0261,Gulf of Mannar - Keezhakkarai,Gulf of Mannar,9.205194,79.205229,2024-08-19,2,20.4,30,57.2,7.9,30.2,4.6,9,28,133,None,0.0,27.1,23.0,Strong,Choppy,Research Diver,Coral Reef Survey
+REEF0262,Gulf of Mannar - Keezhakkarai,Gulf of Mannar,9.200609,79.191664,2024-08-19,3,9.3,30,40.8,26.3,18.7,14.2,11,28,249,None,0.0,29.0,14.6,Moderate,Choppy,Research Diver,Coral Reef Survey
+REEF0263,Gulf of Mannar - Keezhakkarai,Gulf of Mannar,9.192385,79.198182,2025-06-11,1,3.6,20,28.4,15.8,47.4,8.4,15,32,126,Mild,25.6,29.3,9.7,Weak,Rough,Coral Specialist,Coral Reef Survey
+REEF0264,Gulf of Mannar - Keezhakkarai,Gulf of Mannar,9.208863,79.191988,2025-06-11,2,21.8,50,20.0,27.1,52.5,0.4,8,23,243,None,0.0,28.2,24.2,Strong,Calm,Research Diver,Coral Reef Survey
+REEF0265,Gulf of Mannar - Keezhakkarai,Gulf of Mannar,9.198035,79.191418,2025-06-11,3,19.9,20,22.9,28.1,48.1,1.0,10,29,117,None,0.0,30.3,16.7,Strong,Rough,Research Diver,Coral Reef Survey
+REEF0266,Gulf of Mannar - Keezhakkarai,Gulf of Mannar,9.194345,79.205182,2025-06-11,4,20.3,30,56.9,14.4,18.6,10.1,9,28,185,None,0.0,27.5,24.5,Strong,Calm,Coral Specialist,Coral Reef Survey
+REEF0267,Gulf of Mannar - Keezhakkarai,Gulf of Mannar,9.196793,79.198563,2025-06-11,5,11.9,30,48.5,27.9,10.2,13.3,10,23,290,None,0.0,30.7,22.1,Moderate,Rough,Reef Survey Team,Coral Reef Survey
+REEF0268,Gulf of Mannar - Keezhakkarai,Gulf of Mannar,9.191212,79.191913,2025-06-11,6,3.8,10,38.3,25.6,29.8,6.3,10,27,141,None,0.0,31.5,26.4,Weak,Calm,Reef Survey Team,Coral Reef Survey
+REEF0269,Gulf of Mannar - Keezhakkarai,Gulf of Mannar,9.203301,79.195336,2024-11-13,1,5.6,50,20.6,7.7,65.8,5.9,14,30,223,None,0.0,26.4,11.0,Strong,Calm,Reef Survey Team,Coral Reef Survey
+REEF0270,Gulf of Mannar - Keezhakkarai,Gulf of Mannar,9.193622,79.20264,2024-11-13,2,16.5,10,42.0,11.3,39.3,7.4,12,20,149,Mild,12.9,31.4,29.6,Moderate,Rough,Reef Survey Team,Coral Reef Survey
+REEF0271,Gulf of Mannar - Keezhakkarai,Gulf of Mannar,9.202953,79.208336,2024-11-13,3,17.1,10,21.3,29.9,46.8,2.0,15,35,298,None,0.0,27.5,16.6,Weak,Calm,Marine Biologist A,Coral Reef Survey
+REEF0272,Gulf of Mannar - Keezhakkarai,Gulf of Mannar,9.202919,79.19873,2024-11-13,4,8.5,30,33.4,13.5,33.9,19.2,9,25,234,None,0.0,28.8,12.4,Moderate,Choppy,Marine Biologist A,Coral Reef Survey
+REEF0273,Gulf of Mannar - Keezhakkarai,Gulf of Mannar,9.20622,79.193144,2024-11-13,5,7.6,20,34.6,27.0,35.7,2.6,11,27,294,Severe,22.3,27.7,20.5,Weak,Rough,Marine Biologist A,Coral Reef Survey
+REEF0274,Gulf of Mannar - Keezhakkarai,Gulf of Mannar,9.199033,79.198699,2024-11-13,6,5.5,30,25.6,25.5,31.1,17.7,15,31,250,Severe,9.0,26.3,21.4,Weak,Calm,Marine Biologist A,Coral Reef Survey
+REEF0275,Gulf of Mannar - Keezhakkarai,Gulf of Mannar,9.204307,79.197456,2024-11-16,1,18.0,20,48.5,28.4,21.8,1.3,14,33,268,Moderate,7.4,31.2,25.4,Weak,Calm,Marine Biologist A,Coral Reef Survey
+REEF0276,Gulf of Mannar - Keezhakkarai,Gulf of Mannar,9.201493,79.191673,2024-11-16,2,9.0,50,31.9,19.0,43.9,5.2,14,20,134,Moderate,30.6,27.8,18.0,Moderate,Rough,Marine Biologist A,Coral Reef Survey
+REEF0277,Gulf of Mannar - Keezhakkarai,Gulf of Mannar,9.192553,79.206051,2024-11-16,3,15.4,30,56.1,17.4,7.7,18.8,9,30,216,None,0.0,29.5,28.5,Moderate,Rough,Coral Specialist,Coral Reef Survey
+REEF0278,Gulf of Mannar - Keezhakkarai,Gulf of Mannar,9.196462,79.197313,2024-11-16,4,4.0,30,43.6,23.0,17.9,15.5,10,30,254,Mild,20.5,27.1,22.6,Moderate,Choppy,Research Diver,Coral Reef Survey
+REEF0279,Gulf of Mannar - Keezhakkarai,Gulf of Mannar,9.193159,79.208083,2024-11-16,5,8.1,10,31.7,26.3,32.9,9.2,8,24,85,Severe,22.3,26.5,29.7,Strong,Rough,Reef Survey Team,Coral Reef Survey
+REEF0280,Gulf of Mannar - Keezhakkarai,Gulf of Mannar,9.201762,79.195131,2024-09-16,1,15.4,30,23.1,25.0,33.4,18.5,9,24,243,None,0.0,28.1,15.2,Strong,Calm,Coral Specialist,Coral Reef Survey
+REEF0281,Gulf of Mannar - Keezhakkarai,Gulf of Mannar,9.190702,79.203028,2024-09-16,2,14.8,30,38.4,27.7,30.6,3.4,12,27,82,Moderate,7.6,27.3,8.7,Weak,Calm,Research Diver,Coral Reef Survey
+REEF0282,Gulf of Mannar - Keezhakkarai,Gulf of Mannar,9.200057,79.196282,2024-09-16,3,7.0,20,50.0,10.1,26.1,13.8,15,21,300,None,0.0,29.1,28.5,Strong,Choppy,Coral Specialist,Coral Reef Survey
+REEF0283,Gulf of Mannar - Keezhakkarai,Gulf of Mannar,9.190747,79.200005,2024-09-16,4,21.8,10,43.5,11.9,36.6,8.0,15,16,150,None,0.0,31.3,8.9,Moderate,Rough,Coral Specialist,Coral Reef Survey
+REEF0284,Gulf of Mannar - Keezhakkarai,Gulf of Mannar,9.191431,79.196501,2024-09-16,5,8.1,10,30.6,10.5,55.0,3.9,10,25,263,Moderate,37.7,26.9,12.5,Strong,Choppy,Marine Biologist A,Coral Reef Survey
+REEF0285,Gulf of Mannar - Keezhakkarai,Gulf of Mannar,9.194925,79.20866,2024-09-16,6,19.6,30,51.6,7.6,24.1,16.7,15,26,187,None,0.0,27.6,20.7,Strong,Calm,Marine Biologist A,Coral Reef Survey
+REEF0286,Gulf of Kutch - Pirotan,Gulf of Kutch,22.606444,69.805573,2025-03-30,1,22.6,30,37.8,11.0,42.7,8.5,13,15,182,Mild,35.8,26.9,27.0,Strong,Calm,Marine Biologist A,Coral Reef Survey
+REEF0287,Gulf of Kutch - Pirotan,Gulf of Kutch,22.596588,69.797363,2025-03-30,2,3.9,20,19.8,27.2,52.5,0.5,14,20,143,None,0.0,26.2,16.2,Moderate,Choppy,Coral Specialist,Coral Reef Survey
+REEF0288,Gulf of Kutch - Pirotan,Gulf of Kutch,22.593453,69.795044,2025-03-30,3,22.3,30,23.1,11.8,53.3,11.8,12,19,146,Mild,14.1,29.3,13.2,Weak,Calm,Coral Specialist,Coral Reef Survey
+REEF0289,Gulf of Kutch - Pirotan,Gulf of Kutch,22.603583,69.79983,2025-03-30,4,20.0,50,38.4,7.9,47.0,6.7,14,26,126,None,0.0,26.9,25.8,Strong,Calm,Marine Biologist A,Coral Reef Survey
+REEF0290,Gulf of Kutch - Pirotan,Gulf of Kutch,22.605198,69.799689,2024-01-24,1,14.8,20,11.8,18.9,53.5,15.8,12,17,198,None,0.0,27.6,22.7,Strong,Calm,Marine Biologist A,Coral Reef Survey
+REEF0291,Gulf of Kutch - Pirotan,Gulf of Kutch,22.59723,69.800897,2024-01-24,2,13.7,30,21.4,23.0,37.9,17.7,10,27,238,Moderate,37.7,29.1,23.4,Weak,Choppy,Reef Survey Team,Coral Reef Survey
+REEF0292,Gulf of Kutch - Pirotan,Gulf of Kutch,22.607112,69.799342,2024-01-24,3,21.4,10,15.3,9.0,62.5,13.1,14,33,110,None,0.0,31.4,22.2,Moderate,Rough,Coral Specialist,Coral Reef Survey
+REEF0293,Gulf of Kutch - Pirotan,Gulf of Kutch,22.60051,69.796628,2024-01-24,4,24.6,20,19.6,23.6,46.2,10.6,11,18,137,None,0.0,28.4,29.2,Moderate,Choppy,Coral Specialist,Coral Reef Survey
+REEF0294,Gulf of Kutch - Pirotan,Gulf of Kutch,22.601434,69.808756,2025-01-26,1,3.2,20,27.2,22.9,35.0,14.9,11,28,299,None,0.0,26.0,8.0,Moderate,Rough,Reef Survey Team,Coral Reef Survey
+REEF0295,Gulf of Kutch - Pirotan,Gulf of Kutch,22.599445,69.790586,2025-01-26,2,24.4,50,16.7,16.8,65.3,1.2,10,28,126,None,0.0,28.3,9.0,Weak,Choppy,Research Diver,Coral Reef Survey
+REEF0296,Gulf of Kutch - Pirotan,Gulf of Kutch,22.596702,69.797829,2025-01-26,3,24.8,50,16.2,18.6,45.4,19.7,11,22,238,None,0.0,32.0,29.3,Moderate,Rough,Coral Specialist,Coral Reef Survey
+REEF0297,Gulf of Kutch - Pirotan,Gulf of Kutch,22.599791,69.803928,2025-01-26,4,5.4,50,23.2,25.2,41.4,10.1,10,17,82,None,0.0,30.5,13.6,Moderate,Rough,Coral Specialist,Coral Reef Survey
+REEF0298,Gulf of Kutch - Pirotan,Gulf of Kutch,22.607514,69.799196,2024-08-05,1,7.6,30,36.0,15.4,33.6,15.0,9,28,268,None,0.0,28.3,25.8,Weak,Rough,Marine Biologist A,Coral Reef Survey
+REEF0299,Gulf of Kutch - Pirotan,Gulf of Kutch,22.601689,69.797811,2024-08-05,2,5.4,20,36.9,5.9,40.0,17.3,15,16,165,None,0.0,29.8,28.3,Moderate,Rough,Marine Biologist A,Coral Reef Survey
+REEF0300,Gulf of Kutch - Pirotan,Gulf of Kutch,22.593034,69.801339,2024-08-05,3,19.8,50,32.7,18.1,36.6,12.5,12,15,144,None,0.0,31.0,24.8,Moderate,Rough,Research Diver,Coral Reef Survey
+REEF0301,Gulf of Kutch - Pirotan,Gulf of Kutch,22.59708,69.809935,2024-08-05,4,12.6,20,10.7,14.1,72.6,2.6,12,19,223,Mild,14.9,26.3,23.1,Weak,Rough,Coral Specialist,Coral Reef Survey
+REEF0302,Gulf of Kutch - Pirotan,Gulf of Kutch,22.59148,69.794066,2024-08-05,5,5.0,20,11.9,11.7,65.0,11.4,9,25,199,None,0.0,31.3,27.3,Moderate,Rough,Coral Specialist,Coral Reef Survey
+REEF0303,Gulf of Kutch - Pirotan,Gulf of Kutch,22.593521,69.795298,2024-08-05,6,4.7,30,33.4,6.7,48.8,11.1,8,19,146,Mild,13.5,31.9,24.6,Weak,Choppy,Research Diver,Coral Reef Survey
+REEF0304,Gulf of Kutch - Pirotan,Gulf of Kutch,22.606739,69.80144,2025-01-04,1,22.2,30,29.4,28.7,36.4,5.6,13,24,147,None,0.0,30.1,16.6,Moderate,Calm,Research Diver,Coral Reef Survey
+REEF0305,Gulf of Kutch - Pirotan,Gulf of Kutch,22.607594,69.809596,2025-01-04,2,13.9,20,21.7,16.8,44.4,17.1,15,30,275,None,0.0,26.3,19.9,Weak,Calm,Reef Survey Team,Coral Reef Survey
+REEF0306,Gulf of Kutch - Pirotan,Gulf of Kutch,22.590346,69.805571,2025-01-04,3,10.2,10,24.2,25.0,49.9,0.9,15,16,138,Mild,18.9,27.4,15.4,Moderate,Calm,Coral Specialist,Coral Reef Survey
+REEF0307,Gulf of Kutch - Pirotan,Gulf of Kutch,22.609963,69.806508,2025-01-04,4,22.4,10,38.1,13.5,42.4,5.9,15,28,109,Moderate,34.1,30.1,13.2,Moderate,Rough,Coral Specialist,Coral Reef Survey
+REEF0308,Gulf of Kutch - Pirotan,Gulf of Kutch,22.59754,69.800134,2025-01-04,5,14.6,10,36.7,14.5,30.7,18.2,10,29,206,None,0.0,30.5,28.5,Weak,Choppy,Marine Biologist A,Coral Reef Survey
+REEF0309,Gulf of Kutch - Pirotan,Gulf of Kutch,22.608152,69.791139,2025-01-04,6,7.5,20,24.3,15.8,47.1,12.8,10,21,152,None,0.0,26.7,17.9,Strong,Rough,Research Diver,Coral Reef Survey
+REEF0310,Gulf of Kutch - Pirotan,Gulf of Kutch,22.593848,69.807882,2025-07-30,1,24.2,20,24.4,7.6,52.3,15.7,14,33,81,None,0.0,28.1,27.5,Weak,Calm,Coral Specialist,Coral Reef Survey
+REEF0311,Gulf of Kutch - Pirotan,Gulf of Kutch,22.609517,69.801157,2025-07-30,2,15.4,10,18.9,19.6,52.7,8.8,12,18,164,None,0.0,26.4,13.6,Strong,Rough,Marine Biologist A,Coral Reef Survey
+REEF0312,Gulf of Kutch - Pirotan,Gulf of Kutch,22.593957,69.800841,2025-07-30,3,16.2,10,28.3,14.7,48.6,8.4,13,27,175,None,0.0,28.9,29.7,Weak,Calm,Marine Biologist A,Coral Reef Survey
+REEF0313,Gulf of Kutch - Pirotan,Gulf of Kutch,22.598792,69.802992,2025-07-30,4,4.1,50,29.6,26.3,25.3,18.8,15,29,292,None,0.0,27.7,20.7,Strong,Choppy,Marine Biologist A,Coral Reef Survey
+REEF0314,Gulf of Kutch - Pirotan,Gulf of Kutch,22.599014,69.801276,2024-12-03,1,6.5,30,35.7,27.7,27.6,9.0,10,35,239,Moderate,9.9,30.1,14.9,Weak,Calm,Research Diver,Coral Reef Survey
+REEF0315,Gulf of Kutch - Pirotan,Gulf of Kutch,22.608191,69.80342,2024-12-03,2,17.2,10,26.8,6.1,48.4,18.6,9,25,284,None,0.0,32.0,19.8,Strong,Rough,Coral Specialist,Coral Reef Survey
+REEF0316,Gulf of Kutch - Pirotan,Gulf of Kutch,22.604202,69.791124,2024-12-03,3,16.9,20,32.9,24.5,27.2,15.4,11,17,182,Moderate,39.1,32.0,9.7,Moderate,Calm,Marine Biologist A,Coral Reef Survey
+REEF0317,Gulf of Kutch - Pirotan,Gulf of Kutch,22.608729,69.795789,2024-08-01,1,18.2,50,20.1,29.2,48.6,2.0,12,27,279,None,0.0,28.6,15.2,Strong,Rough,Reef Survey Team,Coral Reef Survey
+REEF0318,Gulf of Kutch - Pirotan,Gulf of Kutch,22.602911,69.792621,2024-08-01,2,18.8,50,39.4,25.1,18.3,17.2,14,18,156,None,0.0,27.9,19.4,Strong,Choppy,Reef Survey Team,Coral Reef Survey
+REEF0319,Gulf of Kutch - Pirotan,Gulf of Kutch,22.590915,69.808907,2024-08-01,3,6.2,30,37.1,7.1,39.4,16.5,11,26,250,Mild,6.3,30.3,14.2,Moderate,Choppy,Coral Specialist,Coral Reef Survey
+REEF0320,Gulf of Kutch - Pirotan,Gulf of Kutch,22.60429,69.801102,2024-08-01,4,5.4,50,38.0,16.3,31.0,14.7,9,30,148,None,0.0,29.6,14.7,Moderate,Choppy,Reef Survey Team,Coral Reef Survey
+REEF0321,Gulf of Kutch - Pirotan,Gulf of Kutch,22.594007,69.800851,2025-03-20,1,12.7,30,21.7,21.8,42.7,13.8,15,17,90,Severe,16.9,28.5,10.1,Strong,Calm,Reef Survey Team,Coral Reef Survey
+REEF0322,Gulf of Kutch - Pirotan,Gulf of Kutch,22.594718,69.791033,2025-03-20,2,24.9,10,32.1,7.2,60.3,0.4,12,30,214,None,0.0,28.6,25.3,Moderate,Choppy,Marine Biologist A,Coral Reef Survey
+REEF0323,Gulf of Kutch - Pirotan,Gulf of Kutch,22.60847,69.801986,2025-03-20,3,7.1,20,33.5,28.9,26.0,11.6,10,30,156,None,0.0,28.0,16.4,Strong,Choppy,Reef Survey Team,Coral Reef Survey
+REEF0324,Gulf of Kutch - Pirotan,Gulf of Kutch,22.604693,69.808555,2025-03-20,4,16.8,30,33.7,9.3,52.8,4.2,8,31,189,None,0.0,27.1,22.0,Strong,Calm,Marine Biologist A,Coral Reef Survey
+REEF0325,Gulf of Kutch - Pirotan,Gulf of Kutch,22.595833,69.805831,2025-03-20,5,20.8,50,23.9,9.5,53.6,12.9,14,31,107,None,0.0,29.7,8.8,Weak,Choppy,Research Diver,Coral Reef Survey
+REEF0326,Gulf of Kutch - Pirotan,Gulf of Kutch,22.590346,69.796407,2025-03-20,6,7.3,10,34.4,26.1,34.3,5.2,8,26,145,None,0.0,27.4,28.0,Weak,Rough,Coral Specialist,Coral Reef Survey
+REEF0327,Netrani Island - Karnataka,West Coast,14.100053,74.403123,2024-07-05,1,12.1,50,28.9,14.6,49.6,6.8,12,16,101,None,0.0,29.5,14.5,Moderate,Rough,Coral Specialist,Coral Reef Survey
+REEF0328,Netrani Island - Karnataka,West Coast,14.092987,74.397372,2024-07-05,2,12.1,30,28.9,27.9,42.6,0.7,10,29,239,Moderate,11.8,29.0,17.5,Weak,Calm,Marine Biologist A,Coral Reef Survey
+REEF0329,Netrani Island - Karnataka,West Coast,14.104581,74.394848,2024-07-05,3,16.1,10,36.5,27.8,16.5,19.2,14,34,146,None,0.0,31.4,13.2,Strong,Calm,Marine Biologist A,Coral Reef Survey
+REEF0330,Netrani Island - Karnataka,West Coast,14.093952,74.39013,2024-07-05,4,18.6,10,38.1,9.7,39.5,12.7,10,27,109,None,0.0,31.6,22.2,Strong,Choppy,Coral Specialist,Coral Reef Survey
+REEF0331,Netrani Island - Karnataka,West Coast,14.109406,74.396893,2024-07-05,5,10.7,50,26.3,14.6,59.1,0.0,12,27,248,None,0.0,30.5,24.4,Strong,Rough,Research Diver,Coral Reef Survey
+REEF0332,Netrani Island - Karnataka,West Coast,14.0969,74.400446,2024-07-05,6,10.9,10,10.5,19.1,68.0,2.5,10,27,285,Moderate,31.4,26.1,29.1,Weak,Calm,Reef Survey Team,Coral Reef Survey
+REEF0333,Netrani Island - Karnataka,West Coast,14.100305,74.40966,2024-04-24,1,4.3,10,27.5,13.7,41.9,16.9,11,21,299,None,0.0,27.6,26.9,Moderate,Rough,Reef Survey Team,Coral Reef Survey
+REEF0334,Netrani Island - Karnataka,West Coast,14.097493,74.390337,2024-04-24,2,11.6,20,29.6,11.4,50.4,8.6,9,35,141,Moderate,25.6,30.5,17.1,Moderate,Choppy,Reef Survey Team,Coral Reef Survey
+REEF0335,Netrani Island - Karnataka,West Coast,14.098405,74.391766,2024-04-24,3,7.4,10,14.6,17.0,57.7,10.6,9,30,188,None,0.0,26.4,21.2,Weak,Calm,Coral Specialist,Coral Reef Survey
+REEF0336,Netrani Island - Karnataka,West Coast,14.10053,74.400325,2025-05-11,1,22.2,50,16.2,6.0,64.4,13.4,11,15,300,None,0.0,26.1,13.5,Weak,Choppy,Coral Specialist,Coral Reef Survey
+REEF0337,Netrani Island - Karnataka,West Coast,14.096187,74.402337,2025-05-11,2,6.8,10,22.4,17.1,51.4,9.2,9,16,165,None,0.0,26.3,28.9,Strong,Rough,Coral Specialist,Coral Reef Survey
+REEF0338,Netrani Island - Karnataka,West Coast,14.101639,74.405915,2025-05-11,3,12.5,30,23.6,27.0,31.5,17.9,8,28,297,Moderate,12.0,29.0,27.8,Moderate,Choppy,Coral Specialist,Coral Reef Survey
+REEF0339,Netrani Island - Karnataka,West Coast,14.096447,74.40304,2025-05-11,4,18.6,50,33.4,19.1,39.5,8.0,11,31,231,None,0.0,29.7,24.0,Strong,Calm,Marine Biologist A,Coral Reef Survey
+REEF0340,Netrani Island - Karnataka,West Coast,14.0969,74.403399,2025-05-11,5,8.7,30,17.4,22.9,49.4,10.4,9,28,227,None,0.0,27.6,21.2,Moderate,Rough,Coral Specialist,Coral Reef Survey
+REEF0341,Netrani Island - Karnataka,West Coast,14.098879,74.401939,2025-05-11,6,9.4,50,31.5,25.1,38.2,5.2,13,30,109,None,0.0,30.0,23.3,Moderate,Rough,Coral Specialist,Coral Reef Survey
+REEF0342,Netrani Island - Karnataka,West Coast,14.104082,74.403654,2024-01-22,1,11.6,20,21.8,11.4,63.6,3.1,15,24,265,None,0.0,26.6,28.6,Moderate,Choppy,Reef Survey Team,Coral Reef Survey
+REEF0343,Netrani Island - Karnataka,West Coast,14.106534,74.40715,2024-01-22,2,22.9,30,22.3,26.2,48.4,3.2,15,31,136,Severe,32.5,26.4,29.7,Weak,Choppy,Coral Specialist,Coral Reef Survey
+REEF0344,Netrani Island - Karnataka,West Coast,14.103496,74.405069,2024-01-22,3,8.4,30,30.2,6.1,46.9,16.8,15,28,293,Severe,29.4,27.3,9.5,Weak,Rough,Reef Survey Team,Coral Reef Survey
+REEF0345,Netrani Island - Karnataka,West Coast,14.09963,74.393386,2024-01-22,4,19.0,10,17.1,13.6,58.0,11.3,15,24,256,Severe,18.2,30.9,11.9,Weak,Calm,Reef Survey Team,Coral Reef Survey
+REEF0346,Netrani Island - Karnataka,West Coast,14.091644,74.396567,2024-06-09,1,12.3,50,26.3,14.3,43.6,15.8,12,18,283,Moderate,20.1,28.3,22.2,Weak,Calm,Marine Biologist A,Coral Reef Survey
+REEF0347,Netrani Island - Karnataka,West Coast,14.109326,74.400208,2024-06-09,2,24.7,30,19.1,5.8,71.8,3.3,13,15,171,None,0.0,27.9,10.1,Strong,Calm,Reef Survey Team,Coral Reef Survey
+REEF0348,Netrani Island - Karnataka,West Coast,14.098653,74.396762,2024-06-09,3,5.7,10,18.9,27.2,47.9,6.0,13,31,88,None,0.0,29.7,17.4,Moderate,Calm,Reef Survey Team,Coral Reef Survey
+REEF0349,Netrani Island - Karnataka,West Coast,14.094781,74.39738,2024-06-09,4,16.0,20,20.5,10.4,66.8,2.3,15,18,223,None,0.0,28.6,21.8,Moderate,Choppy,Research Diver,Coral Reef Survey
+REEF0350,Netrani Island - Karnataka,West Coast,14.099808,74.407451,2024-06-09,5,15.0,30,24.4,28.1,33.1,14.4,10,16,277,Severe,11.2,30.7,26.4,Strong,Rough,Marine Biologist A,Coral Reef Survey
+REEF0351,Netrani Island - Karnataka,West Coast,14.100904,74.401089,2024-06-09,6,16.9,50,23.2,22.0,52.7,2.2,9,16,192,None,0.0,30.5,21.9,Weak,Rough,Marine Biologist A,Coral Reef Survey
+REEF0352,Netrani Island - Karnataka,West Coast,14.096326,74.393219,2025-07-29,1,12.0,20,29.8,20.8,41.7,7.7,9,31,106,None,0.0,30.9,8.6,Weak,Choppy,Reef Survey Team,Coral Reef Survey
+REEF0353,Netrani Island - Karnataka,West Coast,14.099012,74.405171,2025-07-29,2,15.0,50,29.5,17.9,32.7,19.8,9,24,261,Moderate,22.2,26.5,11.5,Weak,Rough,Research Diver,Coral Reef Survey
+REEF0354,Netrani Island - Karnataka,West Coast,14.097661,74.393111,2025-07-29,3,24.2,20,38.4,13.4,35.4,12.8,9,25,289,None,0.0,30.9,21.8,Weak,Choppy,Coral Specialist,Coral Reef Survey
+REEF0355,Netrani Island - Karnataka,West Coast,14.090005,74.405263,2024-01-07,1,19.4,30,25.3,27.6,29.0,18.2,10,30,167,None,0.0,29.6,29.9,Weak,Choppy,Research Diver,Coral Reef Survey
+REEF0356,Netrani Island - Karnataka,West Coast,14.095976,74.396492,2024-01-07,2,7.0,20,36.9,23.6,37.4,2.1,10,28,172,None,0.0,30.4,26.7,Strong,Choppy,Reef Survey Team,Coral Reef Survey
+REEF0357,Netrani Island - Karnataka,West Coast,14.090963,74.400099,2024-01-07,3,18.4,50,26.3,21.7,35.7,16.4,14,19,285,None,0.0,31.1,11.6,Moderate,Choppy,Research Diver,Coral Reef Survey
+REEF0358,Netrani Island - Karnataka,West Coast,14.095418,74.390867,2024-01-07,4,11.0,20,21.4,25.1,40.4,13.1,8,15,193,None,0.0,29.9,9.2,Strong,Rough,Marine Biologist A,Coral Reef Survey
+REEF0359,Netrani Island - Karnataka,West Coast,14.093605,74.402539,2024-03-27,1,17.1,20,33.2,15.1,37.2,14.5,14,25,182,None,0.0,31.8,12.7,Weak,Choppy,Marine Biologist A,Coral Reef Survey
+REEF0360,Netrani Island - Karnataka,West Coast,14.101034,74.402035,2024-03-27,2,25.0,10,16.0,18.1,59.0,6.9,12,35,118,None,0.0,27.4,9.0,Moderate,Choppy,Research Diver,Coral Reef Survey
+REEF0361,Netrani Island - Karnataka,West Coast,14.101451,74.396717,2024-03-27,3,7.0,10,19.7,6.2,55.0,19.0,12,25,168,None,0.0,30.9,17.3,Strong,Rough,Reef Survey Team,Coral Reef Survey
+REEF0362,Netrani Island - Karnataka,West Coast,14.108066,74.399666,2024-03-27,4,15.6,20,24.8,23.3,40.6,11.3,15,27,194,Severe,10.1,29.6,18.8,Strong,Choppy,Coral Specialist,Coral Reef Survey
+REEF0363,Netrani Island - Karnataka,West Coast,14.09192,74.397912,2024-03-27,5,14.3,10,34.8,6.9,51.3,7.0,8,21,157,None,0.0,29.9,14.4,Strong,Choppy,Coral Specialist,Coral Reef Survey
+REEF0364,Netrani Island - Karnataka,West Coast,14.106907,74.399866,2024-05-09,1,14.0,30,39.3,28.7,24.9,7.2,13,21,103,Severe,16.4,26.2,8.5,Strong,Calm,Marine Biologist A,Coral Reef Survey
+REEF0365,Netrani Island - Karnataka,West Coast,14.09791,74.40882,2024-05-09,2,22.2,30,25.3,19.1,55.4,0.1,11,15,283,Severe,5.9,30.5,11.2,Moderate,Rough,Coral Specialist,Coral Reef Survey
+REEF0366,Netrani Island - Karnataka,West Coast,14.107381,74.402866,2024-05-09,3,8.0,10,14.7,20.7,46.6,18.0,13,31,108,None,0.0,28.1,20.9,Moderate,Rough,Research Diver,Coral Reef Survey
+REEF0367,Netrani Island - Karnataka,West Coast,14.096215,74.409983,2024-05-09,4,19.5,10,28.4,15.6,43.6,12.4,15,18,92,None,0.0,26.2,16.7,Moderate,Rough,Marine Biologist A,Coral Reef Survey
+REEF0368,Netrani Island - Karnataka,West Coast,14.10861,74.402526,2024-05-09,5,4.8,20,36.5,11.7,46.9,4.9,13,29,166,Mild,25.2,29.3,18.8,Moderate,Choppy,Reef Survey Team,Coral Reef Survey

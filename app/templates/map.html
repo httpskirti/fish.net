@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Map - FishNet Platform</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/map.css') }}">
+    <script src="{{ url_for('static', filename='js/main.js') }}" defer></script>
+    <script src="{{ url_for('static', filename='js/map.js') }}" defer></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.draw/1.0.4/leaflet.draw.css" />
+    <script src="https://unpkg.com/leaflet.heat@0.2.0/dist/leaflet-heat.js"></script>
+    <!-- Three.js for 3D Globe -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://threejs.org/examples/js/controls/OrbitControls.js"></script>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="/" class="nav-logo-link"><h2><i class="fas fa-fish"></i> FishNet</h2></a>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="/" class="nav-link">Home</a></li>
+                <li><a href="/dashboard" class="nav-link">Dashboard</a></li>
+                <li><a href="/researcher-dashboard" class="nav-link">Researcher</a></li>
+                <li><a href="/policy-dashboard" class="nav-link">Policymaker</a></li>
+                <li><a href="/ai-tools" class="nav-link">AI Tools</a></li>
+                <li><a href="/species" class="nav-link">Species</a></li>
+                <li><a href="/data" class="nav-link">Data</a></li>
+                <li><a href="/map" class="nav-link active">Map</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="map-container">
+        <header class="map-header">
+            <div class="header-content">
+                <h1><i class="fas fa-map"></i> Interactive Map</h1>
+                <p>Explore marine biodiversity data geographically</p>
+            </div>
+            <div class="header-controls">
+                <div class="map-view-toggle">
+                    <button class="map-toggle-btn active" id="map-2d-btn" onclick="switchMapView('2d')">
+                        <i class="fas fa-map"></i> 2D Map
+                    </button>
+                    <button class="map-toggle-btn" id="map-3d-btn" onclick="switchMapView('3d')">
+                        <i class="fas fa-globe"></i> 3D Globe
+                    </button>
+                </div>
+                <div class="view-toggle">
+                    <button class="toggle-btn active" data-view="researcher" onclick="switchView('researcher')">
+                        <i class="fas fa-microscope"></i> Researcher View
+                    </button>
+                    <button class="toggle-btn" data-view="policymaker" onclick="switchView('policymaker')">
+                        <i class="fas fa-balance-scale"></i> Policymaker View
+                    </button>
+                </div>
+            </div>
+        </header>
+
+        <div class="map-interface">
+            <!-- Map Controls Panel -->
+            <div class="controls-panel">
+                <div class="control-section">
+                    <h3><i class="fas fa-layer-group"></i> Map Layers</h3>
+                    <div class="layer-controls">
+                        <label class="layer-control">
+                            <input type="checkbox" id="species-layer" checked onchange="toggleLayer('species')">
+                            <span class="checkmark"></span>
+                            Species Occurrences
+                        </label>
+                        <label class="layer-control">
+                            <input type="checkbox" id="ocean-layer" checked onchange="toggleLayer('ocean')">
+                            <span class="checkmark"></span>
+                            Ocean Parameters
+                        </label>
+                        <label class="layer-control">
+                            <input type="checkbox" id="edna-layer" onchange="toggleLayer('edna')">
+                            <span class="checkmark"></span>
+                            eDNA Samples
+                        </label>
+                        <label class="layer-control">
+                            <input type="checkbox" id="routes-layer" onchange="toggleLayer('routes')">
+                            <span class="checkmark"></span>
+                            Maritime Routes
+                        </label>
+                        <label class="layer-control">
+                            <input type="checkbox" id="heatmap-layer" onchange="toggleLayer('heatmap')">
+                            <span class="checkmark"></span>
+                            Heatmap
+                        </label>
+                    </div>
+                </div>
+
+                <div class="control-section">
+                    <h3><i class="fas fa-filter"></i> Filters</h3>
+                    <div class="filter-controls">
+                        <div class="filter-group">
+                            <label>Species Type:</label>
+                            <select id="species-filter" onchange="applyFilters()">
+                                <option value="all">All Species</option>
+                                <option value="fish">Fish</option>
+                                <option value="mammals">Marine Mammals</option>
+                                <option value="invertebrates">Invertebrates</option>
+                            </select>
+                        </div>
+                        <div class="filter-group">
+                            <label>Depth Range:</label>
+                            <div class="range-slider">
+                                <input type="range" id="depth-min" min="0" max="1000" value="0" onchange="applyFilters()">
+                                <input type="range" id="depth-max" min="0" max="1000" value="1000" onchange="applyFilters()">
+                                <div class="range-values">
+                                    <span id="depth-min-val">0m</span> - <span id="depth-max-val">1000m</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="filter-group">
+                            <label>Time Period:</label>
+                            <select id="time-filter" onchange="applyFilters()">
+                                <option value="all">All Time</option>
+                                <option value="recent">Last 30 Days</option>
+                                <option value="year">Last Year</option>
+                                <option value="decade">Last Decade</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="control-section" id="researcher-controls">
+                    <h3><i class="fas fa-microscope"></i> Research Tools</h3>
+                    <div class="research-controls">
+                        <button class="btn btn-sm btn-primary" onclick="measureDistance()">
+                            <i class="fas fa-ruler"></i> Measure Distance
+                        </button>
+                        <button class="btn btn-sm btn-secondary" onclick="drawPolygon()">
+                            <i class="fas fa-draw-polygon"></i> Draw Area
+                        </button>
+                        <button class="btn btn-sm btn-success" onclick="exportMapData()">
+                            <i class="fas fa-download"></i> Export Data
+                        </button>
+                    </div>
+                </div>
+
+                <div class="control-section" id="policymaker-controls" style="display: none;">
+                    <h3><i class="fas fa-balance-scale"></i> Policy Tools</h3>
+                    <div class="policy-controls">
+                        <button class="btn btn-sm btn-warning" onclick="showProtectedAreas()">
+                            <i class="fas fa-shield-alt"></i> Protected Areas
+                        </button>
+                        <button class="btn btn-sm btn-danger" onclick="showThreats()">
+                            <i class="fas fa-exclamation-triangle"></i> Threat Assessment
+                        </button>
+                        <button class="btn btn-sm btn-info" onclick="generateReport()">
+                            <i class="fas fa-file-alt"></i> Generate Report
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Main Map -->
+            <div class="map-wrapper">
+                <div id="marine-map"></div>
+                
+                <!-- Map Legend -->
+                <div class="map-legend">
+                    <h4><i class="fas fa-info-circle"></i> Legend</h4>
+                    <div class="legend-items">
+                        <div class="legend-item">
+                            <div class="legend-color species"></div>
+                            <span>Species Occurrences</span>
+                        </div>
+                        <div class="legend-item">
+                            <div class="legend-color ocean"></div>
+                            <span>Ocean Measurements</span>
+                        </div>
+                        <div class="legend-item">
+                            <div class="legend-color edna"></div>
+                            <span>eDNA Samples</span>
+                        </div>
+                        <div class="legend-item">
+                            <div class="legend-color routes"></div>
+                            <span>Maritime Routes</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Map Statistics -->
+                <div class="map-stats">
+                    <div class="stat-item">
+                        <span class="stat-label">Visible Points:</span>
+                        <span class="stat-value" id="visible-points">0</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-label">Selected Area:</span>
+                        <span class="stat-value" id="selected-area">None</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Data Panel -->
+        <div class="data-panel" id="data-panel">
+            <div class="panel-header">
+                <h3><i class="fas fa-info"></i> Point Information</h3>
+                <button class="close-panel" onclick="closeDataPanel()">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="panel-content" id="panel-content">
+                <p>Click on a point on the map to view detailed information.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Export Modal -->
+    <div id="export-modal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeExportModal()">&times;</span>
+            <h2><i class="fas fa-download"></i> Export Map Data</h2>
+            <form id="export-form">
+                <div class="form-group">
+                    <label>Export Format:</label>
+                    <select id="export-format">
+                        <option value="csv">CSV</option>
+                        <option value="geojson">GeoJSON</option>
+                        <option value="kml">KML</option>
+                        <option value="shapefile">Shapefile</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Data to Export:</label>
+                    <div class="checkbox-group">
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="export-data" value="species" checked>
+                            Species Data
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="export-data" value="ocean">
+                            Ocean Data
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="export-data" value="edna">
+                            eDNA Data
+                        </label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Export Region:</label>
+                    <select id="export-region">
+                        <option value="visible">Current Map View</option>
+                        <option value="selected">Selected Area</option>
+                        <option value="all">All Data</option>
+                    </select>
+                </div>
+                <div class="form-actions">
+                    <button type="button" class="btn btn-secondary" onclick="closeExportModal()">Cancel</button>
+                    <button type="submit" class="btn btn-primary">
+                        <i class="fas fa-download"></i> Export
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.draw/1.0.4/leaflet.draw.js"></script>
+    <script src="{{ url_for('static', filename='js/map.js') }}"></script>
+</body>
+</html>

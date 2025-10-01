@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Researcher Dashboard - FishNet</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/researcher.css') }}">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar researcher-nav">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <h2><i class="fas fa-microscope"></i> FishNet Research</h2>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="/researcher-dashboard" class="nav-link active">Dashboard</a></li>
+                <li><a href="/researcher-data" class="nav-link">Raw Data</a></li>
+                <li><a href="/researcher-analysis" class="nav-link">Analysis</a></li>
+                <li><a href="/ai-tools" class="nav-link">AI Tools</a></li>
+                <li><a href="/researcher-maps" class="nav-link">Maps</a></li>
+                <li><a href="/" class="nav-link mode-switch">Switch Mode</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="researcher-container">
+        <!-- Header Stats -->
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-icon species">
+                    <i class="fas fa-fish"></i>
+                </div>
+                <div class="stat-content">
+                    <h3 id="total-species">Loading...</h3>
+                    <p>Species Catalogued</p>
+                    <small>Across all taxonomic groups</small>
+                </div>
+            </div>
+            
+            <div class="stat-card">
+                <div class="stat-icon ocean">
+                    <i class="fas fa-water"></i>
+                </div>
+                <div class="stat-content">
+                    <h3 id="ocean-datapoints">Loading...</h3>
+                    <p>Ocean Measurements</p>
+                    <small>Temperature, pH, salinity data</small>
+                </div>
+            </div>
+            
+            <div class="stat-card">
+                <div class="stat-icon edna">
+                    <i class="fas fa-dna"></i>
+                </div>
+                <div class="stat-content">
+                    <h3 id="edna-samples">Loading...</h3>
+                    <p>eDNA Samples</p>
+                    <small>Environmental DNA sequences</small>
+                </div>
+            </div>
+            
+            <div class="stat-card">
+                <div class="stat-icon diversity">
+                    <i class="fas fa-chart-line"></i>
+                </div>
+                <div class="stat-content">
+                    <h3 id="avg-diversity">Loading...</h3>
+                    <p>Avg Shannon Diversity</p>
+                    <small>Biodiversity index</small>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main Dashboard Grid -->
+        <div class="dashboard-grid">
+            <!-- Interactive Map -->
+            <div class="dashboard-card map-card">
+                <div class="card-header">
+                    <h3><i class="fas fa-map-marked-alt"></i> Interactive Research Map</h3>
+                    <div class="map-controls">
+                        <select id="map-layer-select">
+                            <option value="species">Species Distribution</option>
+                            <option value="ocean">Ocean Parameters</option>
+                            <option value="edna">eDNA Sampling Sites</option>
+                            <option value="routes">Maritime Routes</option>
+                        </select>
+                    </div>
+                </div>
+                <div id="research-map" class="map-container"></div>
+            </div>
+
+            <!-- Species Analysis -->
+            <div class="dashboard-card">
+                <div class="card-header">
+                    <h3><i class="fas fa-fish"></i> Species Distribution Analysis</h3>
+                </div>
+                <div class="chart-container">
+                    <canvas id="species-chart"></canvas>
+                </div>
+                <div class="analysis-summary">
+                    <div class="summary-item">
+                        <span class="label">Threatened Species:</span>
+                        <span class="value" id="threatened-count">Loading...</span>
+                    </div>
+                    <div class="summary-item">
+                        <span class="label">Commercial Species:</span>
+                        <span class="value" id="commercial-count">Loading...</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Ocean Chemistry -->
+            <div class="dashboard-card">
+                <div class="card-header">
+                    <h3><i class="fas fa-flask"></i> Ocean Chemistry Trends</h3>
+                </div>
+                <div class="chart-container">
+                    <canvas id="ocean-chart"></canvas>
+                </div>
+                <div class="parameter-grid">
+                    <div class="parameter-item">
+                        <span class="param-label">Avg Temperature</span>
+                        <span class="param-value" id="avg-temp">Loading...</span>
+                    </div>
+                    <div class="parameter-item">
+                        <span class="param-label">Avg pH</span>
+                        <span class="param-value" id="avg-ph">Loading...</span>
+                    </div>
+                    <div class="parameter-item">
+                        <span class="param-label">Avg Salinity</span>
+                        <span class="param-value" id="avg-salinity">Loading...</span>
+                    </div>
+                    <div class="parameter-item">
+                        <span class="param-label">Avg Oxygen</span>
+                        <span class="param-value" id="avg-oxygen">Loading...</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- eDNA Biodiversity -->
+            <div class="dashboard-card">
+                <div class="card-header">
+                    <h3><i class="fas fa-dna"></i> eDNA Biodiversity Analysis</h3>
+                </div>
+                <div class="chart-container">
+                    <canvas id="edna-chart"></canvas>
+                </div>
+                <div class="biodiversity-metrics">
+                    <div class="metric-item">
+                        <span class="metric-label">Total Species Detected</span>
+                        <span class="metric-value" id="total-detected">Loading...</span>
+                    </div>
+                    <div class="metric-item">
+                        <span class="metric-label">Avg Reads per Sample</span>
+                        <span class="metric-value" id="avg-reads">Loading...</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Research Tools -->
+            <div class="dashboard-card tools-card">
+                <div class="card-header">
+                    <h3><i class="fas fa-tools"></i> Research Tools</h3>
+                </div>
+                <div class="tools-grid">
+                    <div class="tool-item" onclick="openSpeciesIdentifier()">
+                        <i class="fas fa-camera"></i>
+                        <span>Species ID</span>
+                    </div>
+                    <div class="tool-item" onclick="openDataExport()">
+                        <i class="fas fa-download"></i>
+                        <span>Export Data</span>
+                    </div>
+                    <div class="tool-item" onclick="openCorrelationAnalysis()">
+                        <i class="fas fa-project-diagram"></i>
+                        <span>Correlations</span>
+                    </div>
+                    <div class="tool-item" onclick="openSequenceAnalysis()">
+                        <i class="fas fa-dna"></i>
+                        <span>DNA Analysis</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Recent Data -->
+            <div class="dashboard-card data-card">
+                <div class="card-header">
+                    <h3><i class="fas fa-database"></i> Recent Data Entries</h3>
+                </div>
+                <div class="data-table-container">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Type</th>
+                                <th>Location</th>
+                                <th>Date</th>
+                                <th>Quality</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody id="recent-data-table">
+                            <tr><td colspan="5">Loading...</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modals -->
+    <div id="species-modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Species Identification Tool</h2>
+            <div class="upload-area">
+                <i class="fas fa-cloud-upload-alt"></i>
+                <p>Drop image here or click to upload</p>
+                <input type="file" id="species-image" accept="image/*">
+            </div>
+            <div id="identification-results"></div>
+        </div>
+    </div>
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="{{ url_for('static', filename='js/researcher.js') }}"></script>
+</body>
+</html>

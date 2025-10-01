@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data - FishNet Platform</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/data.css') }}">
+    <script src="{{ url_for('static', filename='js/main.js') }}" defer></script>
+    <script src="{{ url_for('static', filename='js/data.js') }}" defer></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="/" class="nav-logo-link"><h2><i class="fas fa-fish"></i> FishNet</h2></a>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="/" class="nav-link">Home</a></li>
+                <li><a href="/dashboard" class="nav-link">Dashboard</a></li>
+                <li><a href="/researcher-dashboard" class="nav-link">Researcher</a></li>
+                <li><a href="/policy-dashboard" class="nav-link">Policymaker</a></li>
+                <li><a href="/ai-tools" class="nav-link">AI Tools</a></li>
+                <li><a href="/species" class="nav-link">Species</a></li>
+                <li><a href="/data" class="nav-link active">Data</a></li>
+                <li><a href="/map" class="nav-link">Map</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="data-container">
+        <header class="data-header">
+            <div class="header-content">
+                <h1><i class="fas fa-database"></i> Data Management</h1>
+                <p>Manage and explore marine biodiversity datasets</p>
+            </div>
+            <div class="header-actions">
+                <button class="btn btn-secondary" onclick="refreshDatasets()">
+                    <i class="fas fa-sync-alt"></i> Refresh
+                </button>
+                <button class="btn btn-primary" onclick="openDataUpload()">
+                    <i class="fas fa-plus"></i> Upload Dataset
+                </button>
+            </div>
+        </header>
+
+        <!-- Dataset Overview Cards -->
+        <div class="dataset-overview">
+            <div class="overview-card species-data-card">
+                <div class="card-icon">
+                    <i class="fas fa-fish"></i>
+                </div>
+                <div class="card-content">
+                    <h3>Species Data</h3>
+                    <div class="card-number">1</div>
+                    <div class="card-description">Sample species dataset with marine life information</div>
+                    <div class="card-status connected">Connected</div>
+                </div>
+            </div>
+
+            <div class="overview-card ocean-data-card">
+                <div class="card-icon">
+                    <i class="fas fa-water"></i>
+                </div>
+                <div class="card-content">
+                    <h3>Ocean Data</h3>
+                    <div class="card-number">1</div>
+                    <div class="card-description">Oceanographic measurements and environmental data</div>
+                    <div class="card-status connected">Connected</div>
+                </div>
+            </div>
+
+            <div class="overview-card edna-data-card">
+                <div class="card-icon">
+                    <i class="fas fa-dna"></i>
+                </div>
+                <div class="card-content">
+                    <h3>eDNA Data</h3>
+                    <div class="card-number">1</div>
+                    <div class="card-description">Environmental DNA samples and genetic analysis</div>
+                    <div class="card-status connected">Connected</div>
+                </div>
+            </div>
+
+            <div class="overview-card upload-card" onclick="openDataUpload()">
+                <div class="card-icon">
+                    <i class="fas fa-plus"></i>
+                </div>
+                <div class="card-content">
+                    <h3>Upload New</h3>
+                    <div class="card-description">Add your own dataset to the platform</div>
+                    <div class="card-status upload">Click to Upload</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Connected Datasets Section -->
+        <div class="section">
+            <div class="section-header">
+                <h2><i class="fas fa-link"></i> Connected Datasets</h2>
+                <div class="section-actions">
+                    <button class="btn btn-outline" onclick="exportAllData()">
+                        <i class="fas fa-download"></i> Export All
+                    </button>
+                </div>
+            </div>
+            
+            <div class="datasets-grid">
+                <div class="dataset-card">
+                    <div class="dataset-header">
+                        <div class="dataset-icon">
+                            <i class="fas fa-fish"></i>
+                        </div>
+                        <div class="dataset-info">
+                            <h3>Sample Species Data</h3>
+                            <p>Marine species information from sample CSV</p>
+                        </div>
+                        <div class="dataset-status">
+                            <span class="status-badge active">Active</span>
+                        </div>
+                    </div>
+                    <div class="dataset-stats">
+                        <div class="stat">
+                            <span class="stat-label">Records:</span>
+                            <span class="stat-value">2,847</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-label">Size:</span>
+                            <span class="stat-value">1.2 MB</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-label">Last Updated:</span>
+                            <span class="stat-value">Today</span>
+                        </div>
+                    </div>
+                    <div class="dataset-actions">
+                        <button class="btn btn-sm btn-primary" onclick="viewDataset('species')">
+                            <i class="fas fa-eye"></i> View
+                        </button>
+                        <button class="btn btn-sm btn-secondary" onclick="downloadDataset('species')">
+                            <i class="fas fa-download"></i> Download
+                        </button>
+                    </div>
+                </div>
+
+                <div class="dataset-card">
+                    <div class="dataset-header">
+                        <div class="dataset-icon">
+                            <i class="fas fa-water"></i>
+                        </div>
+                        <div class="dataset-info">
+                            <h3>Sample Ocean Data</h3>
+                            <p>Oceanographic measurements and parameters</p>
+                        </div>
+                        <div class="dataset-status">
+                            <span class="status-badge active">Active</span>
+                        </div>
+                    </div>
+                    <div class="dataset-stats">
+                        <div class="stat">
+                            <span class="stat-label">Records:</span>
+                            <span class="stat-value">5,432</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-label">Size:</span>
+                            <span class="stat-value">2.8 MB</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-label">Last Updated:</span>
+                            <span class="stat-value">Today</span>
+                        </div>
+                    </div>
+                    <div class="dataset-actions">
+                        <button class="btn btn-sm btn-primary" onclick="viewDataset('ocean')">
+                            <i class="fas fa-eye"></i> View
+                        </button>
+                        <button class="btn btn-sm btn-secondary" onclick="downloadDataset('ocean')">
+                            <i class="fas fa-download"></i> Download
+                        </button>
+                    </div>
+                </div>
+
+                <div class="dataset-card">
+                    <div class="dataset-header">
+                        <div class="dataset-icon">
+                            <i class="fas fa-dna"></i>
+                        </div>
+                        <div class="dataset-info">
+                            <h3>Sample eDNA Data</h3>
+                            <p>Environmental DNA samples and analysis</p>
+                        </div>
+                        <div class="dataset-status">
+                            <span class="status-badge active">Active</span>
+                        </div>
+                    </div>
+                    <div class="dataset-stats">
+                        <div class="stat">
+                            <span class="stat-label">Records:</span>
+                            <span class="stat-value">1,234</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-label">Size:</span>
+                            <span class="stat-value">0.8 MB</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-label">Last Updated:</span>
+                            <span class="stat-value">Today</span>
+                        </div>
+                    </div>
+                    <div class="dataset-actions">
+                        <button class="btn btn-sm btn-primary" onclick="viewDataset('edna')">
+                            <i class="fas fa-eye"></i> View
+                        </button>
+                        <button class="btn btn-sm btn-secondary" onclick="downloadDataset('edna')">
+                            <i class="fas fa-download"></i> Download
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Data Visualization Section -->
+        <div class="section">
+            <div class="section-header">
+                <h2><i class="fas fa-chart-bar"></i> Data Visualization</h2>
+                <div class="chart-controls">
+                    <select id="chart-type" onchange="updateChart()">
+                        <option value="species-distribution">Species Distribution</option>
+                        <option value="ocean-parameters">Ocean Parameters</option>
+                        <option value="edna-diversity">eDNA Diversity</option>
+                    </select>
+                </div>
+            </div>
+            <div class="chart-container">
+                <canvas id="data-chart"></canvas>
+            </div>
+        </div>
+
+        <!-- Data Statistics -->
+        <div class="section">
+            <div class="section-header">
+                <h2><i class="fas fa-chart-pie"></i> Data Statistics</h2>
+            </div>
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-database"></i>
+                    </div>
+                    <div class="stat-content">
+                        <h3>Total Records</h3>
+                        <div class="stat-number">9,513</div>
+                        <div class="stat-description">Across all datasets</div>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-hdd"></i>
+                    </div>
+                    <div class="stat-content">
+                        <h3>Storage Used</h3>
+                        <div class="stat-number">4.8 MB</div>
+                        <div class="stat-description">Of available space</div>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <div class="stat-content">
+                        <h3>Last Sync</h3>
+                        <div class="stat-number">Just now</div>
+                        <div class="stat-description">All data synchronized</div>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-check-circle"></i>
+                    </div>
+                    <div class="stat-content">
+                        <h3>Data Quality</h3>
+                        <div class="stat-number">98.5%</div>
+                        <div class="stat-description">Quality score</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Data Upload Modal -->
+    <div id="data-upload-modal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeDataUpload()">&times;</span>
+            <h2><i class="fas fa-cloud-upload-alt"></i> Upload New Dataset</h2>
+            <form id="data-upload-form" enctype="multipart/form-data">
+                <div class="form-group">
+                    <label for="data-file">Select Dataset File:</label>
+                    <input type="file" id="data-file" name="file" accept=".csv,.xlsx,.xls,.json" required>
+                    <small>Supported formats: CSV, Excel, JSON (Max: 100MB)</small>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="data-name">Dataset Name:</label>
+                        <input type="text" id="data-name" name="name" placeholder="Enter dataset name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="data-type">Dataset Type:</label>
+                        <select id="data-type" name="type" required>
+                            <option value="">Select type...</option>
+                            <option value="Species">Species Data</option>
+                            <option value="Ocean">Oceanographic Data</option>
+                            <option value="eDNA">eDNA Samples</option>
+                            <option value="Routes">Maritime Routes</option>
+                            <option value="Other">Other</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="data-region">Region:</label>
+                        <input type="text" id="data-region" name="region" placeholder="e.g., Arabian Sea, Bay of Bengal">
+                    </div>
+                    <div class="form-group">
+                        <label for="data-organization">Organization:</label>
+                        <input type="text" id="data-organization" name="organization" placeholder="Data source organization">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="data-description">Description:</label>
+                    <textarea id="data-description" name="description" rows="3" placeholder="Brief description of the dataset and its contents"></textarea>
+                </div>
+                <div class="form-actions">
+                    <button type="button" class="btn btn-secondary" onclick="closeDataUpload()">Cancel</button>
+                    <button type="submit" class="btn btn-primary">
+                        <i class="fas fa-upload"></i> Upload & Process
+                    </button>
+                </div>
+            </form>
+            <div id="data-upload-progress" class="progress-container" style="display: none;">
+                <div class="progress-bar">
+                    <div class="progress-fill"></div>
+                </div>
+                <div class="progress-text">Uploading and processing dataset...</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Dataset Viewer Modal -->
+    <div id="dataset-viewer-modal" class="modal">
+        <div class="modal-content large">
+            <span class="close" onclick="closeDatasetViewer()">&times;</span>
+            <h2 id="viewer-title"><i class="fas fa-table"></i> Dataset Viewer</h2>
+            <div class="viewer-controls">
+                <div class="search-container">
+                    <input type="text" id="dataset-search" placeholder="Search in dataset...">
+                    <button class="btn btn-sm btn-primary" onclick="searchDataset()">
+                        <i class="fas fa-search"></i>
+                    </button>
+                </div>
+                <div class="viewer-actions">
+                    <button class="btn btn-sm btn-secondary" onclick="exportCurrentView()">
+                        <i class="fas fa-download"></i> Export View
+                    </button>
+                </div>
+            </div>
+            <div class="table-container">
+                <table class="data-table" id="dataset-table">
+                    <thead id="dataset-thead">
+                        <!-- Dynamic headers -->
+                    </thead>
+                    <tbody id="dataset-tbody">
+                        <!-- Dynamic content -->
+                    </tbody>
+                </table>
+            </div>
+            <div class="pagination">
+                <button class="btn btn-sm" onclick="previousPage()">
+                    <i class="fas fa-chevron-left"></i> Previous
+                </button>
+                <span id="page-info">Page 1 of 1</span>
+                <button class="btn btn-sm" onclick="nextPage()">
+                    Next <i class="fas fa-chevron-right"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/data.js') }}"></script>
+</body>
+</html>

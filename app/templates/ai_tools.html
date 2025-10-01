@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Tools - FishNet Platform</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/ai_tools.css') }}">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <h2><i class="fas fa-fish"></i> FishNet</h2>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="/" class="nav-link">Home</a></li>
+                <li><a href="/dashboard" class="nav-link">Dashboard</a></li>
+                <li><a href="/ai-tools" class="nav-link active">AI Tools</a></li>
+                <li><a href="/species" class="nav-link">Species</a></li>
+                <li><a href="/data" class="nav-link">Data</a></li>
+                <li><a href="/map" class="nav-link">Map</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="ai-tools-container">
+        <header class="ai-header">
+            <div class="header-content">
+                <h1><i class="fas fa-brain"></i> AI Analysis Tools</h1>
+                <p>Leverage artificial intelligence for marine biodiversity analysis and insights</p>
+            </div>
+        </header>
+
+        <div class="tools-grid">
+            <div class="tool-card">
+                <div class="tool-icon">
+                    <i class="fas fa-camera"></i>
+                </div>
+                <h3>Species Identification</h3>
+                <p>Upload fish images for automatic species identification using computer vision</p>
+                <button class="btn btn-primary" onclick="openSpeciesIdentification()">
+                    <i class="fas fa-upload"></i> Upload Image
+                </button>
+            </div>
+
+            <div class="tool-card">
+                <div class="tool-icon">
+                    <i class="fas fa-chart-line"></i>
+                </div>
+                <h3>Population Analysis</h3>
+                <p>Analyze species population trends and predict future changes</p>
+                <button class="btn btn-primary" onclick="openPopulationAnalysis()">
+                    <i class="fas fa-play"></i> Start Analysis
+                </button>
+            </div>
+
+            <div class="tool-card">
+                <div class="tool-icon">
+                    <i class="fas fa-water"></i>
+                </div>
+                <h3>Ocean Health Predictor</h3>
+                <p>Predict ocean health based on environmental parameters</p>
+                <button class="btn btn-primary" onclick="openOceanPredictor()">
+                    <i class="fas fa-cogs"></i> Configure
+                </button>
+            </div>
+
+            <div class="tool-card">
+                <div class="tool-icon">
+                    <i class="fas fa-dna"></i>
+                </div>
+                <h3>eDNA Analyzer</h3>
+                <p>Process environmental DNA sequences for biodiversity assessment</p>
+                <button class="btn btn-primary" onclick="openEdnaAnalyzer()">
+                    <i class="fas fa-microscope"></i> Analyze
+                </button>
+            </div>
+
+            <div class="tool-card">
+                <div class="tool-icon">
+                    <i class="fas fa-exclamation-triangle"></i>
+                </div>
+                <h3>Threat Assessment</h3>
+                <p>AI-powered assessment of environmental threats to marine species</p>
+                <button class="btn btn-primary" onclick="openThreatAssessment()">
+                    <i class="fas fa-shield-alt"></i> Assess
+                </button>
+            </div>
+
+            <div class="tool-card">
+                <div class="tool-icon">
+                    <i class="fas fa-map-marked-alt"></i>
+                </div>
+                <h3>Habitat Mapping</h3>
+                <p>Generate habitat suitability maps for marine species</p>
+                <button class="btn btn-primary" onclick="openHabitatMapping()">
+                    <i class="fas fa-map"></i> Map
+                </button>
+            </div>
+        </div>
+
+        <!-- AI Tool Modals will be added here -->
+        <div id="ai-modals-container">
+            <!-- Modals will be dynamically loaded -->
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/ai_tools.js') }}"></script>
+</body>
+</html>

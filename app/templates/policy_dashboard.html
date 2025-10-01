@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Policy Dashboard - FishNet</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/policy.css') }}">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar policy-nav">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <h2><i class="fas fa-balance-scale"></i> FishNet Policy</h2>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="/policy-dashboard" class="nav-link active">Dashboard</a></li>
+                <li><a href="/policy-reports" class="nav-link">Reports</a></li>
+                <li><a href="/policy-alerts" class="nav-link">Alerts</a></li>
+                <li><a href="/policy-maps" class="nav-link">Conservation Maps</a></li>
+                <li><a href="/" class="nav-link mode-switch">Switch Mode</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="policy-container">
+        <!-- Executive Summary -->
+        <div class="executive-summary">
+            <h2><i class="fas fa-chart-pie"></i> Executive Summary</h2>
+            <div class="summary-cards">
+                <div class="summary-card critical">
+                    <div class="card-icon">
+                        <i class="fas fa-exclamation-triangle"></i>
+                    </div>
+                    <div class="card-content">
+                        <h3 id="critical-species">Loading...</h3>
+                        <p>Species at Critical Risk</p>
+                        <small>Require immediate action</small>
+                    </div>
+                </div>
+                
+                <div class="summary-card warning">
+                    <div class="card-icon">
+                        <i class="fas fa-fish"></i>
+                    </div>
+                    <div class="card-content">
+                        <h3 id="commercial-risk">Loading...</h3>
+                        <p>Commercial Species at Risk</p>
+                        <small>Economic impact zones</small>
+                    </div>
+                </div>
+                
+                <div class="summary-card success">
+                    <div class="card-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <div class="card-content">
+                        <h3 id="protected-areas">Loading...</h3>
+                        <p>Protected Areas</p>
+                        <small>Conservation zones active</small>
+                    </div>
+                </div>
+                
+                <div class="summary-card info">
+                    <div class="card-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <div class="card-content">
+                        <h3 id="trend-positive">Loading...</h3>
+                        <p>Positive Trends</p>
+                        <small>Species showing recovery</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main Dashboard Grid -->
+        <div class="policy-grid">
+            <!-- Conservation Priority Map -->
+            <div class="dashboard-card priority-map-card">
+                <div class="card-header">
+                    <h3><i class="fas fa-map"></i> Conservation Priority Map</h3>
+                    <div class="map-legend">
+                        <div class="legend-item critical"><span></span> Critical Risk</div>
+                        <div class="legend-item high"><span></span> High Risk</div>
+                        <div class="legend-item medium"><span></span> Medium Risk</div>
+                        <div class="legend-item low"><span></span> Low Risk</div>
+                    </div>
+                </div>
+                <div id="policy-map" class="map-container"></div>
+            </div>
+
+            <!-- Decision Support Cards -->
+            <div class="dashboard-card decisions-card">
+                <div class="card-header">
+                    <h3><i class="fas fa-lightbulb"></i> Decision Support</h3>
+                </div>
+                <div id="decision-cards" class="decision-cards-container">
+                    <div class="loading">Loading recommendations...</div>
+                </div>
+            </div>
+
+            <!-- Risk Assessment -->
+            <div class="dashboard-card risk-card">
+                <div class="card-header">
+                    <h3><i class="fas fa-exclamation-triangle"></i> Risk Assessment</h3>
+                </div>
+                <div class="risk-zones">
+                    <div class="risk-zone critical">
+                        <div class="zone-header">
+                            <h4>Critical Risk Zones</h4>
+                            <span class="zone-count" id="critical-zones">0</span>
+                        </div>
+                        <div class="zone-list" id="critical-zone-list">
+                            Loading...
+                        </div>
+                    </div>
+                    
+                    <div class="risk-zone high">
+                        <div class="zone-header">
+                            <h4>High Risk Zones</h4>
+                            <span class="zone-count" id="high-zones">0</span>
+                        </div>
+                        <div class="zone-list" id="high-zone-list">
+                            Loading...
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Population Trends -->
+            <div class="dashboard-card trends-card">
+                <div class="card-header">
+                    <h3><i class="fas fa-trending-down"></i> Population Trends</h3>
+                </div>
+                <div class="chart-container">
+                    <canvas id="trends-chart"></canvas>
+                </div>
+                <div class="trend-summary">
+                    <div class="trend-item declining">
+                        <span class="trend-label">Declining</span>
+                        <span class="trend-value" id="declining-species">0</span>
+                    </div>
+                    <div class="trend-item stable">
+                        <span class="trend-label">Stable</span>
+                        <span class="trend-value" id="stable-species">0</span>
+                    </div>
+                    <div class="trend-item increasing">
+                        <span class="trend-label">Increasing</span>
+                        <span class="trend-value" id="increasing-species">0</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Conservation Status -->
+            <div class="dashboard-card conservation-card">
+                <div class="card-header">
+                    <h3><i class="fas fa-shield-alt"></i> Conservation Status</h3>
+                </div>
+                <div class="chart-container">
+                    <canvas id="conservation-chart"></canvas>
+                </div>
+                <div class="conservation-actions">
+                    <button class="action-btn critical" onclick="viewCriticalSpecies()">
+                        <i class="fas fa-exclamation-triangle"></i>
+                        View Critical Species
+                    </button>
+                    <button class="action-btn primary" onclick="generateReport()">
+                        <i class="fas fa-file-alt"></i>
+                        Generate Report
+                    </button>
+                </div>
+            </div>
+
+            <!-- Quick Actions -->
+            <div class="dashboard-card actions-card">
+                <div class="card-header">
+                    <h3><i class="fas fa-bolt"></i> Quick Actions</h3>
+                </div>
+                <div class="actions-grid">
+                    <div class="action-item" onclick="createAlert()">
+                        <i class="fas fa-bell"></i>
+                        <span>Create Alert</span>
+                    </div>
+                    <div class="action-item" onclick="scheduleAssessment()">
+                        <i class="fas fa-calendar"></i>
+                        <span>Schedule Assessment</span>
+                    </div>
+                    <div class="action-item" onclick="viewRegulations()">
+                        <i class="fas fa-gavel"></i>
+                        <span>View Regulations</span>
+                    </div>
+                    <div class="action-item" onclick="exportSummary()">
+                        <i class="fas fa-download"></i>
+                        <span>Export Summary</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modals -->
+    <div id="species-detail-modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Species Detail</h2>
+            <div id="species-detail-content">
+                <!-- Species details will be loaded here -->
+            </div>
+        </div>
+    </div>
+
+    <div id="report-modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Generate Conservation Report</h2>
+            <div class="report-options">
+                <div class="option-group">
+                    <label>Report Type:</label>
+                    <select id="report-type">
+                        <option value="executive">Executive Summary</option>
+                        <option value="detailed">Detailed Analysis</option>
+                        <option value="risk">Risk Assessment</option>
+                    </select>
+                </div>
+                <div class="option-group">
+                    <label>Time Period:</label>
+                    <select id="report-period">
+                        <option value="current">Current Status</option>
+                        <option value="quarterly">Last Quarter</option>
+                        <option value="annual">Annual Report</option>
+                    </select>
+                </div>
+                <button class="generate-btn" onclick="downloadReport()">
+                    <i class="fas fa-download"></i> Generate Report
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="{{ url_for('static', filename='js/policy.js') }}"></script>
+</body>
+</html>
